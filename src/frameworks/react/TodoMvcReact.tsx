@@ -1,11 +1,6 @@
 import React, { useState } from "react";
+import { TodoT } from "../../global";
 import TodoForm from "./TodoForm";
-
-export type TodoT = {
-  id: number;
-  content: string;
-  isCompleted: boolean;
-};
 
 interface TodoItemProps {
   todo: TodoT;
@@ -23,7 +18,12 @@ function TodoItem({ todo, completeTodo, deleteTodo }: TodoItemProps) {
         onChange={(e) => completeTodo(todo.id, e.target.checked)}
       />
       {todo.content}
-      <button onClick={() => deleteTodo(todo.id)} aria-label={`삭제하기 ${todo.content}`}>X</button>
+      <button
+        onClick={() => deleteTodo(todo.id)}
+        aria-label={`삭제하기 ${todo.content}`}
+      >
+        X
+      </button>
     </li>
   );
 }
@@ -41,11 +41,13 @@ export default function TodoMvcReact({ init }: { init: TodoT[] }) {
   };
 
   const completeTodo = (todoId: TodoT["id"], isCompleted: boolean) => {
-    setTodoList((old) => old.map(todo => todo.id === todoId ? { ...todo, isCompleted } : todo))
+    setTodoList((old) =>
+      old.map((todo) => (todo.id === todoId ? { ...todo, isCompleted } : todo))
+    );
   };
 
   const deleteTodo = (todoId: TodoT["id"]) => {
-    setTodoList((old) => old.filter(todo => todo.id !== todoId));
+    setTodoList((old) => old.filter((todo) => todo.id !== todoId));
   };
   return (
     <>

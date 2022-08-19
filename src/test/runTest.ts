@@ -3,7 +3,7 @@ import { screen } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
-import { TodoT } from "../frameworks/react/TodoMvcReact";
+import { TodoT } from "../global";
 import strs from "../strs";
 
 interface TodoMVCImpl {
@@ -31,7 +31,9 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     it("할 일을 완료할 수 있다", async () => {
       render([{ id: 0, content: "테스트하기", isCompleted: false }]);
 
-      const checkbox = screen.getByRole("checkbox");
+      const checkbox = screen.getByRole("checkbox", {
+        name: "완료하기 테스트하기"
+      });
       expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
