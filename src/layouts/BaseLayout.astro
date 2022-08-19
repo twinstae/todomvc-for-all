@@ -1,0 +1,18 @@
+---
+import './base.css';
+const { frontmatter } = Astro.props;
+---
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>{frontmatter.title}</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  </head>
+  <body>
+    <article>
+        <h1>{frontmatter.title} by {frontmatter.author}</h1>
+        <span>{frontmatter.date}</span>
+        <slot />
+    </article>
+  </body>
+</html>

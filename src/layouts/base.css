@@ -1,0 +1,6 @@
+h1,h2,h3,h4 {
+    --typography-spacing-vertical: 0.5rem !important;
+}
+body {
+    padding: 1rem;
+}
