@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import strs from "../../strs";
+import TodoForm from "./TodoForm";
 
 type TodoT = string;
 
@@ -18,20 +19,12 @@ function TodoItem({ todo }: TodoItemProps) {
 
 export default function TodoMvcReact() {
   const [todoList, setTodoList] = useState<string[]>([]);
-  const [todoInput, setTodoInput] = useState('');
+
+  const addTodo = (content: string) => setTodoList((old) => [...old, content]);
   return (
     <>
       <h1>Todo MVC</h1>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        setTodoList((old) => [...old, todoInput]);
-        setTodoInput('');
-      }}>
-        <label>
-          {strs.addTodoLabel}
-          <input type="text" value={todoInput} onChange={(e) => setTodoInput(e.target.value)}/>
-        </label>
-      </form>
+      <TodoForm addTodo={addTodo} />
       <ul>
         {todoList.map((todo) => (
           <TodoItem key={todo} todo={todo} />
