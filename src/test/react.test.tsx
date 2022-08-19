@@ -6,5 +6,5 @@ import runTest from "./runTest";
 
 runTest({
     framework: 'react',
-    render: () => render(<TodoMvcReact />)
+    render: (init) => render(<TodoMvcReact init={init} />)
 })
