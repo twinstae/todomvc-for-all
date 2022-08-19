@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import strs from "../../strs";
 import TodoForm from "./TodoForm";
 
-type TodoT = string;
+type TodoT = {
+  content: string;
+};
 
 interface TodoItemProps {
   todo: TodoT;
@@ -10,24 +11,24 @@ interface TodoItemProps {
 
 function TodoItem({ todo }: TodoItemProps) {
   return (
-    <li key={todo}>
-      <input type="checkbox" aria-label={`완료하기 ${todo} `} />
-      {todo}
+    <li>
+      <input type="checkbox" aria-label={`완료하기 ${todo.content} `} />
+      {todo.content}
     </li>
   );
 }
 
 export default function TodoMvcReact() {
-  const [todoList, setTodoList] = useState<string[]>([]);
+  const [todoList, setTodoList] = useState<TodoT[]>([]);
 
-  const addTodo = (content: string) => setTodoList((old) => [...old, content]);
+  const addTodo = (content: string) => setTodoList((old) => [...old, { content }]);
   return (
     <>
       <h1>Todo MVC</h1>
       <TodoForm addTodo={addTodo} />
       <ul>
         {todoList.map((todo) => (
-          <TodoItem key={todo} todo={todo} />
+          <TodoItem key={todo.content} todo={todo} />
         ))}
       </ul>
     </>
