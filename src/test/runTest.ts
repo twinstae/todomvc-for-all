@@ -4,7 +4,6 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
 import { TodoT } from "../global";
-import strs from "../strs";
 
 interface TodoMVCImpl {
   framework: string;
@@ -19,7 +18,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
 
       const input = screen.getByRole("textbox", {
-        name: strs.addTodoLabel,
+        name: "새로운 할일을 적고, Enter를 눌러주세요.",
       });
       await userEvent.type(input, "테스트{enter}");
 

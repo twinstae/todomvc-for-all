@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { provide } from "../../dependency";
 import { TodoT } from "../../global";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
+import usePersistState from "./usePersistenceState";
 
 const defaultInit: TodoT[] = [];
 
-let nowId = 0;
-
-export default function TodoMvcReact({ init }: { init: TodoT[] }) {
-  const [todoList, setTodoList] = useState<TodoT[]>(init || defaultInit);
+function useTodoList(){
+  const [todoList, setTodoList] = usePersistState<TodoT[]>(defaultInit, 'todo-list');
 
   const addTodo = (content: string) => {
     if (content.length === 0) return;
-    const newTodo = { id: nowId++, content, isCompleted: false };
-    setTodoList((old) => [...old, newTodo]);
+    
+    setTodoList((old) => {
+      const newTodo = {
+        id: Math.max(...old.map(todo => todo.id), 0) + 1,
+        content,
+        isCompleted: false,
+      };
+      console.log([...old, newTodo])
+      return [...old, newTodo]
+    });
   };
 
   const completeTodo = (targetId: TodoT["id"], isCompleted: boolean) => {
@@ -35,6 +43,25 @@ export default function TodoMvcReact({ init }: { init: TodoT[] }) {
       )
     );
   };
+
+  return {
+    todoList,
+    addTodo,
+    deleteTodo,
+    completeTodo,
+    changeTodo
+  }
+}
+
+export default function TodoMvcReact() {
+  const {
+    todoList,
+    addTodo,
+    deleteTodo,
+    completeTodo,
+    changeTodo
+  } = useTodoList();
+
   return (
     <div className="card shadow-lg rounded-2xl p-4 max-w-lg">
       <TodoForm addTodo={addTodo} />
@@ -52,3 +79,15 @@ export default function TodoMvcReact({ init }: { init: TodoT[] }) {
     </div>
   );
 }
+
+provide('storage', {
+  get: (key: string) => {
+    const saved = localStorage.getItem(key);
+    if(!saved) return undefined;
+    
+    return JSON.parse(saved);
+  },
+  set: (key: string, value: any) => {
+    localStorage.setItem(key, JSON.stringify(value))
+  },
+});
