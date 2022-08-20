@@ -6,12 +6,12 @@ const { framework } = Astro.props;
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>{framework} TodoMVC</title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    
   </head>
   <body>
-    <article>
-      <h1>Todo MVC with {framework}</h1>
-        <slot />
-    </article>
+    <main>
+      <h1 class="text-4xl">Todo MVC with {framework}</h1>
+      <slot />
+    </main>
   </body>
 </html>
