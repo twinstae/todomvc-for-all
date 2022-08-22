@@ -1,0 +1,35 @@
+---
+const { framework } = Astro.props;
+
+const src = ['react', 'vue', 'svelte', 'solid', 'lit'].includes(framework)
+  ? `https://docs.astro.build/logos/${framework}.svg`
+  : `/assets/${framework}.svg`;
+---
+
+<li class="card card-bordered card--minimal p-2 w-fit m-2">
+  <a href={"/" + framework} aria-current="false" class="text-center">
+    <figure style="height: 80px">
+      <img
+        src={src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="64"
+        height="64"
+      />
+    </figure>
+    <h3>{framework}</h3>
+  </a>
+</li>
+
+<style>
+.card {
+  transition: all 0.25s;
+  box-shadow: 15px 28px 25px -18px rgb(0 0 0 / 20%);
+}
+
+.card:hover {
+    transform: translate3d(0,2px,0);
+    box-shadow: 2px 8px 8px -5px rgb(0 0 0 / 30%);
+}
+</style>

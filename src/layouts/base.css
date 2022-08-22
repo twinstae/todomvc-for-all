@@ -1,6 +1,14 @@
 h1,h2,h3,h4 {
     --typography-spacing-vertical: 0.5rem !important;
 }
+h1 {
+  @apply text-4xl font-bold mt-1 mb-2
+}
+
+h2 {
+  @apply text-xl font-bold mt-1 mb-2
+}
+
 body {
     padding: 1rem;
 }

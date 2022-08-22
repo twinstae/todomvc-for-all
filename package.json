@@ -12,6 +12,7 @@
     "test": "vitest --config ./vitest.config.ts"
   },
   "devDependencies": {
+    "@astrojs/mdx": "^0.10.0",
     "@astrojs/react": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@testing-library/dom": "^8.17.1",
