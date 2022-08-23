@@ -1,5 +1,5 @@
 import { createContainer } from "../../dependency";
-import { nanoActions, useNanoTodoList } from "./useNanoTodolist";
+import { nanoActions, useNanoTodoList } from "./hooks/useNanoTodolist";
 
 interface Stoage {
   get(key: string): any;
@@ -25,17 +25,7 @@ export function withSubscribe(storage: Stoage){
 }
 
 export const { provide, inject } = createContainer({
-  storage: withSubscribe({
-    get(key: string) {
-      const saved = localStorage.getItem(key);
-      if (!saved) return undefined;
-
-      return JSON.parse(saved);
-    },
-    set(key: string, value: any) {
-      localStorage.setItem(key, JSON.stringify(value));
-    },
-  }),
+  storage: withSubscribe(new Map()),
   useTodoList: useNanoTodoList,
   actions: () => nanoActions,
 });

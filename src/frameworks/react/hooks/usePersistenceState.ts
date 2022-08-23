@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { inject } from "./context";
+import { inject } from "../context";
 
 type Options = {
   log: boolean

@@ -1,5 +1,5 @@
 import React from "react";
-import { inject } from "./context";
+import { inject, provide, withSubscribe } from "./context";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
 
@@ -17,3 +17,15 @@ export default function TodoMvcReact() {
       </div>
   );
 }
+
+provide('storage', withSubscribe({
+  get(key: string) {
+    const saved = localStorage.getItem(key);
+    if (!saved) return undefined;
+
+    return JSON.parse(saved);
+  },
+  set(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value));
+  },
+}))

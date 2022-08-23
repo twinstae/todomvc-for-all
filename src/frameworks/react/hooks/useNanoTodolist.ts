@@ -1,9 +1,8 @@
 import { useLayoutEffect } from "react";
 import { useStore } from "@nanostores/react";
-import { todoListStore, actions } from "../nanoTodoListStore";
-import { inject } from "./context";
-import { TodoT } from "../../global";
-
+import { todoListStore, actions } from "../../nanoTodoListStore";
+import { inject } from ".././context";
+import { TodoT } from "../../../global";
 
 export function useNanoTodoList(): { todoList: readonly TodoT[]} {
   const todoList = useStore(todoListStore);

@@ -6,10 +6,10 @@ import {
   deleteTodo,
   loadSaved,
   selectTodoList,
-} from "../reduxTodoListStore";
+} from "../../reduxTodoListStore";
 import { useSelector, useDispatch } from "react-redux";
-import { TodoT } from "../../global";
-import { inject } from "./context";
+import { TodoT } from "../../../global";
+import { inject } from "../context";
 import { useLayoutEffect } from "react";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;

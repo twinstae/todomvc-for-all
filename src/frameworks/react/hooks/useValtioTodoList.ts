@@ -1,9 +1,9 @@
 import { useLayoutEffect } from 'react';
 import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
-import { TodoT } from '../../global';
-import { inject } from './context';
-import { generateId } from '../generateId';
+import { TodoT } from '../../../global';
+import { inject } from '../context';
+import { generateId } from '../../generateId';
 
 export const store = proxy<{
   todoList: TodoT[]
