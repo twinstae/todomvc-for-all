@@ -11,18 +11,16 @@ export const domain = {
     return [...old, newTodo];
   },
   completeTodo(old: TodoT[], id: number, isCompleted: boolean) {
-    const todo = old.find((todo) => todo.id === id);
-    if (todo) {
-      todo.isCompleted = isCompleted;
-    }
-    return [...old];
+    return old.map((todo) => todo.id === id
+      ? { ...todo, isCompleted }
+      : todo
+    );
   },
-  changeTodo(old: TodoT[], id: number, newContent: string) {
-    const todo = old.find((todo) => todo.id === id);
-    if (todo) {
-      todo.content = newContent;
-    }
-    return [...old];
+  changeTodo(old: TodoT[], id: number, content: string) {
+    return old.map((todo) => todo.id === id
+      ? { ...todo, content }
+      : todo
+    );
   },
   deleteTodo(old: TodoT[], id: number) {
     return old.filter((todo) => todo.id !== id);
