@@ -1,13 +1,17 @@
-import { useState } from "react";
-import { inject } from "../../dependency";
+import { useLayoutEffect, useState } from "react";
+import { inject } from "./context";
 
 type Options = {
   log: boolean
 }
 
 function usePersistState<T>(initValue: T, storageKey: string, options: Options = { log: false }) {
+  const [state, setState] = useState<T>(initValue);
+
   const stoage = inject('storage');
-  const [state, setState] = useState<T>(stoage.get(storageKey) || initValue);
+  useLayoutEffect(() => {
+    setState(stoage.get(storageKey))
+  }, []);
 
   return [state, (update: (old: T) => T) => {
     setState(old => {

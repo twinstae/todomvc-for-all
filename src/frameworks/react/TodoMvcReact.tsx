@@ -1,8 +1,7 @@
 import React from "react";
-import { provide } from "../../dependency";
+import { inject } from "./context";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-import { useTodoList } from "./useTodoList";
 
 export default function TodoMvcReact() {
   const {
@@ -11,7 +10,7 @@ export default function TodoMvcReact() {
     deleteTodo,
     completeTodo,
     changeTodo
-  } = useTodoList();
+  } = inject('useTodoList')();
 
   return (
     <div className="card shadow-lg rounded-2xl p-4 max-w-lg">
@@ -30,15 +29,3 @@ export default function TodoMvcReact() {
     </div>
   );
 }
-
-provide('storage', {
-  get: (key: string) => {
-    const saved = localStorage.getItem(key);
-    if(!saved) return undefined;
-    
-    return JSON.parse(saved);
-  },
-  set: (key: string, value: any) => {
-    localStorage.setItem(key, JSON.stringify(value))
-  },
-});

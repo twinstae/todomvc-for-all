@@ -1,17 +1,18 @@
 import { TodoT } from "../../global";
+import { generateId } from "./generateId";
 import usePersistState from "./usePersistenceState";
 
 const defaultInit: TodoT[] = [];
 
-export function useTodoList(){
-  const [todoList, setTodoList] = usePersistState<TodoT[]>(defaultInit, 'todo-list');
+export function useReactTodoList(){
+  const [todoList, setTodoList] = usePersistState<readonly TodoT[]>(defaultInit, 'todo-list');
 
   const addTodo = (content: string) => {
     if (content.length === 0) return;
     
     setTodoList((old) => {
       const newTodo = {
-        id: Math.max(...old.map(todo => todo.id), 0) + 1,
+        id: generateId(),
         content,
         isCompleted: false,
       };

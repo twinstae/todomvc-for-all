@@ -1,9 +1,18 @@
-let _dependencies: Map<string, any> = new Map();
+export function createContainer<T extends Record<string, any>>(initDependencies: T) {
+  let _dependencies: T = initDependencies;
+  
+  type DependencyT = typeof _dependencies;
+  
+  function provide<K extends keyof DependencyT>(key: K, value: DependencyT[K]){
+    _dependencies[key] = value;
+  }
+  
+  function inject<K extends keyof DependencyT>(key: K): DependencyT[K]{
+    return _dependencies[key];
+  }
 
-export function provide(key: string, value: any){
-  _dependencies.set(key, value);
-}
-
-export function inject(key: string): any{
-  return _dependencies.get(key);
+  return {
+    provide,
+    inject,
+  }
 }
