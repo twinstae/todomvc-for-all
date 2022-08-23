@@ -29,7 +29,9 @@ export default function TodoItem({
   };
   
   return (
-    <li className="mt-1">
+    <li className="mt-1" onKeyUp={(e) => {
+      if(e.key === "Delete") deleteTodo(todo.id);
+    }}>
       <form
         className="flex align-middle m-0"
         onSubmit={(e) => {
@@ -42,7 +44,7 @@ export default function TodoItem({
           <input
             type="checkbox"
             className="checkbox checkbox-lg mr-2"
-            aria-label={`완료하기 ${todo.content}`}
+            aria-label={`할일 ${todo.content}을 완료하시려면 클릭하세요.`}
             checked={todo.isCompleted}
             onKeyUp={(e) => {
               if (e.key === "Enter") {
@@ -71,7 +73,7 @@ export default function TodoItem({
           <button
             type="submit"
             className="btn btn-primary btn-sm m-2"
-            aria-label={`완료 ${editInput}`}
+            aria-label={`할일을 ${todo.content}에서 ${editInput}로 수정하시려면 클릭하세요.`}
           >
             완료
           </button>
@@ -80,7 +82,7 @@ export default function TodoItem({
             type="button"
             className="btn btn-primary btn-sm m-2"
             onClick={() => startEdit()}
-            aria-label={`수정 ${todo.content}`}
+            aria-label={`할일 ${todo.content}을 수정하시려면 클릭하세요.`}
           >
             수정
           </button>
@@ -89,7 +91,7 @@ export default function TodoItem({
           type="button"
           className="btn btn-error btn-sm m-2 mr-0"
           onClick={() => deleteTodo(todo.id)}
-          aria-label={`삭제 ${todo.content}`}
+          aria-label={`할일 ${todo.content}을 삭제하시려면 클릭하시거나 Delete 키를 누르세요.`}
         >
           삭제
         </button>

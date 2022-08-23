@@ -18,7 +18,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
 
       const input = screen.getByRole("textbox", {
-        name: "새로운 할일을 적고, Enter를 눌러주세요.",
+        name: /새로운 할일/,
       });
       await userEvent.type(input, "테스트{enter}");
 
@@ -29,7 +29,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       render([{ id: 0, content: "테스트하기", isCompleted: false }]);
 
       const checkbox = screen.getByRole("checkbox", {
-        name: "완료하기 테스트하기",
+        name: /완료/,
       });
       expect(checkbox).not.toBeChecked();
 
@@ -43,10 +43,10 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     });
 
     it("할 일을 삭제할 수 있다", async () => {
-      render([{ id: 1, content: "삭제할 일", isCompleted: false }]);
+      render([{ id: 1, content: "테스트", isCompleted: false }]);
 
       const button = screen.getByRole("button", {
-        name: "삭제 삭제할 일",
+        name: /삭제/,
       });
 
       await userEvent.click(button);
@@ -57,7 +57,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     it("할 일을 수정할 수 있다", async () => {
       render([{ id: 1, content: "테스트", isCompleted: false }]);
 
-      await userEvent.click(screen.getByRole("button", { name: "수정 테스트" }));
+      await userEvent.click(screen.getByRole("button", { name: /수정/ }));
 
       await waitFor(() => {
         const editInput = screen.getByDisplayValue('테스트') as HTMLInputElement;
@@ -65,7 +65,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       })
       
       await userEvent.keyboard(" 리애{Backspace}액트");
-      await userEvent.click(screen.getByRole("button", { name: "완료 테스트 리액트" }));
+      await userEvent.click(screen.getByRole("button", { name: /수정/ }));
 
       await waitFor(() => {
         expect(screen.getByRole("listitem")).toHaveTextContent(/테스트 리액트/)

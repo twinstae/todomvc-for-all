@@ -29,9 +29,9 @@ export default function TodoForm({ addTodo }: TodoFormProps) {
       <button
         type="submit"
         className="btn btn-primary btn-sm m-2"
-        aria-label={`추가 ${todoInput}`}
+        aria-label={`새로운 할 일 ${todoInput}을 추가하시려면 클릭해주세요`}
       >
-        완료
+        추가
       </button>
     </form>
   );
