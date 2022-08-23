@@ -1,57 +1,8 @@
 import React from "react";
 import { provide } from "../../dependency";
-import { TodoT } from "../../global";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-import usePersistState from "./usePersistenceState";
-
-const defaultInit: TodoT[] = [];
-
-function useTodoList(){
-  const [todoList, setTodoList] = usePersistState<TodoT[]>(defaultInit, 'todo-list');
-
-  const addTodo = (content: string) => {
-    if (content.length === 0) return;
-    
-    setTodoList((old) => {
-      const newTodo = {
-        id: Math.max(...old.map(todo => todo.id), 0) + 1,
-        content,
-        isCompleted: false,
-      };
-      console.log([...old, newTodo])
-      return [...old, newTodo]
-    });
-  };
-
-  const completeTodo = (targetId: TodoT["id"], isCompleted: boolean) => {
-    setTodoList((old) =>
-      old.map((todo) =>
-        todo.id === targetId ? { ...todo, isCompleted } : todo
-      )
-    );
-  };
-
-  const deleteTodo = (targetId: TodoT["id"]) => {
-    setTodoList((old) => old.filter((todo) => todo.id !== targetId));
-  };
-
-  const changeTodo = (targetId: TodoT["id"], newContent: string) => {
-    setTodoList((old) =>
-      old.map((todo) =>
-        todo.id === targetId ? { ...todo, content: newContent } : todo
-      )
-    );
-  };
-
-  return {
-    todoList,
-    addTodo,
-    deleteTodo,
-    completeTodo,
-    changeTodo
-  }
-}
+import { useTodoList } from "./useTodoList";
 
 export default function TodoMvcReact() {
   const {
