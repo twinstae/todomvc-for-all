@@ -1,6 +1,6 @@
 import { atom, action, WritableAtom } from "nanostores";
 import { TodoT } from "../global";
-import { generateId } from "./generateId";
+import { domain } from "./domain";
 
 export const todoListStore = atom<TodoT[]>([]);
 
@@ -21,33 +21,7 @@ function createActions<
   );
 }
 
-export const actions = createActions(todoListStore, {
-  addTodo(old, content: string) {
-    const newTodo = {
-      id: generateId(),
-      content,
-      isCompleted: false,
-    };
-    return [...old, newTodo];
-  },
-  completeTodo(old, id: number, isCompleted: boolean) {
-    const todo = old.find((todo) => todo.id === id);
-    if (todo) {
-      todo.isCompleted = isCompleted;
-    }
-    return [...old];
-  },
-  changeTodo(old, id: number, newContent: string) {
-    const todo = old.find((todo) => todo.id === id);
-    if (todo) {
-      todo.content = newContent;
-    }
-    return [...old];
-  },
-  deleteTodo(old, id: number) {
-    return old.filter((todo) => todo.id !== id);
-  },
-}) as {
+export const actions = createActions(todoListStore, domain) as {
   addTodo(content: string): void;
   completeTodo(id: number, isCompleted: boolean): void;
   changeTodo(id: number, newContent: string): void;

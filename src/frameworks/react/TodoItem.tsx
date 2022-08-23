@@ -10,7 +10,7 @@ export default function TodoItem({
   todo,
 }: TodoItemProps) {
 
-  const { deleteTodo, changeTodo, completeTodo } = inject('actions')
+  const { deleteTodo, changeTodo, completeTodo } = inject('actions')()
   const [editInput, setEditInput] = useState(todo.content);
   const [isEditing, setIsEditing] = useState(false);
   const editRef = useRef<HTMLInputElement>(null);

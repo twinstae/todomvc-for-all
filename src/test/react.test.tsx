@@ -12,11 +12,19 @@ import {
   nanoActions,
   useNanoTodoList,
 } from "../frameworks/react/useNanoTodolist";
+import {
+  useReduxActions,
+  useReduxTodoList,
+} from "../frameworks/react/useReduxTodoList";
+import { Provider } from "react-redux";
+import { store } from "../frameworks/reduxTodoListStore";
 
 function runReactImpl(
   name: string,
   useTodoListImpl: typeof useNanoTodoList,
-  actionsImpl: typeof nanoActions
+  useActionsImpl: () => typeof nanoActions,
+  Wrapper: (props: { children: JSX.Element }) => JSX.Element = ({ children }) =>
+    children
 ) {
   runTest({
     framework: `react: ${name}`,
@@ -24,12 +32,19 @@ function runReactImpl(
       provide("storage", withSubscribe(new Map([["todo-list", init]])));
 
       provide("useTodoList", useTodoListImpl);
-      provide("actions", actionsImpl);
+      provide("actions", useActionsImpl);
 
-      render(<TodoMvcReact />);
+      render(
+        <Wrapper>
+          <TodoMvcReact />
+        </Wrapper>
+      );
     },
   });
 }
 
-runReactImpl("valtio", useValtioTodoList, valtioActions);
-runReactImpl("valtio", useNanoTodoList, nanoActions);
+runReactImpl("valtio", useValtioTodoList, () => valtioActions);
+runReactImpl("nanostore", useNanoTodoList, () => nanoActions);
+runReactImpl("redux", useReduxTodoList, useReduxActions, ({ children }) => (
+  <Provider store={store}>{children}</Provider>
+));

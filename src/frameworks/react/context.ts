@@ -37,5 +37,5 @@ export const { provide, inject } = createContainer({
     },
   }),
   useTodoList: useNanoTodoList,
-  actions: nanoActions,
+  actions: () => nanoActions,
 });
