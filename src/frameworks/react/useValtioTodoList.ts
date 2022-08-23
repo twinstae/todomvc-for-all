@@ -3,7 +3,7 @@ import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
 import { TodoT } from '../../global';
 import { inject } from './context';
-import { generateId } from './generateId';
+import { generateId } from '../generateId';
 
 export const store = proxy<{
   todoList: TodoT[]
@@ -11,6 +11,30 @@ export const store = proxy<{
   todoList: []
 })
 
+export const actions = {
+  addTodo(content: string) {
+    store.todoList.push({
+      id: generateId(),
+      content,
+      isCompleted: false,
+    })
+  },
+  completeTodo(id: number, isCompleted: boolean) {
+    const todo = store.todoList.find((todo) => todo.id === id)
+    if(todo){
+      todo.isCompleted = isCompleted
+    }
+  },
+  changeTodo(id: number, newContent: string) {
+    const todo = store.todoList.find((todo) => todo.id === id)
+    if(todo){
+      todo.content = newContent
+    }
+  },
+  deleteTodo(id: number) {
+    store.todoList = store.todoList.filter((todo) => todo.id !== id)
+  }
+}
 
 watch((get) => {
   const todoList = get(store).todoList
@@ -28,27 +52,6 @@ export function useValtioTodoList() {
 
   return {
     todoList: snapShot.todoList,
-    addTodo(content: string) {
-      store.todoList.push({
-        id: generateId(),
-        content,
-        isCompleted: false,
-      })
-    },
-    completeTodo(id: number, isCompleted: boolean) {
-      const todo = store.todoList.find((todo) => todo.id === id)
-      if(todo){
-        todo.isCompleted = isCompleted
-      }
-    },
-    changeTodo(id: number, newContent: string) {
-      const todo = store.todoList.find((todo) => todo.id === id)
-      if(todo){
-        todo.content = newContent
-      }
-    },
-    deleteTodo(id: number) {
-      store.todoList = store.todoList.filter((todo) => todo.id !== id)
-    },
+    ...actions,
   };
 }

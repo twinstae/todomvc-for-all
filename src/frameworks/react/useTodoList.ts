@@ -1,5 +1,5 @@
 import { TodoT } from "../../global";
-import { generateId } from "./generateId";
+import { generateId } from "../generateId";
 import usePersistState from "./usePersistenceState";
 
 const defaultInit: TodoT[] = [];
