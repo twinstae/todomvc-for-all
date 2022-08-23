@@ -1,5 +1,5 @@
 import { createContainer } from "../../dependency";
-import { useReactTodoList } from "./useTodoList";
+import { nanoActions, useNanoTodoList } from "./useNanoTodolist";
 
 interface Stoage {
   get(key: string): any;
@@ -36,5 +36,6 @@ export const { provide, inject } = createContainer({
       localStorage.setItem(key, JSON.stringify(value));
     },
   }),
-  useTodoList: useReactTodoList,
+  useTodoList: useNanoTodoList,
+  actions: nanoActions,
 });

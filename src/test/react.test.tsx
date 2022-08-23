@@ -5,42 +5,31 @@ import TodoMvcReact from "../frameworks/react/TodoMvcReact";
 import runTest from "./runTest";
 import { provide, withSubscribe } from "../frameworks/react/context";
 import {
-  store,
   useValtioTodoList,
+  valtioActions,
 } from "../frameworks/react/useValtioTodoList";
-import { useReactTodoList } from "../frameworks/react/useTodoList";
-import { useNanoTodoList } from "../frameworks/react/useNanoTodolist";
+import {
+  nanoActions,
+  useNanoTodoList,
+} from "../frameworks/react/useNanoTodolist";
 
-runTest({
-  framework: "react: state",
-  render: (init) => {
-    provide("storage", withSubscribe(new Map([["todo-list", init]])));
+function runReactImpl(
+  name: string,
+  useTodoListImpl: typeof useNanoTodoList,
+  actionsImpl: typeof nanoActions
+) {
+  runTest({
+    framework: `react: ${name}`,
+    render: (init) => {
+      provide("storage", withSubscribe(new Map([["todo-list", init]])));
 
-    provide("useTodoList", useReactTodoList);
+      provide("useTodoList", useTodoListImpl);
+      provide("actions", actionsImpl);
 
-    render(<TodoMvcReact />);
-  },
-});
+      render(<TodoMvcReact />);
+    },
+  });
+}
 
-runTest({
-  framework: "react: valtio",
-  render: (init) => {
-    provide("storage", withSubscribe(new Map([["todo-list", init]])));
-
-    store.todoList = init;
-    provide("useTodoList", useValtioTodoList);
-
-    render(<TodoMvcReact />);
-  },
-});
-
-runTest({
-  framework: "react: nanostore",
-  render: (init) => {
-    provide("storage", withSubscribe(new Map([["todo-list", init]])));
-
-    provide("useTodoList", useNanoTodoList);
-
-    render(<TodoMvcReact />);
-  },
-});
+runReactImpl("valtio", useValtioTodoList, valtioActions);
+runReactImpl("valtio", useNanoTodoList, nanoActions);

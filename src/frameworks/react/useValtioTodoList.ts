@@ -51,7 +51,8 @@ export function useValtioTodoList() {
   }, [])
 
   return {
-    todoList: snapShot.todoList,
-    ...actions,
+    todoList: snapShot.todoList
   };
 }
+
+export const valtioActions = actions;

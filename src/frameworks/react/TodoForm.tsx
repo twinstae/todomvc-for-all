@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import strs from "../../strs";
+import { inject } from "./context";
 
-interface TodoFormProps {
-  addTodo: (content: string) => void;
-}
-
-export default function TodoForm({ addTodo }: TodoFormProps) {
+export default function TodoForm() {
+  const { addTodo } = inject("actions");
   const [todoInput, setTodoInput] = useState("");
   return (
     <form
@@ -17,7 +15,8 @@ export default function TodoForm({ addTodo }: TodoFormProps) {
       className="p-0 m-0"
     >
       <label className="inline-block  grow">
-        {strs.addTodoLabel}<br/>
+        {strs.addTodoLabel}
+        <br />
         <input
           type="text"
           value={todoInput}

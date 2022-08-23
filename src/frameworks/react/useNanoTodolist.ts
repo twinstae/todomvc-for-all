@@ -2,22 +2,24 @@ import { useLayoutEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { todoListStore, actions } from "../nanoTodoListStore";
 import { inject } from "./context";
+import { TodoT } from "../../global";
 
-todoListStore.subscribe((todoList) => {
-  inject("storage").set("todo-list", todoList);
-});
 
-export function useNanoTodoList() {
+export function useNanoTodoList(): { todoList: readonly TodoT[]} {
   const todoList = useStore(todoListStore);
   useLayoutEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
       todoListStore.set(saved);
     }
+
+    const unsubscribe = todoListStore.subscribe((todoList) => {
+      inject("storage").set("todo-list", todoList);
+    });
+    return unsubscribe
   }, []);
 
-  return {
-    todoList,
-    ...actions,
-  };
+  return { todoList };
 }
+
+export const nanoActions = actions;

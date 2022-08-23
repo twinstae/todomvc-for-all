@@ -1,19 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import { TodoT } from "../../global";
+import { inject } from "./context";
 
 interface TodoItemProps {
   todo: TodoT;
-  completeTodo: (todoId: TodoT["id"], isCompleted: boolean) => void;
-  deleteTodo: (todoId: TodoT["id"]) => void;
-  changeTodo: (todoId: TodoT["id"], content: string) => void;
 }
 
 export default function TodoItem({
   todo,
-  completeTodo,
-  deleteTodo,
-  changeTodo,
 }: TodoItemProps) {
+
+  const { deleteTodo, changeTodo, completeTodo } = inject('actions')
   const [editInput, setEditInput] = useState(todo.content);
   const [isEditing, setIsEditing] = useState(false);
   const editRef = useRef<HTMLInputElement>(null);
