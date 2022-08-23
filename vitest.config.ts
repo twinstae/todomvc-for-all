@@ -4,6 +4,7 @@ export default defineConfig({
   plugins: [],
   test: {
     globals: true,
-    environment: 'jsdom'
+    environment: 'jsdom',
+    maxThreads: 7
   },
 })
