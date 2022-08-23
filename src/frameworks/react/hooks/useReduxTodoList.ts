@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { TodoT } from "../../../global";
 import { inject } from "../context";
 import { useLayoutEffect } from "react";
+import { TodoActions } from "../../domain";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
@@ -26,12 +27,7 @@ export function useReduxTodoList(): { todoList: readonly TodoT[] } {
   return { todoList };
 }
 
-export const useReduxActions: () => {
-  addTodo(content: string): void;
-  completeTodo(id: number, isCompleted: boolean): void;
-  changeTodo(id: number, newContent: string): void;
-  deleteTodo(id: number): void;
-} = () => {
+export const useReduxActions: () => TodoActions = () => {
   const dispatch = useAppDispatch();
 
   return {

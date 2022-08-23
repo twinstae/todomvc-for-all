@@ -1,6 +1,6 @@
 import { atom, action, WritableAtom } from "nanostores";
 import { TodoT } from "../global";
-import { domain } from "./domain";
+import { domain, TodoActions } from "./domain";
 
 export const todoListStore = atom<TodoT[]>([]);
 
@@ -21,9 +21,4 @@ function createActions<
   );
 }
 
-export const actions = createActions(todoListStore, domain) as {
-  addTodo(content: string): void;
-  completeTodo(id: number, isCompleted: boolean): void;
-  changeTodo(id: number, newContent: string): void;
-  deleteTodo(id: number): void;
-};
+export const actions = createActions(todoListStore, domain) as TodoActions;

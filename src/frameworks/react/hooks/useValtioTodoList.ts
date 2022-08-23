@@ -4,6 +4,7 @@ import { watch } from 'valtio/utils'
 import { TodoT } from '../../../global';
 import { inject } from '../context';
 import { generateId } from '../../generateId';
+import { TodoActions } from '../../domain';
 
 export const store = proxy<{
   todoList: TodoT[]
@@ -11,27 +12,27 @@ export const store = proxy<{
   todoList: []
 })
 
-export const actions = {
-  addTodo(content: string) {
+export const actions: TodoActions = {
+  addTodo(content) {
     store.todoList.push({
       id: generateId(),
       content,
       isCompleted: false,
     })
   },
-  completeTodo(id: number, isCompleted: boolean) {
+  completeTodo(id, isCompleted) {
     const todo = store.todoList.find((todo) => todo.id === id)
     if(todo){
       todo.isCompleted = isCompleted
     }
   },
-  changeTodo(id: number, newContent: string) {
+  changeTodo(id, newContent) {
     const todo = store.todoList.find((todo) => todo.id === id)
     if(todo){
       todo.content = newContent
     }
   },
-  deleteTodo(id: number) {
+  deleteTodo(id) {
     store.todoList = store.todoList.filter((todo) => todo.id !== id)
   }
 }
