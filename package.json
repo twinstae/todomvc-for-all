@@ -13,7 +13,8 @@
     "react-redux": "^8.0.2",
     "recoil": "^0.7.5",
     "solid": "^0.2.1",
-    "valtio": "^1.6.4"
+    "valtio": "^1.6.4",
+    "zustand": "^4.1.1"
   },
   "scripts": {
     "dev": "astro dev",
