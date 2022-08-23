@@ -1,35 +1,49 @@
-import { atom, action } from 'nanostores';
+import { atom, action, WritableAtom } from 'nanostores';
 import { TodoT } from '../global';
 import { generateId } from './generateId';
 
+type OmitFirstArg<F> = F extends (x: any, ...args: infer P) => infer R ? (...args: P) => R : never;
+
 export const todoListStore = atom<TodoT[]>([])
 
-export const actions = {
-  addTodo: action(todoListStore, 'addTodo', (store, content: string) => {
+function createActions<T, R extends Record<string, (old: T, ...args: any) => T>>(store: WritableAtom<T>, rawActions: R){
+  return Object.fromEntries(Object.entries(rawActions).map(([name, rawAction]) => {
+    return [name, action(store, name, (store, ...args) => {
+      const old = store.get();
+      store.set(rawAction(old, ...args))
+    })]
+  }))
+}
+
+export const actions = createActions(todoListStore, {
+  addTodo(old, content: string) {
     const newTodo = {
       id: generateId(),
       content,
       isCompleted: false,
     }
-    store.set([...store.get(), newTodo])
-  }),
-  completeTodo: action(todoListStore, 'completeTodo', (store, id: number, isCompleted: boolean) => {
-    const todoList = store.get();
-    const todo = todoList.find((todo) => todo.id === id)
+    return [...old, newTodo]
+  },
+  completeTodo(old, id: number, isCompleted: boolean) {
+    const todo = old.find((todo) => todo.id === id)
     if(todo){
       todo.isCompleted = isCompleted
     }
-    store.set([...todoList]);
-  }),
-  changeTodo: action(todoListStore, 'changeTodo', (store,id: number, newContent: string) => {
-    const todoList = store.get();
-    const todo = todoList.find((todo) => todo.id === id)
+    return [...old];
+  },
+  changeTodo(old, id: number, newContent: string) {
+    const todo = old.find((todo) => todo.id === id)
     if(todo){
       todo.content = newContent
     }
-    store.set([...todoList]);
-  }),
-  deleteTodo: action(todoListStore, 'deleteTodo', (store, id: number) => {
-    store.set(store.get().filter((todo) => todo.id !== id)) 
-  })
+    return [...old];
+  },
+  deleteTodo(old, id: number) {
+    return old.filter((todo) => todo.id !== id)
+  }
+}) as {
+  addTodo(content: string): void;
+  completeTodo(id: number, isCompleted: boolean): void;
+  changeTodo(id: number, newContent: string): void;
+  deleteTodo(id: number): void;
 }
