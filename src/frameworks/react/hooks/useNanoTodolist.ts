@@ -4,7 +4,6 @@ import { TodoT } from "../../../global";
 
 export function useNanoTodoList(): { todoList: readonly TodoT[]} {
   const todoList = useStore(todoListStore);
-
   return { todoList };
 }
 

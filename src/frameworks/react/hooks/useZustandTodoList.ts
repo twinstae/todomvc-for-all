@@ -3,7 +3,7 @@ import { TodoT } from "../../../global";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { domain } from "../../domain";
-import { createActionsWithSetState } from "../../utility";
+import { createActionsWithSetState } from "../../createActionsWithSetState";
 
 type TodoListState = {
   todoList: TodoT[];

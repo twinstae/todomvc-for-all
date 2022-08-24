@@ -3,7 +3,7 @@ import { atom, useAtomValue, useSetAtom } from "jotai";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
 import { JsonValue } from "../../../json";
-import { createActionsWithSetState } from "../../utility";
+import { createActionsWithSetState } from "../../createActionsWithSetState";
 
 const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
   const baseAtom = atom(

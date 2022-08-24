@@ -1,6 +1,6 @@
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
-import { createActionsWithSetState } from "../../utility";
+import { createActionsWithSetState } from "../../createActionsWithSetState";
 import usePersistState from "./usePersistenceState";
 
 const defaultInit: TodoT[] = [];

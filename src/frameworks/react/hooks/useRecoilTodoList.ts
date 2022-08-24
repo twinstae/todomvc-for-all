@@ -3,7 +3,7 @@ import type { AtomEffect } from "recoil";
 import { inject } from "../context";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
-import { createActionsWithSetState } from "../../utility";
+import { createActionsWithSetState } from "../../createActionsWithSetState";
 
 const storageEffect = (key: string): AtomEffect<TodoT[]> => ({ setSelf, onSet }) => {
   const storage = inject('storage');

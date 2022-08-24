@@ -3,9 +3,10 @@ import { atom, action, WritableAtom } from "nanostores";
 import { TodoT } from "../global";
 import { domain } from "./domain";
 import { inject } from "./react/context";
-import { AsAction } from "./utility";
+import { AsAction } from "./createActionsWithSetState";
 
-export const todoListStore = atom<TodoT[]>([]);
+const saved = inject("storage").get('todo-list') as TodoT[] | undefined;
+export const todoListStore = atom<TodoT[]>(saved || []);
 
 function createActions<
   T,
