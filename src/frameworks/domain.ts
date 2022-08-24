@@ -1,4 +1,5 @@
 import { TodoT } from "../global";
+import { AsAction } from "./createActionsWithSetState";
 import { generateId } from "./generateId";
 
 export const domain = {
@@ -25,9 +26,4 @@ export const domain = {
   },
 };
 
-export type TodoActions = {
-  addTodo(content: string): void;
-  completeTodo(id: TodoT["id"], isCompleted: boolean): void;
-  changeTodo(id: TodoT["id"], newContent: string): void;
-  deleteTodo(id: TodoT["id"]): void;
-};
+export type TodoActions = AsAction<TodoT[], typeof domain>;
