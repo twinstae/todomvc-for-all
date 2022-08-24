@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import sveltePreprocess from 'svelte-preprocess';
+import defineConfig from './defineConfig';
+
 
 export default defineConfig({
   plugins: [
@@ -15,4 +16,4 @@ export default defineConfig({
     environment: 'jsdom',
     maxThreads: 7
   },
-})
+});

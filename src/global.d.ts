@@ -3,5 +3,3 @@ export type TodoT = {
   content: string;
   isCompleted: boolean;
 };
-
-
