@@ -28,4 +28,4 @@ export type TodoActions = {
   completeTodo(id: TodoT["id"], isCompleted: boolean): void;
   changeTodo(id: TodoT["id"], newContent: string): void;
   deleteTodo(id: TodoT["id"]): void;
-}
+};

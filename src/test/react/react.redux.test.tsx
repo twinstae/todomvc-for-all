@@ -8,6 +8,10 @@ import {
 import { store } from "../../frameworks/reduxTodoListStore";
 import { runReactImpl } from "./runReactImpl";
 
-runReactImpl("redux", useReduxTodoList, useReduxActions, ({ children }) => (
+runReactImpl(
+  "redux",
+  useReduxTodoList,
+  useReduxActions,
+  ({ children }) => (
   <ReduxProvider store={store}>{children}</ReduxProvider>
 ));

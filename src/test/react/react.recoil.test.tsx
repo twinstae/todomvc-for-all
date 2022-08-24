@@ -7,6 +7,10 @@ import {
 } from "../../frameworks/react/hooks/useRecoilTodoList";
 import { runReactImpl } from "./runReactImpl";
 
-runReactImpl("recoil", useRecoilTodoList, useRecoilActions, ({ children }) => (
+runReactImpl(
+  "recoil",
+  useRecoilTodoList,
+  useRecoilActions,
+  ({ children }) => (
   <RecoilRoot>{children}</RecoilRoot>
 ));

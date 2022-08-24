@@ -4,4 +4,8 @@ import {
 } from "../../frameworks/react/hooks/useValtioTodoList";
 import { runReactImpl } from "./runReactImpl";
 
-runReactImpl("valtio", useValtioTodoList, () => valtioActions);
+runReactImpl(
+  "valtio",
+  useValtioTodoList,
+  () => valtioActions
+);
