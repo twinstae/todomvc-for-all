@@ -3,7 +3,7 @@ import strs from "../../strs";
 import { inject } from "./context";
 
 export default function TodoForm() {
-  const { addTodo } = inject("actions")();
+  const { addTodo } = inject("useActions")();
   const [todoInput, setTodoInput] = useState("");
   return (
     <form

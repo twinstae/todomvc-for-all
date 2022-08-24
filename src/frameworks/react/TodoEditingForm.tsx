@@ -23,7 +23,7 @@ export default function TodoEditingForm({
     if (!isEditing) setTimeout(() => setIsEditing(true), 10);
   };
 
-  const { changeTodo } = inject("actions")();
+  const { changeTodo } = inject("useActions")();
 
   return (
     <>

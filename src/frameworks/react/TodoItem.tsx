@@ -10,7 +10,7 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
-  const { deleteTodo } = inject("actions")();
+  const { deleteTodo } = inject("useActions")();
 
   const checkboxId = "todo-checkbox-" + todo.id;
   return (

@@ -9,7 +9,7 @@ export default function TodoCompleteCheckbox({
   todo: TodoT;
   checkboxId: string;
 }) {
-  const { completeTodo } = inject("actions")();
+  const { completeTodo } = inject("useActions")();
 
   return (
     <input

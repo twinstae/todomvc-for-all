@@ -3,7 +3,7 @@ import { screen, waitFor } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
-import { TodoT } from "../global";
+import type { TodoT } from "../global";
 
 interface TodoMVCImpl {
   framework: string;

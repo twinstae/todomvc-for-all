@@ -3,7 +3,7 @@ import type { TodoT } from "../../global";
 import { inject } from "./context";
 
 export default function TodoDeleteButton({ todo }: { todo: TodoT }) {
-  const { deleteTodo } = inject("actions")();
+  const { deleteTodo } = inject("useActions")();
 
   return (
     <button

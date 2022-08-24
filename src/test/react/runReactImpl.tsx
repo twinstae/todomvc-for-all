@@ -4,16 +4,13 @@ import { render } from "@testing-library/react";
 import runTest from "../runTest";
 import TodoMvcReact from "../../frameworks/react/TodoMvcReact";
 import { inject, provide } from "../../frameworks/react/context";
-import {
-  nanoActions,
-  useNanoTodoList,
-} from "../../frameworks/react/hooks/useNanoTodolist";
-import { TodoT } from "../../global";
+import type { TodoT } from "../../global";
+import type { TodoActions } from "../../frameworks/domain";
 
 export function runReactImpl(
   name: string,
-  useTodoListImpl: typeof useNanoTodoList,
-  useActionsImpl: () => typeof nanoActions,
+  useTodoListImpl: () => ({ todoList: readonly TodoT[] }),
+  useActionsImpl: () => TodoActions,
   Wrapper: (props: { children: JSX.Element }) => JSX.Element = ({ children }) =>
     children,
   setup: (init: TodoT[]) => Promise<void> = async () => undefined,
@@ -23,7 +20,7 @@ export function runReactImpl(
     render: async (init) => {
       inject("storage").set("todo-list", init);
       provide("useTodoList", useTodoListImpl);
-      provide("actions", useActionsImpl);
+      provide("useActions", useActionsImpl);
       await setup(init);
 
       render(
