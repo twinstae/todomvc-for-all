@@ -23,7 +23,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "vitest --config ./vitest.config.ts",
+    "test": "yarn test:react run && yarn test:svelte run && yarn test:vue run",
+    "test:react": "vitest --config ./vitest.config.ts",
     "test:svelte": "vitest --config ./vitest.svelte.config.ts",
     "test:vue": "vitest --config ./vitest.vue.config.ts",
     "lint": "eslint src"

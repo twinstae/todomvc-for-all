@@ -9,7 +9,7 @@ runReactImpl(
   "zustand",
   useZustandTodoList,
   useZustandActions,
-  ({ children }) => children,
+  undefined,
   async (init) => {
     useZustandStore.setState({ todoList: init })
   }

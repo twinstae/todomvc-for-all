@@ -9,7 +9,7 @@ runReactImpl(
   "nanostore",
   useNanoTodoList,
   () => nanoActions,
-  ({ children }) => children,
+  undefined,
   async (init) => {
     todoListStore.set(init);
   }

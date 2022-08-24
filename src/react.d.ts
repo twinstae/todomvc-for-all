@@ -1,5 +1,5 @@
 import type { AriaAttributes, DOMAttributes } from 'react' // not needed if skipLibCheck = true
-export declare interface Ref<T = any> {
+export declare interface Ref<T> {
   value: T;
 }
 

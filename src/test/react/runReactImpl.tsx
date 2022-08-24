@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { render } from "@testing-library/react";
 
 import runTest from "../runTest";
@@ -7,12 +7,14 @@ import { inject, provide } from "../../frameworks/react/context";
 import type { TodoT } from "../../global";
 import type { TodoActions } from "../../frameworks/domain";
 
+const e = React.createElement;
+
 export function runReactImpl(
   name: string,
   useTodoListImpl: () => ({ todoList: readonly TodoT[] }),
   useActionsImpl: () => TodoActions,
-  Wrapper: (props: { children: JSX.Element }) => JSX.Element = ({ children }) =>
-    children,
+  Wrapper: (props: { children: React.ReactNode }) => ReactElement = ({ children }) =>
+    e('div', undefined, children),
   setup: (init: TodoT[]) => Promise<void> = async () => undefined,
 ) {
   runTest({
@@ -24,9 +26,7 @@ export function runReactImpl(
       await setup(init);
 
       render(
-        <Wrapper>
-          <TodoMvcReact />
-        </Wrapper>
+        e(Wrapper, undefined, <TodoMvcReact />)
       );
     },
   });

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { TodoT } from "../../global";
-import { defineProps } from "vue";
 
 import { inject } from "./context";
 const { todo } = defineProps<{ todo: TodoT }>();

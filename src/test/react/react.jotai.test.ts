@@ -5,7 +5,7 @@ runReactImpl(
   "jotai",
   useJotaiTodoList,
   useJotaiActions,
-  ({ children }) => children,
+  undefined,
   async (init) => {
     todoListAtom.onMount = (setAtom) => setAtom(() => init);
   }
