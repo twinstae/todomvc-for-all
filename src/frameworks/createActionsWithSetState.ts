@@ -10,7 +10,9 @@ export function createActionsWithSetState<T, I extends Record<string, (old: T, .
 ): AsAction<T, I>{
   const result: any = {};
   for (const name in original){
-    result[name] = (...args: any[]) => setState((old: T) => original[name](old, ...args));
+    result[name] = function (...args: any[]) {
+      setState.call(this, (old: T) => original[name](old, ...args));
+    }
   }
   return result as AsAction<T, I>;
 }
