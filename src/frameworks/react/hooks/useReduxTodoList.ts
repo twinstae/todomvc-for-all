@@ -19,7 +19,7 @@ export function useReduxTodoList(): { todoList: readonly TodoT[] } {
   const todoList = useSelector(selectTodoList);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const saved = inject("storage").get("todo-list");
+    const saved = inject("storage").get("todo-list") as TodoT[] | undefined;
     if (saved) {
       dispatch(loadSaved({ saved }));
     }

@@ -5,7 +5,7 @@ import usePersistState from "./usePersistenceState";
 const defaultInit: TodoT[] = [];
 
 export function useReactTodoList(){
-  const [todoList, setTodoList] = usePersistState<readonly TodoT[]>(defaultInit, 'todo-list');
+  const [todoList, setTodoList] = usePersistState<TodoT[]>(defaultInit, 'todo-list');
 
   const addTodo = (content: string) => {
     if (content.length === 0) return;

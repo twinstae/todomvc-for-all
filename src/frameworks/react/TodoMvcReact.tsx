@@ -1,4 +1,5 @@
 import React from "react";
+import { JsonValue } from "../../json";
 import { inject, provide, withSubscribe } from "./context";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
@@ -27,7 +28,7 @@ provide(
 
       return JSON.parse(saved);
     },
-    set(key: string, value: any) {
+    set(key: string, value: JsonValue) {
       localStorage.setItem(key, JSON.stringify(value));
     },
   })

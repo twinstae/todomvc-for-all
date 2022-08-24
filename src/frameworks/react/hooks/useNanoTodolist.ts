@@ -9,11 +9,11 @@ export function useNanoTodoList(): { todoList: readonly TodoT[]} {
   useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
-      todoListStore.set(saved);
+      todoListStore.set(saved as TodoT[]);
     }
 
     const unsubscribe = todoListStore.subscribe((todoList) => {
-      inject("storage").set("todo-list", todoList);
+      inject("storage").set("todo-list", [...todoList]);
     });
     return unsubscribe
   }, []);

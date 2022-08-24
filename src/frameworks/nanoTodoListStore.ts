@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { atom, action, WritableAtom } from "nanostores";
 import { TodoT } from "../global";
 import { domain, TodoActions } from "./domain";

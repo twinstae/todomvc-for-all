@@ -1,4 +1,5 @@
-import { atom, useRecoilState, useSetRecoilState, AtomEffect } from "recoil";
+import { atom, useRecoilState, useSetRecoilState } from "recoil";
+import type { AtomEffect } from "recoil";
 import { inject } from "../context";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
@@ -8,7 +9,7 @@ const storageEffect = (key: string): AtomEffect<TodoT[]> => ({ setSelf, onSet })
   const storage = inject('storage');
   const savedValue = storage.get(key)
   if (savedValue) {
-    setSelf(savedValue);
+    setSelf(savedValue as TodoT[]);
   }
 
   onSet((newValue, _, isReset) => {
@@ -31,7 +32,7 @@ export function useRecoilTodoList(): { todoList: readonly TodoT[] } {
   useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
-      setTodoList(saved);
+      setTodoList(saved as TodoT[]);
     }
   }, []);
   return { todoList };

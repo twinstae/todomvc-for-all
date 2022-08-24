@@ -38,7 +38,7 @@ export function useZustandTodoList(): { todoList: readonly TodoT[] } {
   useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
-      loadSaved(saved);
+      loadSaved(saved as TodoT[]);
     }
   }, []);
 

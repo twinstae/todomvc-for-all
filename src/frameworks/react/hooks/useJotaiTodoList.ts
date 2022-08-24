@@ -3,8 +3,9 @@ import { atom, useAtom, useSetAtom } from "jotai";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
 import { useEffect } from "react";
+import { JsonValue } from "../../../json";
 
-const atomWithStorage = <T>(key: string, initialValue: T) => {
+const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
   const baseAtom = atom(
     (inject("storage").get(key) as T | undefined) || initialValue
   );
@@ -28,7 +29,7 @@ export function useJotaiTodoList(): { todoList: readonly TodoT[] } {
   useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
-      setTodoList(saved);
+      setTodoList(() => saved as TodoT[]);
     }
   }, []);
   return { todoList };

@@ -1,5 +1,5 @@
-export function createContainer<T extends Record<string, any>>(initDependencies: T) {
-  let _dependencies: T = initDependencies;
+export function createContainer<T extends Record<string, unknown>>(initDependencies: T) {
+  const _dependencies: T = initDependencies;
   
   type DependencyT = typeof _dependencies;
   

@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
+import { JsonValue } from "../../../json";
 import { inject } from "../context";
 
 type Options = {
   log: boolean
 }
 
-function usePersistState<T>(initValue: T, storageKey: string, options: Options = { log: false }) {
+function usePersistState<T extends JsonValue>(initValue: T, storageKey: string, options: Options = { log: false }) {
   const [state, setState] = useState<T>(initValue);
 
   const stoage = inject('storage');
   useEffect(() => {
-    setState(stoage.get(storageKey))
+    const saved = stoage.get(storageKey);
+    if(saved){
+      setState(() => saved as T)
+    }
   }, []);
 
   return [state, (update: (old: T) => T) => {

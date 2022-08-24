@@ -1,21 +1,28 @@
 import { createContainer } from "../../dependency";
-import { nanoActions, useNanoTodoList } from "./hooks/useNanoTodolist";
+import { JsonValue } from "../../json";
+import { useValtioTodoList, valtioActions } from "./hooks/useValtioTodoList";
 
 interface Stoage {
-  get(key: string): any;
-  set(key: string, value: any): void;
+  get(key: string): JsonValue | undefined;
+  set(key: string, value: JsonValue | undefined): void;
 }
 
-export function withSubscribe(storage: Stoage){
-  let _subscribers: ((key: string, value: any) => void)[] = [];
+type CallbackT = (key: string, value: JsonValue | undefined) => void;
+
+interface StorageWithSubscribe extends Stoage {
+  subscribe(callback: CallbackT): () => void;
+}
+
+export function withSubscribe(storage: Stoage): StorageWithSubscribe{
+  let _subscribers: CallbackT[] = [];
 
   return {
-    get: (key: string) => storage.get(key),
-    set(key: string, value: any) {
+    get: (key) => storage.get(key),
+    set(key, value) {
       storage.set(key, value);
       _subscribers.forEach((cb) => cb(key, value));
     },
-    subscribe(callback: (key: string, value: any) => void) {
+    subscribe(callback) {
       _subscribers.push(callback);
       return () => {
         _subscribers = _subscribers.filter((cb) => cb !== callback);
@@ -26,6 +33,6 @@ export function withSubscribe(storage: Stoage){
 
 export const { provide, inject } = createContainer({
   storage: withSubscribe(new Map()),
-  useTodoList: useNanoTodoList,
-  actions: () => nanoActions,
+  useTodoList: useValtioTodoList,
+  actions: () => valtioActions,
 });
