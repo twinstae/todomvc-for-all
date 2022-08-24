@@ -38,7 +38,8 @@ export function TodoListWrapper(props: { children: JSX.Element, init: TodoT[] })
 }
 
 export function useTodoList() {
-  const result = useContext(TodoListContext) as TodoT[];
-  return () => result;
+  return () => useContext(TodoListContext) as TodoT[];
 }
-export function useTodoActions() { return useContext(TodoActionsContext) as TodoActions; }
+export function useTodoActions() {
+  return useContext(TodoActionsContext) as TodoActions;
+}

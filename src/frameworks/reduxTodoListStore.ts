@@ -1,7 +1,7 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { TodoT } from '../global'
-import { domain } from './domain'
+import { domain, TodoActions } from './domain'
 import { inject } from './react/context'
 
 interface TodoListState {
@@ -54,3 +54,20 @@ export const reduxStore = configureStore({
 
 export type RootState = ReturnType<typeof reduxStore.getState>
 export type AppDispatch = typeof reduxStore.dispatch
+
+const dispatch = reduxStore.dispatch;
+
+export const reduxActions: TodoActions = {
+  addTodo(content) {
+    dispatch(addTodo({ content }));
+  },
+  completeTodo(id, isCompleted) {
+    dispatch(completeTodo({ id, isCompleted }));
+  },
+  changeTodo(id, content) {
+    dispatch(changeTodo({ id, content }));
+  },
+  deleteTodo(id) {
+    dispatch(deleteTodo({ id }));
+  },
+}
