@@ -1,6 +1,7 @@
 import React from "react";
 import { JsonValue } from "../../json";
 import { inject, provide, withSubscribe } from "./context";
+import { nanoActions, useNanoTodoList } from "./hooks/useNanoTodolist";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
 
@@ -38,3 +39,5 @@ provide(
   "storage",
   localStorageWithSubscribe,
 );
+provide("useTodoList", useNanoTodoList);
+provide("actions", () => nanoActions);
