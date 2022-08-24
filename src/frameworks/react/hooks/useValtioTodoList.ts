@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
 import { TodoT } from '../../../global';
@@ -44,7 +44,7 @@ watch((get) => {
 
 export function useValtioTodoList() {
   const snapShot = useSnapshot(store)
-  useLayoutEffect(() => {
+  useEffect(() => {
     const saved = inject('storage').get('todo-list')
     if(saved){
       store.todoList = saved;

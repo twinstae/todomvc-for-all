@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { inject } from "../context";
 
 type Options = {
@@ -9,7 +9,7 @@ function usePersistState<T>(initValue: T, storageKey: string, options: Options =
   const [state, setState] = useState<T>(initValue);
 
   const stoage = inject('storage');
-  useLayoutEffect(() => {
+  useEffect(() => {
     setState(stoage.get(storageKey))
   }, []);
 

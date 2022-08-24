@@ -2,7 +2,7 @@ import { inject } from "../context";
 import { atom, useAtom, useSetAtom } from "jotai";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 const atomWithStorage = <T>(key: string, initialValue: T) => {
   const baseAtom = atom(
@@ -25,7 +25,7 @@ export const todoListAtom = atomWithStorage("todo-list", [] as TodoT[]);
 
 export function useJotaiTodoList(): { todoList: readonly TodoT[] } {
   const [todoList, setTodoList] = useAtom(todoListAtom);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
       setTodoList(saved);

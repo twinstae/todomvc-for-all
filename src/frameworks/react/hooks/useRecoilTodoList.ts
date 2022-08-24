@@ -2,7 +2,7 @@ import { atom, useRecoilState, useSetRecoilState, AtomEffect } from "recoil";
 import { inject } from "../context";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 const storageEffect = (key: string): AtomEffect<TodoT[]> => ({ setSelf, onSet }) => {
   const storage = inject('storage');
@@ -28,7 +28,7 @@ const todoListState = atom({
 
 export function useRecoilTodoList(): { todoList: readonly TodoT[] } {
   const [todoList, setTodoList] = useRecoilState(todoListState);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
       setTodoList(saved);

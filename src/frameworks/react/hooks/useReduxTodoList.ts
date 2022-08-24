@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { TodoT } from "../../../global";
 import { inject } from "../context";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { TodoActions } from "../../domain";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
@@ -18,7 +18,7 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export function useReduxTodoList(): { todoList: readonly TodoT[] } {
   const todoList = useSelector(selectTodoList);
   const dispatch = useAppDispatch();
-  useLayoutEffect(() => {
+  useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
       dispatch(loadSaved({ saved }));

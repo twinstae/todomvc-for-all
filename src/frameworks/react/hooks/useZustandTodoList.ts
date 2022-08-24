@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { inject } from ".././context";
 import { TodoT } from "../../../global";
 import create from "zustand";
@@ -35,7 +35,7 @@ const useStore = create<TodoListState>((set) => ({
 export function useZustandTodoList(): { todoList: readonly TodoT[] } {
   const todoList = useStore(state => state.todoList);
   const loadSaved = useStore(state => state.loadSaved);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const saved = inject("storage").get("todo-list");
     if (saved) {
       loadSaved(saved);
