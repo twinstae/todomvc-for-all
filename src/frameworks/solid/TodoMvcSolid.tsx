@@ -3,15 +3,14 @@
 /** @jsxImportSource solid-js */
 
 import { For } from 'solid-js';
-import { todoListStore } from "../nanoTodoListStore";
-import { useStore } from '@nanostores/solid'
 import TodoDeleteButton from './TodoDeleteButton';
 import TodoForm from './TodoForm';
 import TodoCompleteCheckbox from './TodoCompleteCheckbox';
 import TodoEditingForm from './TodoEditingForm';
+import { inject } from './context';
 
 export default function TodoMvcSolid() {
-  const todoList = useStore(todoListStore);
+  const todoList = inject('useTodoList')();
 
   return (
     <div class="card shadow-lg rounded-2xl p-4 max-w-lg">

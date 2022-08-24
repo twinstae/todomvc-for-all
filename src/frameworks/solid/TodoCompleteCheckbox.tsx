@@ -4,10 +4,7 @@
 import type { TodoT } from "../../global";
 import { inject } from "./context";
 
-export default function TodoCompleteCheckbox({
-  todo,
-  checkboxId,
-}: {
+export default function TodoCompleteCheckbox(props: {
   todo: TodoT;
   checkboxId: string;
 }) {
@@ -15,18 +12,20 @@ export default function TodoCompleteCheckbox({
 
   return (
     <input
-      id={checkboxId}
+      id={props.checkboxId}
       type="checkbox"
       class="checkbox checkbox-lg mr-2 self-center"
-      aria-label={`할일 ${todo.content}을 완료하시려면 클릭하세요.`}
-      checked={todo.isCompleted}
-      onKeyUp={(e) => {
+      aria-label={`할일 ${props.todo.content}을 완료하시려면 클릭하세요.`}
+      checked={props.todo.isCompleted}
+      onkeyup={(e) => {
         if (e.key === "Enter") {
           const checkbox = e.target as HTMLInputElement;
-          completeTodo(todo.id, !checkbox.checked);
+          completeTodo(props.todo.id, !checkbox.checked);
         }
       }}
-      onChange={(e) => completeTodo(todo.id, (e.target as HTMLInputElement).checked)}
+      onChange={(e) => {
+        completeTodo(props.todo.id, (e.target as HTMLInputElement).checked)
+      }}
     />
   );
 }

@@ -2,7 +2,7 @@ import { todoList, todoListActions } from "../../frameworks/svelte/todoList";
 import { runSvelteImpl } from "./runSvelteImpl";
 
 runSvelteImpl(
-  'nanostore',
+  'store',
   todoList,
   todoListActions,
   async (init) => {

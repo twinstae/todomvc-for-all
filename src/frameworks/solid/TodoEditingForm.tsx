@@ -6,14 +6,11 @@ import { createSignal, Show } from "solid-js";
 import type { TodoT } from "../../global";
 import { inject } from "./context";
 
-export default function TodoEditingForm({
-  todo,
-  checkboxId,
-}: {
+export default function TodoEditingForm(props: {
   todo: TodoT;
   checkboxId: string;
 }) {
-  const [editInput, setEditInput] = createSignal(todo.content);
+  const [editInput, setEditInput] = createSignal(props.todo.content);
   const [isEditing, setIsEditing] = createSignal(false);
   let editRef: HTMLInputElement | undefined;
   const startEdit = () => {
@@ -25,16 +22,16 @@ export default function TodoEditingForm({
 
   return (
     <>
-      <label for={checkboxId} class="label cursor-pointer p-0 grow">
+      <label for={props.checkboxId} class="label cursor-pointer p-0 grow">
         <span class="label-text w-full pl-5" hidden={isEditing()}>
-          {todo.content}
+          {props.todo.content}
         </span>
       </label>
       <form
         class="flex align-middle m-0"
         onSubmit={(e) => {
           e.preventDefault();
-          changeTodo(todo.id, editInput());
+          changeTodo(props.todo.id, editInput());
           setIsEditing(false);
         }}
       >
@@ -42,7 +39,7 @@ export default function TodoEditingForm({
           hidden={!isEditing}
           ref={editRef}
           type="text"
-          placeholder={todo.content}
+          placeholder={props.todo.content}
           value={editInput()}
           class="input input-bordered input-sm w-full m-2"
           onChange={(e) => {
@@ -56,7 +53,7 @@ export default function TodoEditingForm({
               type="button"
               class="btn btn-primary btn-sm m-2"
               onClick={() => startEdit()}
-              aria-label={`할일 ${todo.content}을 수정하시려면 클릭하세요.`}
+              aria-label={`할일 ${props.todo.content}을 수정하시려면 클릭하세요.`}
             >
               수정
             </button>
@@ -66,7 +63,7 @@ export default function TodoEditingForm({
             type="submit"
             class="btn btn-primary btn-sm m-2"
             aria-label={`할일을 ${
-              todo.content
+              props.todo.content
             }에서 ${editInput()}로 수정하시려면 클릭하세요.`}
           >
             완료

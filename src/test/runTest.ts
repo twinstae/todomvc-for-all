@@ -36,10 +36,10 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       await userEvent.click(checkbox);
 
       expect(checkbox).toBeChecked();
-
+      
       await userEvent.keyboard("odd{Enter}");
 
-      expect(checkbox).not.toBeChecked();
+      await waitFor(() => expect(checkbox).not.toBeChecked());
     });
 
     it("할 일을 삭제할 수 있다", async () => {
