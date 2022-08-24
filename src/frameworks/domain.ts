@@ -1,5 +1,5 @@
-import { TodoT } from "../global";
-import { AsAction } from "./createActionsWithSetState";
+import type { TodoT } from "../global";
+import type { AsAction } from "./createActionsWithSetState";
 import { generateId } from "./generateId";
 
 export const domain = {

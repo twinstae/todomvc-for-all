@@ -7,7 +7,7 @@ import {
   selectTodoList,
 } from "../../reduxTodoListStore";
 import { useSelector, useDispatch } from "react-redux";
-import { TodoT } from "../../../global";
+import type { TodoT } from "../../../global";
 import { TodoActions } from "../../domain";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;

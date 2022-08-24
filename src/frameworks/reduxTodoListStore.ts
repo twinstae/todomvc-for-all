@@ -1,6 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { TodoT } from '../global'
+import type { TodoT } from '../global'
 import { domain } from './domain'
 import { inject } from './react/context'
 

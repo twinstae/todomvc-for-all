@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoT } from "../../global";
+import type { TodoT } from "../../global";
 import { inject } from "./context";
 import TodoCompleteCheckbox from "./TodoCompleteCheckbox";
 import TodoDeleteButton from "./TodoDeleteButton";

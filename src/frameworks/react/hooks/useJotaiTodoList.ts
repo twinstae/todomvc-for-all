@@ -1,6 +1,6 @@
 import { inject } from "../context";
 import { atom, useAtomValue, useSetAtom } from "jotai";
-import { TodoT } from "../../../global";
+import type { TodoT } from "../../../global";
 import { domain } from "../../domain";
 import { JsonValue } from "../../../json";
 import { createActionsWithSetState } from "../../createActionsWithSetState";

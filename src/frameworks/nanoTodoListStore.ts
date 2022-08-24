@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { atom, action, WritableStore } from "nanostores";
-import { TodoT } from "../global";
+import type { TodoT } from "../global";
 import { domain } from "./domain";
 import { inject } from "./react/context";
-import { AsAction } from "./createActionsWithSetState";
+import type { AsAction } from "./createActionsWithSetState";
 
 const saved = inject("storage").get('todo-list') as TodoT[] | undefined;
 export const todoListStore = atom<TodoT[]>(saved || []);

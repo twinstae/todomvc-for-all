@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { TodoT } from "../../global";
+import type { TodoT } from "../../global";
 import { inject } from "./context";
 
 export default function TodoEditingForm({

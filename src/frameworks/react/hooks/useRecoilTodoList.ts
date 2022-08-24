@@ -1,9 +1,9 @@
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
-import type { AtomEffect } from "recoil";
 import { inject } from "../context";
-import { TodoT } from "../../../global";
 import { domain } from "../../domain";
 import { createActionsWithSetState } from "../../createActionsWithSetState";
+import type { AtomEffect } from "recoil";
+import type { TodoT } from "../../../global";
 
 const storageEffect = (key: string): AtomEffect<TodoT[]> => ({ setSelf, onSet }) => {
   const storage = inject('storage');

@@ -1,4 +1,4 @@
-import { TodoT } from "../../../global";
+import type { TodoT } from "../../../global";
 import { domain } from "../../domain";
 import { createActionsWithSetState } from "../../createActionsWithSetState";
 import usePersistState from "./usePersistenceState";

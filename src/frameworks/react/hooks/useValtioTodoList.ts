@@ -1,6 +1,6 @@
 import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
-import { TodoT } from '../../../global';
+import type { TodoT } from '../../../global';
 import { inject } from '../context';
 import { generateId } from '../../generateId';
 import { TodoActions } from '../../domain';

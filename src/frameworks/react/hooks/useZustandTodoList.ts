@@ -1,5 +1,5 @@
 import { inject } from ".././context";
-import { TodoT } from "../../../global";
+import type { TodoT } from "../../../global";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { domain } from "../../domain";
