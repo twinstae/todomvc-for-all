@@ -19,20 +19,22 @@ export default function TodoMvcReact() {
   );
 }
 
+const localStorageWithSubscribe = withSubscribe({
+  get(key: string) {
+    const saved = localStorage.getItem(key);
+    if (!saved) return undefined;
+
+    return JSON.parse(saved);
+  },
+  set(key: string, value: JsonValue) {
+    localStorage.setItem(key, JSON.stringify(value));
+  },
+  delete(key: string){
+    localStorage.removeItem(key);
+  }
+});
+
 provide(
   "storage",
-  withSubscribe({
-    get(key: string) {
-      const saved = localStorage.getItem(key);
-      if (!saved) return undefined;
-
-      return JSON.parse(saved);
-    },
-    set(key: string, value: JsonValue) {
-      localStorage.setItem(key, JSON.stringify(value));
-    },
-    delete(key: string){
-      localStorage.removeItem(key);
-    }
-  })
+  localStorageWithSubscribe,
 );

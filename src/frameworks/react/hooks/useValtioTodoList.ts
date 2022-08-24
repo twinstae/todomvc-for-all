@@ -44,11 +44,7 @@ watch((get) => {
 })
 
 export function useValtioTodoList() {
-  const snapShot = useSnapshot(store)
-
-  return {
-    todoList: snapShot.todoList
-  };
+  return useSnapshot(store);
 }
 
 export const valtioActions = actions;

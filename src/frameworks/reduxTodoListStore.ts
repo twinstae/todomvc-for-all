@@ -9,7 +9,7 @@ interface TodoListState {
 }
 
 const initialState: TodoListState = {
-  todoList: [],
+  todoList: inject('storage').get('todo-list') as TodoT[] | undefined || [],
 }
 
 export const todoListSlice = createSlice({
