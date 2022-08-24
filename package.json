@@ -3,6 +3,7 @@
   "dependencies": {
     "@nanostores/persistent": "^0.6.0",
     "@nanostores/react": "^0.3.0",
+    "@nanostores/solid": "^0.2.0",
     "@nanostores/vue": "^0.6.0",
     "@reduxjs/toolkit": "^1.8.5",
     "astro": "^1.0.6",
@@ -23,10 +24,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "yarn test:react run && yarn test:svelte run && yarn test:vue run",
+    "test": "yarn test:react run && yarn test:svelte run && yarn test:vue run && yarn test:solid run",
     "test:react": "vitest --config ./vitest.config.ts",
     "test:svelte": "vitest --config ./vitest.svelte.config.ts",
     "test:vue": "vitest --config ./vitest.vue.config.ts",
+    "test:solid": "vitest --config ./vitest.solid.config.ts",
     "lint": "eslint src"
   },
   "devDependencies": {
@@ -53,6 +55,7 @@
     "@vitest/ui": "^0.22.1",
     "@webcomponents/template-shadowroot": "^0.1.0",
     "autoprefixer": "^10.4.8",
+    "babel-preset-solid": "^1.4.8",
     "eslint": "^8.22.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.30.1",
@@ -60,12 +63,14 @@
     "postcss": "^8.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "solid-js": "^1.4.3",
+    "solid-js": "^1.4.8",
+    "solid-testing-library": "^0.3.0",
     "svelte": "^3.49.0",
     "svelte-preprocess": "^4.10.7",
     "tailwind": "^4.0.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.9",
+    "vite-plugin-solid": "^2.3.0",
     "vitest": "^0.22.1",
     "vue": "^3.2.37"
   }

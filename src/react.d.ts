@@ -1,3 +1,5 @@
+import type { JSX as SolidJSX } from 'solid-js/types/jsx';
+
 import type { AriaAttributes, DOMAttributes } from 'react' // not needed if skipLibCheck = true
 export declare interface Ref<T> {
   value: T;
@@ -14,5 +16,11 @@ declare global {
       onKeyup?: (e: KeyboardEvent) => void
       onChange?: (e: ChangeEvent) => void
     }
+  }
+}
+
+declare global {
+  interface JSX extends SolidJSX {
+    onSubmit?: (e: SubmitEvent) => void
   }
 }
