@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { atom, action, WritableAtom } from "nanostores";
+import { atom, action, WritableStore } from "nanostores";
 import { TodoT } from "../global";
 import { domain } from "./domain";
 import { inject } from "./react/context";
@@ -11,7 +11,7 @@ export const todoListStore = atom<TodoT[]>(saved || []);
 function createActions<
   T,
   I extends Record<string, (old: T, ...args: any[]) => T>
->(store: WritableAtom<T>, rawActions: I): AsAction<T, I> {
+>(store: WritableStore<T>, rawActions: I): AsAction<T, I> {
   const result: any = {};
   for (const name in rawActions){
     result[name] = action(store, name, (store, ...args) => {
