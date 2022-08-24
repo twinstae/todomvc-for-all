@@ -5,7 +5,7 @@ import {
   useReduxActions,
   useReduxTodoList,
 } from "../../frameworks/react/hooks/useReduxTodoList";
-import { store } from "../../frameworks/reduxTodoListStore";
+import { loadSaved, reduxStore } from "../../frameworks/reduxTodoListStore";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(
@@ -13,5 +13,9 @@ runReactImpl(
   useReduxTodoList,
   useReduxActions,
   ({ children }) => (
-  <ReduxProvider store={store}>{children}</ReduxProvider>
-));
+  <ReduxProvider store={reduxStore}>{children}</ReduxProvider>
+  ),
+  async (init) => {
+    reduxStore.dispatch(loadSaved({ saved: init }));
+  }
+);

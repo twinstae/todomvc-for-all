@@ -10,7 +10,7 @@ runReactImpl(
   useValtioTodoList,
   () => valtioActions,
   ({ children }) => children,
-  (init) => {
+  async (init) => {
     store.todoList = init;
   }
 );

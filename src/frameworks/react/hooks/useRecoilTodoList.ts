@@ -1,9 +1,9 @@
-import { atom, useRecoilState, useSetRecoilState } from "recoil";
+import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 import type { AtomEffect } from "recoil";
 import { inject } from "../context";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
-import { useEffect } from "react";
+import { createActionsWithSetState } from "../../utility";
 
 const storageEffect = (key: string): AtomEffect<TodoT[]> => ({ setSelf, onSet }) => {
   const storage = inject('storage');
@@ -28,37 +28,12 @@ const todoListState = atom({
 });
 
 export function useRecoilTodoList(): { todoList: readonly TodoT[] } {
-  const [todoList, setTodoList] = useRecoilState(todoListState);
-  useEffect(() => {
-    const saved = inject("storage").get("todo-list");
-    if (saved) {
-      setTodoList(saved as TodoT[]);
-    }
-  }, []);
+  const todoList = useRecoilValue(todoListState);
   return { todoList };
 }
 
 export const useRecoilActions = () => {
   const setTodoList = useSetRecoilState(todoListState);
-  const addTodo = (content: string) =>
-    setTodoList((old) => domain.addTodo(old, content));
 
-  const completeTodo = (targetId: TodoT["id"], isCompleted: boolean) => {
-    setTodoList((old) => domain.completeTodo(old, targetId, isCompleted));
-  };
-
-  const deleteTodo = (targetId: TodoT["id"]) => {
-    setTodoList((old) => domain.deleteTodo(old, targetId));
-  };
-
-  const changeTodo = (targetId: TodoT["id"], newContent: string) => {
-    setTodoList((old) => domain.changeTodo(old, targetId, newContent));
-  };
-
-  return {
-    addTodo,
-    changeTodo,
-    completeTodo,
-    deleteTodo,
-  };
+  return createActionsWithSetState(setTodoList, domain);
 };

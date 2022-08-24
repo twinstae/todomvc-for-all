@@ -1,55 +1,51 @@
-import { useEffect } from "react";
 import { inject } from ".././context";
 import { TodoT } from "../../../global";
 import create from "zustand";
+import { persist } from "zustand/middleware";
 import { domain } from "../../domain";
+import { createActionsWithSetState } from "../../utility";
 
 type TodoListState = {
-  todoList: TodoT[]
-  loadSaved(saved: TodoT[]): void;
+  todoList: TodoT[];
   addTodo(content: string): void;
-  completeTodo(id: TodoT['id'], isCompleted: boolean): void;
-  changeTodo(id: TodoT['id'], newContent: string): void;
-  deleteTodo(id: TodoT['id']): void;
-}
+  completeTodo(id: TodoT["id"], isCompleted: boolean): void;
+  changeTodo(id: TodoT["id"], newContent: string): void;
+  deleteTodo(id: TodoT["id"]): void;
+};
 
-const useStore = create<TodoListState>((set) => ({
-  todoList: [],
-  loadSaved: (saved: TodoT[]) => set({ todoList: saved }),
-  addTodo: (content) =>
-    set(({ todoList }) => ({ todoList: domain.addTodo(todoList, content) })),
-  changeTodo: (targetId, content) =>
-    set(({ todoList }) => ({
-      todoList: domain.changeTodo(todoList, targetId, content),
-    })),
-  completeTodo: (targetId, isCompleted) =>
-    set(({ todoList }) => ({
-      todoList: domain.completeTodo(todoList, targetId, isCompleted),
-    })),
-  deleteTodo: (targetId) =>
-    set(({ todoList }) => ({
-      todoList: domain.deleteTodo(todoList, targetId),
-    })),
+export const useZustandStore = create<TodoListState, [["zustand/persist", TodoListState]]>(persist((set) => {
+  function setTodoList(update: (old: TodoT[]) => TodoT[]) {
+    set(({ todoList }) => ({ todoList: update(todoList) }));
+  }
+
+  return {
+    todoList: [],
+    ...createActionsWithSetState(setTodoList, domain),
+  };
+}, {
+  name: 'todo-list', // name of item in the storage (must be unique)
+  getStorage: () => {
+    const storage = inject("storage");
+
+    return {
+      setItem: storage.set,
+      getItem: (key) => JSON.stringify(storage.get(key)),
+      removeItem: storage.delete
+    }
+  },
 }));
 
 export function useZustandTodoList(): { todoList: readonly TodoT[] } {
-  const todoList = useStore(state => state.todoList);
-  const loadSaved = useStore(state => state.loadSaved);
-  useEffect(() => {
-    const saved = inject("storage").get("todo-list");
-    if (saved) {
-      loadSaved(saved as TodoT[]);
-    }
-  }, []);
+  const todoList = useZustandStore((state) => state.todoList);
 
   return { todoList };
 }
 
 export const useZustandActions = () => {
   return {
-    addTodo: useStore(state => state.addTodo),
-    completeTodo: useStore(state => state.completeTodo),
-    changeTodo: useStore(state => state.changeTodo),
-    deleteTodo: useStore(state => state.deleteTodo),
+    addTodo: useZustandStore((state) => state.addTodo),
+    completeTodo: useZustandStore((state) => state.completeTodo),
+    changeTodo: useZustandStore((state) => state.changeTodo),
+    deleteTodo: useZustandStore((state) => state.deleteTodo),
   };
 };

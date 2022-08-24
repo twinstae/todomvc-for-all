@@ -47,10 +47,10 @@ function persist() {
   }
 }
 
-export const store = configureStore({
+export const reduxStore = configureStore({
   reducer: todoListSlice.reducer,
   middleware: [persist]
 })
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof reduxStore.getState>
+export type AppDispatch = typeof reduxStore.dispatch

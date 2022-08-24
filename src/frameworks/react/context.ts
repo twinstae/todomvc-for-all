@@ -1,10 +1,12 @@
 import { createContainer } from "../../dependency";
+import { TodoT } from "../../global";
 import { JsonValue } from "../../json";
-import { useValtioTodoList, valtioActions } from "./hooks/useValtioTodoList";
+import { TodoActions } from "../domain";
 
 interface Stoage {
   get(key: string): JsonValue | undefined;
   set(key: string, value: JsonValue | undefined): void;
+  delete(key: string): void;
 }
 
 type CallbackT = (key: string, value: JsonValue | undefined) => void;
@@ -22,6 +24,10 @@ export function withSubscribe(storage: Stoage): StorageWithSubscribe{
       storage.set(key, value);
       _subscribers.forEach((cb) => cb(key, value));
     },
+    delete(key) {
+      storage.delete(key);
+      _subscribers.forEach((cb) => cb(key, undefined));
+    }, 
     subscribe(callback) {
       _subscribers.push(callback);
       return () => {
@@ -33,6 +39,6 @@ export function withSubscribe(storage: Stoage): StorageWithSubscribe{
 
 export const { provide, inject } = createContainer({
   storage: withSubscribe(new Map()),
-  useTodoList: useValtioTodoList,
-  actions: () => valtioActions,
+  useTodoList: () => ({ todoList: [] as readonly TodoT[] }),
+  actions: () => ({ }) as TodoActions,
 });

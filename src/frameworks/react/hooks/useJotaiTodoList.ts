@@ -1,9 +1,9 @@
 import { inject } from "../context";
-import { atom, useAtom, useSetAtom } from "jotai";
+import { atom, useAtomValue, useSetAtom } from "jotai";
 import { TodoT } from "../../../global";
 import { domain } from "../../domain";
-import { useEffect } from "react";
 import { JsonValue } from "../../../json";
+import { createActionsWithSetState } from "../../utility";
 
 const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
   const baseAtom = atom(
@@ -25,37 +25,12 @@ const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
 export const todoListAtom = atomWithStorage("todo-list", [] as TodoT[]);
 
 export function useJotaiTodoList(): { todoList: readonly TodoT[] } {
-  const [todoList, setTodoList] = useAtom(todoListAtom);
-  useEffect(() => {
-    const saved = inject("storage").get("todo-list");
-    if (saved) {
-      setTodoList(() => saved as TodoT[]);
-    }
-  }, []);
+  const todoList = useAtomValue(todoListAtom);
   return { todoList };
 }
 
 export const useJotaiActions = () => {
   const setTodoList = useSetAtom(todoListAtom);
-  const addTodo = (content: string) =>
-    setTodoList((old) => domain.addTodo(old, content));
-
-  const completeTodo = (targetId: TodoT["id"], isCompleted: boolean) => {
-    setTodoList((old) => domain.completeTodo(old, targetId, isCompleted));
-  };
-
-  const deleteTodo = (targetId: TodoT["id"]) => {
-    setTodoList((old) => domain.deleteTodo(old, targetId));
-  };
-
-  const changeTodo = (targetId: TodoT["id"], newContent: string) => {
-    setTodoList((old) => domain.changeTodo(old, targetId, newContent));
-  };
-
-  return {
-    addTodo,
-    changeTodo,
-    completeTodo,
-    deleteTodo,
-  };
+  
+  return createActionsWithSetState(setTodoList, domain);
 };

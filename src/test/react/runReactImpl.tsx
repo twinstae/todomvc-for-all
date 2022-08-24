@@ -16,16 +16,15 @@ export function runReactImpl(
   useActionsImpl: () => typeof nanoActions,
   Wrapper: (props: { children: JSX.Element }) => JSX.Element = ({ children }) =>
     children,
-  setup: (init: TodoT[]) => void = () => undefined,
+  setup: (init: TodoT[]) => Promise<void> = async () => undefined,
 ) {
   runTest({
     framework: `react: ${name}`,
-    render: (init) => {
+    render: async (init) => {
       inject("storage").set("todo-list", init);
-      setup(init);
-
       provide("useTodoList", useTodoListImpl);
       provide("actions", useActionsImpl);
+      await setup(init);
 
       render(
         <Wrapper>

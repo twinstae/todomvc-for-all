@@ -4,26 +4,16 @@ import {
   changeTodo,
   completeTodo,
   deleteTodo,
-  loadSaved,
   selectTodoList,
 } from "../../reduxTodoListStore";
 import { useSelector, useDispatch } from "react-redux";
 import { TodoT } from "../../../global";
-import { inject } from "../context";
-import { useEffect } from "react";
 import { TodoActions } from "../../domain";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
 export function useReduxTodoList(): { todoList: readonly TodoT[] } {
   const todoList = useSelector(selectTodoList);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    const saved = inject("storage").get("todo-list") as TodoT[] | undefined;
-    if (saved) {
-      dispatch(loadSaved({ saved }));
-    }
-  }, []);
   return { todoList };
 }
 

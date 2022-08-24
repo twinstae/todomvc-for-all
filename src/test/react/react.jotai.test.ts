@@ -1,8 +1,12 @@
-import { useJotaiActions, useJotaiTodoList } from "../../frameworks/react/hooks/useJotaiTodoList";
+import { todoListAtom, useJotaiActions, useJotaiTodoList } from "../../frameworks/react/hooks/useJotaiTodoList";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(
   "jotai",
   useJotaiTodoList,
-  useJotaiActions
+  useJotaiActions,
+  ({ children }) => children,
+  async (init) => {
+    todoListAtom.onMount = (setAtom) => setAtom(() => init);
+  }
 );

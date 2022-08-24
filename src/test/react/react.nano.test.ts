@@ -1,3 +1,4 @@
+import { todoListStore } from "../../frameworks/nanoTodoListStore";
 import {
   nanoActions,
   useNanoTodoList,
@@ -7,5 +8,9 @@ import { runReactImpl } from "./runReactImpl";
 runReactImpl(
   "nanostore",
   useNanoTodoList,
-  () => nanoActions
+  () => nanoActions,
+  ({ children }) => children,
+  async (init) => {
+    todoListStore.set(init);
+  }
 );

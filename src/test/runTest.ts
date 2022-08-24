@@ -7,13 +7,13 @@ import { TodoT } from "../global";
 
 interface TodoMVCImpl {
   framework: string;
-  render: (init: TodoT[]) => void;
+  render: (init: TodoT[]) => Promise<void>;
 }
 
 export default function runTest({ framework, render }: TodoMVCImpl) {
   describe(`TodoMVC ${framework}`, () => {
     it("비어있지 않은 할 일을 추가할 수 있다", async () => {
-      render([]);
+      await render([]);
 
       expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
 
@@ -26,7 +26,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     });
 
     it("할 일을 완료할 수 있다", async () => {
-      render([{ id: 0, content: "테스트하기", isCompleted: false }]);
+      await render([{ id: 0, content: "테스트하기", isCompleted: false }]);
 
       const checkbox = screen.getByRole("checkbox", {
         name: /완료/,
@@ -43,7 +43,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     });
 
     it("할 일을 삭제할 수 있다", async () => {
-      render([{ id: 1, content: "테스트", isCompleted: false }]);
+      await render([{ id: 1, content: "테스트", isCompleted: false }]);
 
       const button = screen.getByRole("button", {
         name: /삭제/,
@@ -55,7 +55,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     });
 
     it("할 일을 수정할 수 있다", async () => {
-      render([{ id: 1, content: "테스트", isCompleted: false }]);
+      await render([{ id: 1, content: "테스트", isCompleted: false }]);
 
       await userEvent.click(screen.getByRole("button", { name: /수정/ }));
 
@@ -73,7 +73,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     });
 
     it("수정 도중에 blur되면 수정을 취소한다.", async () => {
-      render([{ id: 1, content: "테스트하기", isCompleted: false }]);
+      await render([{ id: 1, content: "테스트하기", isCompleted: false }]);
 
       await userEvent.dblClick(screen.getByRole("listitem"));
 

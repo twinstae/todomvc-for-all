@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
 import { TodoT } from '../../../global';
@@ -39,22 +38,13 @@ export const actions: TodoActions = {
   }
 }
 
-
+watch((get) => {
+  const todoList = get(store).todoList
+  inject('storage').set('todo-list', todoList);
+})
 
 export function useValtioTodoList() {
   const snapShot = useSnapshot(store)
-  useEffect(() => {
-    const cleanup = watch((get) => {
-      const todoList = get(store).todoList
-      inject('storage').set('todo-list', todoList);
-    })
-    const saved = inject('storage').get('todo-list')
-    if(saved){
-      store.todoList = saved as TodoT[];
-    }
-
-    return cleanup;
-  }, [])
 
   return {
     todoList: snapShot.todoList

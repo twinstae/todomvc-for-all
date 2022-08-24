@@ -31,5 +31,8 @@ provide(
     set(key: string, value: JsonValue) {
       localStorage.setItem(key, JSON.stringify(value));
     },
+    delete(key: string){
+      localStorage.removeItem(key);
+    }
   })
 );
