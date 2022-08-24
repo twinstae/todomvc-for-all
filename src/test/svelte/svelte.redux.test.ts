@@ -1,27 +1,16 @@
-
-import { loadSaved, reduxActions, reduxStore } from "../../frameworks/reduxTodoListStore";
+import {
+  loadSaved,
+  reduxActions,
+  reduxStore,
+} from "../../frameworks/reduxTodoListStore";
+import { reduxToSvelte } from "../../frameworks/svelte/reduxToSvelte";
 import { runSvelteImpl } from "./runSvelteImpl";
 
-export function reduxToSvelte<T, S>(store: {
-  getState: () => T,
-  subscribe: (listner: () => void) => () => void
-}, select: (state: T) => S) {
-  return {
-    subscribe: (subscription: (value: S) => void) => {
-      subscription(select(store.getState()));
-      return store.subscribe(() => {
-        subscription(select(store.getState()))
-      })
-    }
-  }
-}
-
-
 runSvelteImpl(
-  'redux',
+  "redux",
   reduxToSvelte(reduxStore, (state) => state.todoList),
   reduxActions,
   async (init) => {
     reduxStore.dispatch(loadSaved({ saved: init }));
-  },
-)
+  }
+);

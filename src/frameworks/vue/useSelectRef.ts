@@ -1,16 +1,24 @@
-import { shallowRef, getCurrentScope, onScopeDispose } from "vue"
+import { shallowRef, getCurrentScope, onScopeDispose } from "vue";
 
-export function useSelectRef<T, S>(store: {
-  getState: () => T,
-  subscribe: (listner: () => void) => () => void
-}, select: (state: T) => S) {
-  const state = shallowRef<S>(select(store.getState()))
+export function useSelectRef<T, S>(
+  store: {
+    getState: () => T;
+    subscribe: (listner: () => void) => () => void;
+  },
+  select: (state: T) => S
+) {
+  const state = shallowRef<S>(select(store.getState()));
 
+  let old = select(store.getState());
   const unsubscribe = store.subscribe(() => {
-    state.value = select(store.getState())
-  })
+    const next = select(store.getState());
+    if (next !== old) {
+      state.value = next;
+      old = next;
+    }
+  });
 
-  getCurrentScope() && onScopeDispose(unsubscribe)
+  getCurrentScope() && onScopeDispose(unsubscribe);
 
-  return state
+  return state;
 }
