@@ -3,6 +3,8 @@ import { generateId } from "./generateId";
 
 export const domain = {
   addTodo(old: TodoT[], content: string) {
+    if (content.length === 0) return old;
+    
     const newTodo = {
       id: generateId(),
       content,

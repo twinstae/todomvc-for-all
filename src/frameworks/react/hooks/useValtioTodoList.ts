@@ -14,6 +14,8 @@ export const store = proxy<{
 
 export const actions: TodoActions = {
   addTodo(content) {
+    if (content.length === 0) return;
+    
     store.todoList.push({
       id: generateId(),
       content,

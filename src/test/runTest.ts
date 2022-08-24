@@ -20,7 +20,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       const input = screen.getByRole("textbox", {
         name: /새로운 할일/,
       });
-      await userEvent.type(input, "테스트{enter}");
+      await userEvent.type(input, "{enter}테스트{enter}");
 
       expect(screen.getByRole("listitem")).toHaveTextContent("테스트");
     });
