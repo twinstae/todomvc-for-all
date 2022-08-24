@@ -14,7 +14,7 @@ export function runVueImpl(
   getOptions: (init: TodoT[]) => RenderOptions = () => ({})
 ) {
   runTest({
-    framework: `svelte: ${name}`,
+    framework: `vue: ${name}`,
     render: async (init) => {
       inject("storage").set("todo-list", init);
       provide("useTodoList", useTodoListImpl);
