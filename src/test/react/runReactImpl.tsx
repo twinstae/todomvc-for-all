@@ -1,13 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import TodoMvcReact from "../frameworks/react/TodoMvcReact";
 
-import runTest from "./runTest";
-import { inject, provide } from "../frameworks/react/context";
+import runTest from "../runTest";
+import TodoMvcReact from "../../frameworks/react/TodoMvcReact";
+import { inject, provide } from "../../frameworks/react/context";
 import {
   nanoActions,
   useNanoTodoList,
-} from "../frameworks/react/hooks/useNanoTodolist";
+} from "../../frameworks/react/hooks/useNanoTodolist";
 
 export function runReactImpl(
   name: string,
