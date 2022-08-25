@@ -1,9 +1,10 @@
 import { render, RenderOptions } from "@testing-library/vue";
-import type { TodoT } from "../../global";
-import TodoMvcVue from '../../frameworks/vue/TodoMVCVue.vue';
-import runTest from "../runTest";
-import { inject, provide } from "../../frameworks/vue/context";
-import { TodoActions } from "../../frameworks/domain";
+import type { TodoT } from "../../src/global";
+import TodoMvcVue from '../src/TodoMVCVue.vue';
+import runTest from "../../test/runTest";
+import * as shared from "../../src/sharedContainer";
+import { provide } from "../src/context";
+import { TodoActions } from "../../src/domain";
 import type { Ref } from "vue";
 
 export function runVueImpl(
@@ -16,7 +17,7 @@ export function runVueImpl(
   runTest({
     framework: `vue: ${name}`,
     render: async (init) => {
-      inject("storage").set("todo-list", init);
+      shared.inject("storage").set("todo-list", init);
       provide("useTodoList", useTodoListImpl);
       provide("useActions", actionsImpl);
       await setup(init);

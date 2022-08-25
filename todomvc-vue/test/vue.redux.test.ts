@@ -1,5 +1,5 @@
-import { loadSaved, reduxActions, reduxStore } from "../../frameworks/reduxTodoListStore";
-import { useSelectRef } from "../../frameworks/vue/useSelectRef";
+import { loadSaved, reduxActions, reduxStore } from "../../src/reduxTodoListStore";
+import { useSelectRef } from "../src/useSelectRef";
 import { runVueImpl } from "./runVueImpl";
 
 runVueImpl(

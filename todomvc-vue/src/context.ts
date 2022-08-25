@@ -1,6 +1,6 @@
-import { createContainer } from "../../dependency";
-import type { TodoT } from "../../global";
-import type { TodoActions } from "../../domain";
+import { createContainer } from "../../src/dependency";
+import type { TodoT } from "../../src/global";
+import type { TodoActions } from "../../src/domain";
 import { ref } from "vue";
 
 export const { provide, inject } = createContainer({

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import type { TodoT } from '../../global'
-import { createActionsWithSetState } from '../createActionsWithSetState'
-import { domain } from '../domain'
+import type { TodoT } from '../../src/global'
+import { createActionsWithSetState } from '../../src/createActionsWithSetState'
+import { domain } from '../../src/domain'
 
 export const usePiniaTodoList = defineStore('todoList', {
   state: () => ({

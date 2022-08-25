@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TodoT } from "../../global";
+import type { TodoT } from "../../src/global";
 import { inject } from "./context";
 
 const { todo, checkboxId } = defineProps<{

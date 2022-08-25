@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/vue";
-import { actions, todoListStore } from "../../frameworks/nanoTodoListStore";
+import { actions, todoListStore } from "../../src/nanoTodoListStore";
 import { runVueImpl } from "./runVueImpl";
 
 runVueImpl(
