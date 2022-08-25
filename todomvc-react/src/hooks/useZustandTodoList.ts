@@ -1,4 +1,4 @@
-import { inject } from ".././context";
+import * as shared from "../../../src/sharedContainer";
 import type { TodoT } from "../../../src/global";
 import create from "zustand";
 import { persist } from "zustand/middleware";
@@ -25,7 +25,7 @@ export const useZustandStore = create<TodoListState, [["zustand/persist", TodoLi
 }, {
   name: 'todo-list', // name of item in the storage (must be unique)
   getStorage: () => {
-    const storage = inject("storage");
+    const storage = shared.inject("storage");
 
     return {
       setItem: storage.set,

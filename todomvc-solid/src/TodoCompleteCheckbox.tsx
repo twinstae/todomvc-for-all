@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/react-in-jsx-scope */
 /** @jsxImportSource solid-js */
-import type { TodoT } from "../../global";
+
+import type { TodoT } from "../../src/global";
 import { inject } from "./context";
 
 export default function TodoCompleteCheckbox(props: {

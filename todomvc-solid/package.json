@@ -1,0 +1,21 @@
+{
+  "name": "todomvc-solid",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test":"vitest"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^3.0.0",
+    "vite-plugin-solid": "^2.3.0",
+    "solid-testing-library": "^0.3.0"
+  },
+  "dependencies": {
+    "@nanostores/solid": "^0.2.0",
+    "solid": "^0.2.1",
+    "solid-js": "^1.4.8"
+  }
+}

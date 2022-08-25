@@ -5,9 +5,9 @@ import type { JSX } from "solid-js/types/jsx";
 
 import { createContext, createEffect, useContext } from "solid-js";
 import { createStore } from 'solid-js/store';
-import { TodoT } from "../../global";
-import { domain, TodoActions } from "../domain";
-import { inject } from "./context";
+import { TodoT } from "../../src/global";
+import { domain, TodoActions } from "../../src/domain";
+import * as shared from "../../src/sharedContainer";
 
 const TodoListContext = createContext();
 const TodoActionsContext = createContext();
@@ -16,7 +16,7 @@ export function TodoListWrapper(props: { children: JSX.Element, init: TodoT[] })
   const [todoList, setTodoList] = createStore<TodoT[]>(props.init || []);
 
   const effect = () => {
-    inject('storage').set('todo-list', todoList);
+    shared.inject('storage').set('todo-list', todoList);
   };
   createEffect(effect)
   const actions: TodoActions = {

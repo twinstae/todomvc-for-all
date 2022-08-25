@@ -2,7 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /** @jsxImportSource solid-js */
 
-import { TodoT } from "../../global";
+import { TodoT } from "../../src/global";
 import { inject } from "./context";
 
 export default function TodoDeleteButton(props: { todo: TodoT }) {

@@ -1,4 +1,4 @@
-import { inject } from "../context";
+import * as shared from "../../../src/sharedContainer";
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import type { TodoT } from "../../../src/global";
 import { domain } from "../../../src/domain";
@@ -7,7 +7,7 @@ import { createActionsWithSetState } from "../../../src/createActionsWithSetStat
 
 const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
   const baseAtom = atom(
-    (inject("storage").get(key) as T | undefined) || initialValue
+    (shared.inject("storage").get(key) as T | undefined) || initialValue
   );
 
   const derivedAtom = atom<T, (old: T) => T>(
@@ -16,7 +16,7 @@ const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
       const nextValue =
         typeof update === "function" ? update(get(baseAtom)) : update;
       set(baseAtom, nextValue);
-      inject("storage").set(key, nextValue);
+      shared.inject("storage").set(key, nextValue);
     }
   );
   return derivedAtom;

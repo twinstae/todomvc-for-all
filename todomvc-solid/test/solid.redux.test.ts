@@ -1,5 +1,5 @@
-import { loadSaved, reduxActions, reduxStore } from "../../frameworks/reduxTodoListStore";
-import { useReduxStore } from "../../frameworks/solid/useReduxStore";
+import { loadSaved, reduxActions, reduxStore } from "../../src/reduxTodoListStore";
+import { useReduxStore } from "../src/useReduxStore";
 import { runSolidImpl } from "./runSolidImpl";
 
 runSolidImpl(

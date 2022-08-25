@@ -1,7 +1,7 @@
 import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
 import type { TodoT } from '../../../src/global';
-import { inject } from '../context';
+import * as shared from "../../../src/sharedContainer";
 import { generateId } from '../../../src/generateId';
 import { TodoActions } from '../../../src/domain';
 
@@ -40,7 +40,7 @@ export const actions: TodoActions = {
 
 watch((get) => {
   const todoList = get(store).todoList
-  inject('storage').set('todo-list', todoList);
+  shared.inject('storage').set('todo-list', todoList);
 })
 
 export function useValtioTodoList() {

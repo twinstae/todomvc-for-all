@@ -3,7 +3,8 @@ import { render } from "@testing-library/react";
 
 import runTest from "../../test/runTest";
 import TodoMvcReact from "../src/TodoMvcReact";
-import { inject, provide } from "../src/context";
+import * as shared from "../../src/sharedContainer";
+import { provide } from "../src/context";
 import type { TodoT } from "../../src/global";
 import type { TodoActions } from "../../src/domain";
 
@@ -20,7 +21,7 @@ export function runReactImpl(
   runTest({
     framework: `react: ${name}`,
     render: async (init) => {
-      inject("storage").set("todo-list", init);
+      shared.inject("storage").set("todo-list", init);
       provide("useTodoList", useTodoListImpl);
       provide("useActions", useActionsImpl);
       await setup(init);

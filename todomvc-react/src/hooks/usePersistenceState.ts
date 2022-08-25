@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { JsonValue } from "../../../src/json";
-import { inject } from "../context";
+import * as shared from "../../../src/sharedContainer";
 
 type Options = {
   log: boolean
@@ -9,7 +9,7 @@ type Options = {
 function usePersistState<T extends JsonValue>(initValue: T, storageKey: string, options: Options = { log: false }) {
   const [state, setState] = useState<T>(initValue);
 
-  const stoage = inject('storage');
+  const stoage = shared.inject('storage');
   useEffect(() => {
     const saved = stoage.get(storageKey);
     if(saved){
