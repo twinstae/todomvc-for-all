@@ -1,0 +1,99 @@
+  <div
+    id="app"
+    class="card shadow-lg rounded-2xl p-4 max-w-lg"
+    x-data="{ _count: 0, todoList: [], todoInput: '' }"
+    @notify="todoList = $event.detail.todoList" 
+  >
+    <form
+      class="p-0 m-0"
+      @submit.prevent="() => {
+        if(todoInput === '') return;
+        todoList.push({ id: _count++, content: todoInput, isCompleted: false });
+        todoInput = ''
+      }"
+    >
+      <label class="inline-block grow"
+        >새로운 할일을 적고, Enter를 눌러주세요. <br />
+        <input
+          type="text"
+          class="input input-bordered w-full"
+          placeholder="react 공부하기"
+          x-model="todoInput"
+      /></label>
+      <button
+        type="submit"
+        class="btn btn-primary btn-sm m-2"
+        :aria-label="`새로운 할 일 ${todoInput} 을 추가하시려면 클릭해주세요`"
+      >
+        추가
+      </button>
+    </form>
+    <ul>
+      <template x-for="todo in todoList" :key="todo.id">
+        <li class="mt-1 flex align-middle" x-data="{ isEditing: false, editInput: ''+todo.content }">
+          <input
+            id="todo-checkbox-1"
+            type="checkbox"
+            class="checkbox checkbox-lg mr-2 self-center"
+            :value="todo.isCompleted"
+            :aria-label="`할일 ${todo.content} 완료하시려면 클릭하세요.`"
+            @keyup.enter="(e) => {
+              e.target.checked = ! e.target.checked
+            }"
+            @change="e => {
+              todoList.find(item => item.id === todo.id).isCompleted = e.target.checked;
+            }"
+          />
+          <label for="todo-checkbox-1" class="label cursor-pointer p-0 grow"
+            ><span class="label-text w-full pl-5" x-text="todo.content"></span></label
+          >
+          <form class="flex align-middle m-0" @submit.prevent="() => {
+            if(editInput === '') return;
+            todoList.find(item => item.id === todo.id).content = editInput;
+            isEditing = false
+          }">
+            <input
+              type="text"
+              x-ref="edit"
+              :placeholder="todo.content"
+              class="input input-bordered input-sm w-full m-2"
+              :hidden="!isEditing"
+              x-model="editInput"
+            />
+            <button
+              x-show="!isEditing"
+              type="button"
+              class="btn btn-primary btn-sm m-2"
+              :aria-label="`할일 ${todo.content} 수정하시려면 클릭하세요`"
+              @click="() => {
+                isEditing = true;
+                $refs.edit.focus()
+              }"
+            >
+              수정
+            </button>
+            <button
+              x-show="isEditing"
+              type="submit"
+              class="btn btn-primary btn-sm m-2"
+              :aria-label="`할일을 ${
+                todo.content
+              }에서 ${editInput}로 수정하시려면 클릭하세요.`"
+            >
+              완료
+            </button>
+          </form>
+          <button
+            type="button"
+            class="btn btn-error btn-sm m-2 mr-0"
+            aria-label="할일 테스트하기 삭제하시려면 클릭하시거나 Delete 키를 누르세요."
+            @click="() => {
+              todoList = todoList.filter(item => item.id !== todo.id)
+            }"
+          >
+            삭제
+          </button>
+        </li>
+      </template>
+    </ul>
+  </div>

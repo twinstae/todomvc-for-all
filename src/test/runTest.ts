@@ -39,7 +39,9 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       
       await userEvent.keyboard("odd{Enter}");
 
-      await waitFor(() => expect(checkbox).not.toBeChecked());
+      await waitFor(() => {
+        expect(checkbox).not.toBeChecked()
+      });
     });
 
     it("할 일을 삭제할 수 있다", async () => {
@@ -55,32 +57,32 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
     });
 
     it("할 일을 수정할 수 있다", async () => {
-      await render([{ id: 1, content: "테스트", isCompleted: false }]);
+      await render([{ id: 1, content: "테스팅", isCompleted: false }]);
 
       await userEvent.click(screen.getByRole("button", { name: /수정/ }));
 
       await waitFor(() => {
-        const editInput = screen.getByDisplayValue('테스트') as HTMLInputElement;
+        const editInput = screen.getByDisplayValue('테스팅') as HTMLInputElement;
         expect(editInput).toHaveFocus();
       })
       
-      await userEvent.keyboard(" 리애{Backspace}액트");
+      await userEvent.keyboard(" 리애{Backspace}액트{Enter}");
       await userEvent.click(screen.getByRole("button", { name: /수정/ }));
 
       await waitFor(() => {
-        expect(screen.getByRole("listitem")).toHaveTextContent(/테스트 리액트/)
+        expect(screen.getByRole("listitem")).toHaveTextContent(/테스팅 리액트/)
       });
     });
 
-    it("수정 도중에 blur되면 수정을 취소한다.", async () => {
-      await render([{ id: 1, content: "테스트하기", isCompleted: false }]);
+    it("수정 도중에 blur되면 수정되지 않는다.", async () => {
+      await render([{ id: 1, content: "테스팅", isCompleted: false }]);
 
       await userEvent.dblClick(screen.getByRole("listitem"));
 
-      await userEvent.keyboard("{Backspace}수정된 테스트{Escape}");
+      await userEvent.keyboard("{Backspace}트 수정{Escape}");
 
       await waitFor(() => {
-        expect(screen.getByRole("listitem")).toHaveTextContent(/테스트하기/)
+        expect(screen.getByRole("listitem")).toHaveTextContent(/테스팅/)
       });
     });
   });

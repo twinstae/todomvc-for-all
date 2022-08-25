@@ -15,6 +15,8 @@ declare global {
       onSubmit?: (e: SubmitEvent) => void
       onKeyup?: (e: KeyboardEvent) => void
       onChange?: (e: ChangeEvent) => void
+      xData?: unknown
+
     }
   }
 }
