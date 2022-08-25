@@ -1,28 +1,13 @@
 <script lang="ts" setup>
-import { inject } from "./context";
-import TodoForm from "./TodoForm.vue";
-import TodoDeleteButton from "./TodoDeleteButton.vue";
-import TodoCompleteCheckbox from "./TodoCompleteCheckbox.vue";
-import TodoEditingForm from "./TodoEditingForm.vue";
+import { provide } from "./context";
+import { useStore } from "@nanostores/vue";
+import { actions, todoListStore } from "../../src/nanoTodoListStore";
+import App from "./App.vue";
 
-const todoList = inject("useTodoList")();
+provide("useTodoList", () => useStore(todoListStore));
+provide("useActions", () => actions);
 </script>
 
 <template>
-  <div class="card shadow-lg rounded-2xl p-4 max-w-lg">
-    <TodoForm />
-    <ul>
-      <li v-for="todo in todoList">
-        <TodoCompleteCheckbox
-          :todo="todo"
-          :checkboxId="'todo-checkbox-' + todo.id"
-        />
-        <TodoEditingForm 
-          :todo="todo"
-          :checkboxId="'todo-checkbox-' + todo.id"
-        />
-        <TodoDeleteButton :todo="todo" />
-      </li>
-    </ul>
-  </div>
+  <App />
 </template>

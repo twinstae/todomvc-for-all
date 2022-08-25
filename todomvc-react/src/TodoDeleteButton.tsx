@@ -1,9 +1,9 @@
 import React from "react";
 import type { TodoT } from "../../src/global";
-import { inject } from "./context";
+import { useActions } from "./useActions";
 
 export default function TodoDeleteButton({ todo }: { todo: TodoT }) {
-  const { deleteTodo } = inject("useActions")();
+  const { deleteTodo } = useActions();;
 
   return (
     <button

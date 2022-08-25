@@ -1,6 +1,10 @@
 import { createContainer } from "./dependency";
-import { withSubscribe } from "./Storage";
+import { localStorageWithSubscribe, withSubscribe } from "./Storage";
+
+const storage = window.process?.env?.VITEST
+  ? withSubscribe(new Map())
+  : localStorageWithSubscribe;
 
 export const { provide, inject } = createContainer({
-  storage: withSubscribe(new Map()),
+  storage: storage,
 });

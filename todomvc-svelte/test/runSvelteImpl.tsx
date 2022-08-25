@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 
-import TodoMvcSvelte from '../src/TodoMVCSvelte.svelte';
+import App from '../src/App.svelte';
 import runTest from "../../test/runTest";
 import type { TodoT } from "../../src/global";
 import * as shared from "../../src/sharedContainer";
@@ -21,7 +21,7 @@ export function runSvelteImpl(
       provide("actions", actionsImpl);
       await setup(init);
 
-      render(TodoMvcSvelte);
+      render(App);
     },
   });
 }

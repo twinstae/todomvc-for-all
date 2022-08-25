@@ -5,6 +5,7 @@
 		"target": "ESNext",
 		"types": ["vite/client"],
 		"resolveJsonModule": true,
-		"allowSyntheticDefaultImports": true
+		"allowSyntheticDefaultImports": true,
+		"jsx": "preserve"
 	}
 }

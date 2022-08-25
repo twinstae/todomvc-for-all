@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import strs from "../../src/strs";
-import { inject } from "./context";
+import { useActions } from "./useActions";
 
 export default function TodoForm() {
-  const { addTodo } = inject("useActions")();
+  const { addTodo } = useActions();
   const [todoInput, setTodoInput] = useState("");
   return (
     <form

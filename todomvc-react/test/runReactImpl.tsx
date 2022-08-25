@@ -1,33 +1,37 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { render } from "@testing-library/react";
 
 import runTest from "../../test/runTest";
-import TodoMvcReact from "../src/TodoMvcReact";
 import * as shared from "../../src/sharedContainer";
-import { provide } from "../src/context";
 import type { TodoT } from "../../src/global";
 import type { TodoActions } from "../../src/domain";
-
-const e = React.createElement;
+import App from "../src/App";
+import { UseTodoListContext } from "../src/useTodoList";
+import { UseActionsContext } from "../src/useActions";
 
 export function runReactImpl(
   name: string,
-  useTodoListImpl: () => ({ todoList: readonly TodoT[] }),
+  useTodoListImpl: () => { todoList: readonly TodoT[] },
   useActionsImpl: () => TodoActions,
-  Wrapper: (props: { children: React.ReactNode }) => ReactElement = ({ children }) =>
-    e('div', undefined, children),
-  setup: (init: TodoT[]) => Promise<void> = async () => undefined,
+  Wrapper: (props: { children: React.ReactNode }) => JSX.Element = ({
+    children,
+  }) => <div>{children}</div>,
+  setup: (init: TodoT[]) => Promise<void> = async () => undefined
 ) {
   runTest({
     framework: `react: ${name}`,
     render: async (init) => {
       shared.inject("storage").set("todo-list", init);
-      provide("useTodoList", useTodoListImpl);
-      provide("useActions", useActionsImpl);
       await setup(init);
 
       render(
-        e(Wrapper, undefined, <TodoMvcReact />)
+        <UseTodoListContext.Provider value={useTodoListImpl}>
+          <UseActionsContext.Provider value={useActionsImpl}>
+            <Wrapper>
+              <App />
+            </Wrapper>
+          </UseActionsContext.Provider>
+        </UseTodoListContext.Provider>
       );
     },
   });

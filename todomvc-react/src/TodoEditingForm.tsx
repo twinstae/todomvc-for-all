@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import type { TodoT } from "../../src/global";
-import { inject } from "./context";
+import { useActions } from "./useActions";
 
 export default function TodoEditingForm({
   todo,
@@ -23,7 +23,7 @@ export default function TodoEditingForm({
     if (!isEditing) setTimeout(() => setIsEditing(true), 10);
   };
 
-  const { changeTodo } = inject("useActions")();
+  const { changeTodo } = useActions();
 
   return (
     <>

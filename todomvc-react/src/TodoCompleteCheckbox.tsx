@@ -1,6 +1,6 @@
 import React from "react";
 import type { TodoT } from "../../src/global";
-import { inject } from "./context";
+import { useActions } from "./useActions";
 
 export default function TodoCompleteCheckbox({
   todo,
@@ -9,7 +9,7 @@ export default function TodoCompleteCheckbox({
   todo: TodoT;
   checkboxId: string;
 }) {
-  const { completeTodo } = inject("useActions")();
+  const { completeTodo } = useActions();
 
   return (
     <input

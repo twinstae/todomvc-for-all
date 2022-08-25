@@ -1,20 +1,11 @@
-<script lang="ts">
-  import { inject } from "./context";
-  import TodoForm from "./TodoForm.svelte";
-  import TodoItem from "./TodoItem.svelte";
+<script lang="ts" context="module">
+  import { actions, todoListStore } from "../../src/nanoTodoListStore";
 
-  const todoList = inject("todoList");
+  import App from "./App.svelte";
+  import { provide } from "./context";
+
+  provide("todoList", todoListStore);
+  provide("actions", actions);
 </script>
 
-<div class="card shadow-lg rounded-2xl p-4 max-w-lg">
-  <TodoForm />
-  <ul>
-    {#each $todoList as todo (todo.id)}
-      <TodoItem {todo} />
-    {/each}
-  </ul>
-</div>
-
-<style>
-  /* styles go here */
-</style>
+<App />
