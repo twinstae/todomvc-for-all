@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import type { TodoT } from "../../src/global";
-
-import { inject } from "./context";
+import { useActions } from "./useActions";
 const { todo } = defineProps<{ todo: TodoT }>();
 
-const { deleteTodo } = inject("useActions")();
+const { deleteTodo } = useActions();
 </script>
 
 <template>

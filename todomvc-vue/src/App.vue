@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { inject } from "./context";
 import TodoForm from "./TodoForm.vue";
 import TodoDeleteButton from "./TodoDeleteButton.vue";
 import TodoCompleteCheckbox from "./TodoCompleteCheckbox.vue";
 import TodoEditingForm from "./TodoEditingForm.vue";
+import { useTodoList } from "./useTodoList";
 
-const todoList = inject("useTodoList")();
+const todoList = useTodoList();
 </script>
 
 <template>

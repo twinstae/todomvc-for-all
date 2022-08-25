@@ -1,10 +1,11 @@
 import { render, RenderOptions } from "@testing-library/vue";
 import type { TodoT } from "../../src/global";
-import TodoMvcVue from '../src/TodoMVCVue.vue';
+import App from '../src/App.vue';
 import runTest from "../../test/runTest";
 import * as shared from "../../src/sharedContainer";
-import { provide } from "../src/context";
 import { TodoActions } from "../../src/domain";
+import { useTodoListKey } from '../src/useTodoList';
+import { useActionsKey } from '../src/useActions';
 import type { Ref } from "vue";
 
 export function runVueImpl(
@@ -18,11 +19,19 @@ export function runVueImpl(
     framework: `vue: ${name}`,
     render: async (init) => {
       shared.inject("storage").set("todo-list", init);
-      provide("useTodoList", useTodoListImpl);
-      provide("useActions", actionsImpl);
       await setup(init);
 
-      render(TodoMvcVue, getOptions(init));
+      const options = getOptions(init);
+      if(options.global === undefined){
+        options.global = {}
+      }
+      options.global.provide = {
+        [useTodoListKey]: useTodoListImpl,
+        [useActionsKey]: actionsImpl,
+      }
+
+      console.log(options)
+      render(App, options);
     },
   });
 }

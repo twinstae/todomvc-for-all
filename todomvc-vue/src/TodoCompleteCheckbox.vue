@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { TodoT } from "../../src/global";
-import { inject } from "./context";
+import { useActions } from "./useActions";
 
 const { todo, checkboxId } = defineProps<{
   todo: TodoT;
   checkboxId: string;
 }>();
 
-const { completeTodo } = inject("useActions")();
+const { completeTodo } = useActions();
 const onKeyup = (e: any) => {
   if (e.key === "Enter") {
     const checkbox = e.currentTarget as HTMLInputElement;

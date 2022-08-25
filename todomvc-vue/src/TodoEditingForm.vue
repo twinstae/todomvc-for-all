@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import type { TodoT } from "../../src/global";
 import { ref } from "vue";
-
-import { inject } from "./context";
+import { useActions } from "./useActions";
 
 const { todo, checkboxId } = defineProps<{
   checkboxId: string;
@@ -13,7 +12,7 @@ const editInput = ref(todo.content);
 const isEditing = ref(false);
 const editInputRef = ref<HTMLInputElement | null>(null);
 
-const { changeTodo } = inject("useActions")();
+const { changeTodo } = useActions();
 
 function startEdit() {
   isEditing.value = true;

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { inject } from "./context";
 import strs from "../../src/strs";
+import { useActions } from "./useActions";
 
 const todoInput = ref("");
 
-const { addTodo } = inject("useActions")();
+const { addTodo } = useActions();
 function onSubmit(e: Event) {
   e.preventDefault();
   addTodo(todoInput.value);

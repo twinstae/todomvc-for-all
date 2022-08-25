@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { provide } from "./context";
 import { useStore } from "@nanostores/vue";
 import { actions, todoListStore } from "../../src/nanoTodoListStore";
+import { provideUseActions } from './useActions';
+import { provideUseTodoList } from './useTodoList';
 import App from "./App.vue";
 
-provide("useTodoList", () => useStore(todoListStore));
-provide("useActions", () => actions);
+provideUseTodoList(() => useStore(todoListStore));
+provideUseActions(() => actions);
 </script>
 
 <template>
