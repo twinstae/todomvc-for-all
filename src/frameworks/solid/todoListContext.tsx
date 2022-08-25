@@ -3,10 +3,11 @@
 /** @jsxImportSource solid-js */
 import type { JSX } from "solid-js/types/jsx";
 
-import { createContext, useContext } from "solid-js";
+import { createContext, createEffect, useContext } from "solid-js";
 import { createStore } from 'solid-js/store';
 import { TodoT } from "../../global";
 import { domain, TodoActions } from "../domain";
+import { inject } from "./context";
 
 const TodoListContext = createContext();
 const TodoActionsContext = createContext();
@@ -14,15 +15,21 @@ const TodoActionsContext = createContext();
 export function TodoListWrapper(props: { children: JSX.Element, init: TodoT[] }) {
   const [todoList, setTodoList] = createStore<TodoT[]>(props.init || []);
 
+  const effect = () => {
+    inject('storage').set('todo-list', todoList);
+  };
+  createEffect(effect)
   const actions: TodoActions = {
     addTodo(content){
       setTodoList(domain.addTodo(todoList, content));
     },
     completeTodo(id, isCompleted){
-      setTodoList(todoList.findIndex(todo => todo.id === id), 'isCompleted', isCompleted)
+      setTodoList(todo => todo.id === id, 'isCompleted', isCompleted);
+      effect();
     },
     changeTodo(id, content){
-      setTodoList(todoList.findIndex(todo => todo.id === id), 'content', content)
+      setTodoList(todo => todo.id === id, 'content', content);
+      effect();
     },
     deleteTodo(id){
       setTodoList(domain.deleteTodo(todoList, id));
