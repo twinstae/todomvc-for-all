@@ -2,8 +2,8 @@ import {
   loadSaved,
   reduxActions,
   reduxStore,
-} from "../../frameworks/reduxTodoListStore";
-import { reduxToSvelte } from "../../frameworks/svelte/reduxToSvelte";
+} from "../../src/reduxTodoListStore";
+import { reduxToSvelte } from "../src/reduxToSvelte";
 import { runSvelteImpl } from "./runSvelteImpl";
 
 runSvelteImpl(

@@ -1,7 +1,7 @@
-import type { TodoT } from "../../global";
+import type { TodoT } from "../../src/global";
 import { writable } from "svelte/store";
-import { createActionsWithSetState } from "../createActionsWithSetState";
-import { domain } from "../domain";
+import { createActionsWithSetState } from "../../src/createActionsWithSetState";
+import { domain } from "../../src/domain";
 
 export const todoList = writable<TodoT[]>([]);
 

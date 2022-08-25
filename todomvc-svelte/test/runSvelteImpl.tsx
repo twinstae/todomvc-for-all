@@ -1,10 +1,11 @@
 import { render } from "@testing-library/svelte";
 
-import TodoMvcSvelte from '../../frameworks/svelte/TodoMVCSvelte.svelte';
-import runTest from "../runTest";
-import type { TodoT } from "../../global";
-import { inject, provide, Subscribable } from "../../frameworks/svelte/context";
-import { TodoActions } from "../../frameworks/domain";
+import TodoMvcSvelte from '../src/TodoMVCSvelte.svelte';
+import runTest from "../../test/runTest";
+import type { TodoT } from "../../src/global";
+import * as shared from "../../src/sharedContainer";
+import { provide, Subscribable } from "../src/context";
+import { TodoActions } from "../../src/domain";
 
 export function runSvelteImpl(
   name: string,
@@ -15,7 +16,7 @@ export function runSvelteImpl(
   runTest({
     framework: `svelte: ${name}`,
     render: async (init) => {
-      inject("storage").set("todo-list", init);
+      shared.inject("storage").set("todo-list", init);
       provide("todoList", todoListImpl);
       provide("actions", actionsImpl);
       await setup(init);

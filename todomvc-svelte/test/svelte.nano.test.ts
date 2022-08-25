@@ -1,4 +1,4 @@
-import { actions, todoListStore } from "../../frameworks/nanoTodoListStore";
+import { actions, todoListStore } from "../../src/nanoTodoListStore";
 import { runSvelteImpl } from "./runSvelteImpl";
 
 runSvelteImpl(

@@ -1,4 +1,4 @@
-import { todoList, todoListActions } from "../../frameworks/svelte/todoList";
+import { todoList, todoListActions } from "../src/todoList";
 import { runSvelteImpl } from "./runSvelteImpl";
 
 runSvelteImpl(

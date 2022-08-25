@@ -1,6 +1,6 @@
 <script lang="ts">
   import { inject } from "./context";
-  import strs from "../../strs";
+  import strs from "../../src/strs";
 
   let todoInput: string = "";
 

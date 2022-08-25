@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TodoT } from "../../global";
+  import type { TodoT } from "../../src/global";
 
   import { inject } from "./context";
   import TodoCompleteCheckbox from "./TodoCompleteCheckbox.svelte";
