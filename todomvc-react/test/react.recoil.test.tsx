@@ -10,5 +10,5 @@ runReactImpl(
   "recoil",
   useRecoilTodoList,
   useRecoilActions,
-  ({ children }) => React.createElement(RecoilRoot, undefined, children)
+  ({ children }) => <RecoilRoot>{children}</RecoilRoot>
 );

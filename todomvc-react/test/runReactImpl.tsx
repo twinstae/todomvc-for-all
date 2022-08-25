@@ -6,8 +6,7 @@ import * as shared from "../../src/sharedContainer";
 import type { TodoT } from "../../src/global";
 import type { TodoActions } from "../../src/domain";
 import App from "../src/App";
-import { UseTodoListContext } from "../src/useTodoList";
-import { UseActionsContext } from "../src/useActions";
+import Provider from "../src/Provider";
 
 export function runReactImpl(
   name: string,
@@ -25,13 +24,11 @@ export function runReactImpl(
       await setup(init);
 
       render(
-        <UseTodoListContext.Provider value={useTodoListImpl}>
-          <UseActionsContext.Provider value={useActionsImpl}>
-            <Wrapper>
-              <App />
-            </Wrapper>
-          </UseActionsContext.Provider>
-        </UseTodoListContext.Provider>
+        <Provider useTodoList={useTodoListImpl} useActions={useActionsImpl}>
+          <Wrapper>
+            <App />
+          </Wrapper>
+        </Provider>
       );
     },
   });
