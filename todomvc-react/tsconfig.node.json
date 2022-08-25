@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "rootDir": ".."
+  },
+  "include": ["vite.config.ts", "/home/taehee/github/todomvc-for-all/defineConfig.ts"]
+}
