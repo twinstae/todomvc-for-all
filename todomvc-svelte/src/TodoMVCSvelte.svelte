@@ -1,11 +1,13 @@
 <script lang="ts" context="module">
+import { setContext } from "svelte/types/runtime/internal/lifecycle";
+
   import { actions, todoListStore } from "../../src/nanoTodoListStore";
 
   import App from "./App.svelte";
-  import { provide } from "./context";
+import { setActions, setTodoListStore } from "./context";
 
-  provide("todoList", todoListStore);
-  provide("actions", actions);
+  setTodoListStore(todoListStore);
+  setActions(actions);
 </script>
 
 <App />

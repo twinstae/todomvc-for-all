@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { TodoT } from "../../src/global";
+  import { getActions } from "./context";
 
-  import { inject } from "./context";
   export let todo: TodoT;
 
-  const { deleteTodo } = inject("actions");
+  const { deleteTodo } = getActions();
 </script>
 
 <button

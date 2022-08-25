@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { TodoT } from "../../src/global";
-  import { inject } from "./context";
+  import { getActions } from "./context";
 
   export let checkboxId: string;
   export let todo: TodoT;
@@ -9,7 +9,7 @@
   let isEditing = false;
   let editInputRef: HTMLInputElement;
 
-  const { changeTodo } = inject("actions");
+  const { changeTodo } = getActions();
 </script>
 
 <label for={checkboxId} class="label cursor-pointer p-0 grow">

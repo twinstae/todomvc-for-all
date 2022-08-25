@@ -1,13 +1,12 @@
 <script lang="ts">
   import type { TodoT } from "../../src/global";
-
-  import { inject } from "./context";
   import TodoCompleteCheckbox from "./TodoCompleteCheckbox.svelte";
   import TodoDeleteButton from "./TodoDeleteButton.svelte";
   import TodoEditingForm from "./TodoEditingForm.svelte";
+  import { getActions } from "./context";
 
   export let todo: TodoT;
-  const { deleteTodo } = inject("actions");
+  const { deleteTodo } = getActions();
 
   const checkboxId = "todo-checkbox-" + todo.id;
 </script>

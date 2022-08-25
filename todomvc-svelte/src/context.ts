@@ -1,17 +1,15 @@
 import type { ReadonlyIfObject } from "nanostores/atom";
-import { readable } from "svelte/store";
-import { createContainer } from "../../src/dependency";
 import type { TodoT } from "../../src/global";
 import type { TodoActions } from "../../src/domain";
-import { withSubscribe } from "../../src/Storage";
+import { createDependency } from "./createDependency";
 
 export interface Subscribable<T> {
-  subscribe: (subscription: (value: ReadonlyIfObject<T>) => void) => (() => void),
-  set?: (value: T) => void
+  subscribe: (subscription: (value: ReadonlyIfObject<T>) => void) => () => void;
+  set?: (value: T) => void;
 }
 
-export const { provide, inject } = createContainer({
-  storage: withSubscribe(new Map()),
-  todoList: readable([]) as Subscribable<TodoT[]>,
-  actions: {} as TodoActions,
-});
+export const [getTodoListStore, setTodoListStore] =
+  createDependency<Subscribable<TodoT[]>>("todoListStore");
+
+export const [getActions, setActions] =
+  createDependency<TodoActions>("actions");

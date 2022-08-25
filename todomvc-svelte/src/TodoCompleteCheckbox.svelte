@@ -1,12 +1,11 @@
 <script lang="ts">
   import type { TodoT } from "../../src/global";
-
-  import { inject } from "./context";
+  import { getActions } from "./context";
 
   export let todo: TodoT;
   export let checkboxId: string;
 
-  const { completeTodo } = inject("actions");
+  const { completeTodo } = getActions();
 </script>
 
 <input

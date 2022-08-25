@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { inject } from "./context";
   import strs from "../../src/strs";
+  import { getActions } from "./context";
 
   let todoInput: string = "";
 
-  const { addTodo } = inject("actions");
+  const { addTodo } = getActions();
   function onSubmit(e: SubmitEvent) {
     e.preventDefault();
     addTodo(todoInput);
