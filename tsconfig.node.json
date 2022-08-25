@@ -5,5 +5,5 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vitest.vue.config.ts"]
+  "include": ["defineConfig.ts", "vitest.vue.config.ts"]
 }
