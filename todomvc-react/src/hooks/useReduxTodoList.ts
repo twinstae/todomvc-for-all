@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from "react-redux";
 import {
   addTodo,
   AppDispatch,
@@ -5,10 +6,9 @@ import {
   completeTodo,
   deleteTodo,
   selectTodoList,
-} from "../../../src/reduxTodoListStore";
-import { useSelector, useDispatch } from "react-redux";
-import type { TodoT } from "../../../src/global";
-import { TodoActions } from "../../../src/domain";
+} from "@core/reduxTodoListStore";
+import type { TodoT } from "@core/global";
+import { TodoActions } from "@core/domain";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 

@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
-import { todoListStore, actions } from "../../../src/nanoTodoListStore";
-import type { TodoT } from "../../../src/global";
+import { todoListStore, actions } from "@core/nanoTodoListStore";
+import type { TodoT } from "@core/global";
 
 export function useNanoTodoList(): { todoList: readonly TodoT[]} {
   const todoList = useStore(todoListStore);

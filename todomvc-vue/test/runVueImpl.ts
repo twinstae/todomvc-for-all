@@ -1,5 +1,5 @@
 import { render, RenderOptions } from "@testing-library/vue";
-import type { TodoT } from "../../src/global";
+import type { TodoT } from "../../todomvc-core/global";
 import App from '../src/App.vue';
 import runTest from "../../test/runTest";
 import * as shared from "../../src/sharedContainer";
@@ -30,7 +30,6 @@ export function runVueImpl(
         [useActionsKey]: actionsImpl,
       }
 
-      console.log(options)
       render(App, options);
     },
   });

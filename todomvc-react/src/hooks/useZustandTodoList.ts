@@ -1,9 +1,9 @@
-import * as shared from "../../../src/sharedContainer";
-import type { TodoT } from "../../../src/global";
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { domain } from "../../../src/domain";
-import { createActionsWithSetState } from "../../../src/createActionsWithSetState";
+import * as shared from "@core/sharedContainer";
+import type { TodoT } from "@core/global";
+import { domain } from "@core/domain";
+import { createActionsWithSetState } from "@core/createActionsWithSetState";
 
 type TodoListState = {
   todoList: TodoT[];

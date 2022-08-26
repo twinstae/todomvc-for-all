@@ -1,8 +1,8 @@
 import React from 'react';
-import type { TodoT } from '../../src/global';
-import type { TodoActions } from '../../src/domain';
-import { UseActionsContext } from './useActions';
-import { UseTodoListContext } from './useTodoList';
+import type { TodoT } from '@core/global';
+import type { TodoActions } from '@core/domain';
+import { UseActionsContext } from '@/useActions';
+import { UseTodoListContext } from '@/useTodoList';
 
 export default function Provider({useTodoList, useActions, children}: {
   useTodoList: () => {

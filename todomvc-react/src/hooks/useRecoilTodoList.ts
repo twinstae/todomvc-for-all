@@ -1,9 +1,9 @@
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
-import * as shared from "../../../src/sharedContainer";
-import { domain } from "../../../src/domain";
-import { createActionsWithSetState } from "../../../src/createActionsWithSetState";
+import * as shared from "@core/sharedContainer";
+import { domain } from "@core/domain";
+import { createActionsWithSetState } from "@core/createActionsWithSetState";
 import type { AtomEffect } from "recoil";
-import type { TodoT } from "../../../src/global";
+import type { TodoT } from "@core/global";
 
 const storageEffect = (key: string): AtomEffect<TodoT[]> => ({ setSelf, onSet }) => {
   const storage = shared.inject('storage');

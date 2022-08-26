@@ -1,9 +1,9 @@
-import * as shared from "../../../src/sharedContainer";
 import { atom, useAtomValue, useSetAtom } from "jotai";
-import type { TodoT } from "../../../src/global";
-import { domain } from "../../../src/domain";
-import { JsonValue } from "../../../src/json";
-import { createActionsWithSetState } from "../../../src/createActionsWithSetState";
+import * as shared from "@core/sharedContainer";
+import type { TodoT } from "@core/global";
+import { domain } from "@core/domain";
+import { JsonValue } from "@core/json";
+import { createActionsWithSetState } from "@core/createActionsWithSetState";
 
 const atomWithStorage = <T extends JsonValue>(key: string, initialValue: T) => {
   const baseAtom = atom(

@@ -1,5 +1,5 @@
 import type { ReadonlyIfObject } from "nanostores/atom";
-import type { TodoT } from "../../src/global";
+import type { TodoT } from "../../todomvc-core/global";
 import type { TodoActions } from "../../src/domain";
 import { createDependency } from "./createDependency";
 

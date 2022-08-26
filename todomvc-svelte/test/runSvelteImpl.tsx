@@ -2,7 +2,7 @@ import { render } from "@testing-library/svelte";
 
 import AppWithDependency from '../src/AppWithDependency.svelte';
 import runTest from "../../test/runTest";
-import type { TodoT } from "../../src/global";
+import type { TodoT } from "../../todomvc-core/global";
 import * as shared from "../../src/sharedContainer";
 import { Subscribable } from "../src/context";
 import { TodoActions } from "../../src/domain";

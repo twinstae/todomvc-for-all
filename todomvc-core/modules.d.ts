@@ -8,8 +8,3 @@ declare module '*.svelte' {
   import { SvelteComponent } from "svelte";
   export default SvelteComponent
 }
-
-
-declare module '*.html?raw' {
-  export default string
-}

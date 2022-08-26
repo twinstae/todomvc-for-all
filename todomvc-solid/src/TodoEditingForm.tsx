@@ -3,7 +3,7 @@
 /** @jsxImportSource solid-js */
 
 import { createSignal, Show } from "solid-js";
-import type { TodoT } from "../../src/global";
+import type { TodoT } from "../../todomvc-core/global";
 import { inject } from "./context";
 
 export default function TodoEditingForm(props: {

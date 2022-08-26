@@ -5,7 +5,7 @@ import type { JSX } from "solid-js/types/jsx";
 
 import { createContext, createEffect, useContext } from "solid-js";
 import { createStore } from 'solid-js/store';
-import { TodoT } from "../../src/global";
+import { TodoT } from "../../todomvc-core/global";
 import { domain, TodoActions } from "../../src/domain";
 import * as shared from "../../src/sharedContainer";
 

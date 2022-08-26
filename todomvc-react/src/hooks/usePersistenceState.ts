@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { JsonValue } from "../../../src/json";
-import * as shared from "../../../src/sharedContainer";
+import { JsonValue } from "@core/json";
+import * as shared from "@core/sharedContainer";
 
 type Options = {
   log: boolean

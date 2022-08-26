@@ -1,4 +1,4 @@
-import type { TodoT } from "../global";
+import type { TodoT } from "./global";
 import type { AsAction } from "./createActionsWithSetState";
 import { generateId } from "./generateId";
 

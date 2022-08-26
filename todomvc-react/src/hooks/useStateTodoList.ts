@@ -1,6 +1,6 @@
-import type { TodoT } from "../../../src/global";
-import { domain } from "../../../src/domain";
-import { createActionsWithSetState } from "../../../src/createActionsWithSetState";
+import type { TodoT } from "@core/global";
+import { domain } from "@core/domain";
+import { createActionsWithSetState } from "@core/createActionsWithSetState";
 import usePersistState from "./usePersistenceState";
 
 const defaultInit: TodoT[] = [];

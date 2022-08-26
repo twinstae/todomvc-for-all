@@ -5,7 +5,7 @@ import {
   useReduxActions,
   useReduxTodoList,
 } from "../src/hooks/useReduxTodoList";
-import { loadSaved, reduxStore } from "../../src/reduxTodoListStore";
+import { loadSaved, reduxStore } from "@core/reduxTodoListStore";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

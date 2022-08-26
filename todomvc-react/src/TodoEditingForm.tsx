@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import type { TodoT } from "../../src/global";
-import { useActions } from "./useActions";
+import type { TodoT } from "@core/global";
+import { useActions } from "@/useActions";
 
 export default function TodoEditingForm({
   todo,

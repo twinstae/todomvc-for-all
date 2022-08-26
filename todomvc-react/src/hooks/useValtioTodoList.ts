@@ -1,9 +1,9 @@
 import { proxy, useSnapshot } from 'valtio'
 import { watch } from 'valtio/utils'
-import type { TodoT } from '../../../src/global';
-import * as shared from "../../../src/sharedContainer";
-import { generateId } from '../../../src/generateId';
-import { TodoActions } from '../../../src/domain';
+import type { TodoT } from '@core/global';
+import * as shared from "@core/sharedContainer";
+import { generateId } from '@core/generateId';
+import { TodoActions } from '@core/domain';
 
 export const store = proxy<{
   todoList: TodoT[]

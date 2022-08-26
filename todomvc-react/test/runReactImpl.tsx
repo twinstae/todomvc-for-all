@@ -2,11 +2,11 @@ import React from "react";
 import { render } from "@testing-library/react";
 
 import runTest from "../../test/runTest";
-import * as shared from "../../src/sharedContainer";
-import type { TodoT } from "../../src/global";
-import type { TodoActions } from "../../src/domain";
-import App from "../src/App";
-import Provider from "../src/Provider";
+import * as shared from "@core/sharedContainer";
+import type { TodoT } from "@core/global";
+import type { TodoActions } from "@core/domain";
+import App from "@/App";
+import Provider from "@/Provider";
 
 export function runReactImpl(
   name: string,

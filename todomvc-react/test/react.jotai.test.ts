@@ -1,4 +1,4 @@
-import { todoListAtom, useJotaiActions, useJotaiTodoList } from "../src/hooks/useJotaiTodoList";
+import { todoListAtom, useJotaiActions, useJotaiTodoList } from "@/hooks/useJotaiTodoList";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

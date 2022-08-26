@@ -1,5 +1,5 @@
 import { Ref } from "vue";
-import { TodoT } from "../../src/global";
+import { TodoT } from "../../todomvc-core/global";
 import createDependency from "./createDependency";
 
 type UseTodoListT = Ref<readonly TodoT[]>;

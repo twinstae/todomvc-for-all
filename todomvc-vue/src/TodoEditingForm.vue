@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TodoT } from "../../src/global";
+import type { TodoT } from "../../todomvc-core/global";
 import { ref } from "vue";
 import { useActions } from "./useActions";
 

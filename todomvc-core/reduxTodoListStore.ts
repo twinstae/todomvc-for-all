@@ -1,8 +1,9 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
-import { domain, TodoActions } from './domain'
-import { inject } from './sharedContainer'
+
 import type { TodoT } from './global'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, configureStore } from '@reduxjs/toolkit'
+import { domain, type TodoActions } from './domain'
+import { inject } from './sharedContainer'
 
 interface TodoListState {
   todoList: TodoT[]

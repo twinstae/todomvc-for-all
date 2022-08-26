@@ -1,4 +1,4 @@
-import { JsonValue } from "../json";
+import type { JsonValue } from "./json";
 
 interface Stoage {
   get(key: string): JsonValue | undefined;

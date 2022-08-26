@@ -10,7 +10,7 @@ import runTest from "../../test/runTest";
 import TodoMvcSolid from "../src/TodoMvcSolid";
 import { provide } from "../src/context";
 import * as shared from "../../src/sharedContainer";
-import type { TodoT } from "../../src/global";
+import type { TodoT } from "../../todomvc-core/global";
 import type { TodoActions } from "../../src/domain";
 
 export function runSolidImpl(

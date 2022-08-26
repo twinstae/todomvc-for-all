@@ -1,8 +1,8 @@
-import { todoListStore } from "../../src/nanoTodoListStore";
+import { todoListStore } from "@core/nanoTodoListStore";
 import {
   nanoActions,
   useNanoTodoList,
-} from "../src/hooks/useNanoTodolist";
+} from "@/hooks/useNanoTodolist";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

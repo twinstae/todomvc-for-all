@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { atom, action, WritableStore } from "nanostores";
+import { atom, action, type WritableStore } from "nanostores";
 import { domain } from "./domain";
 import { inject } from "./sharedContainer";
 import type { TodoT } from "./global";

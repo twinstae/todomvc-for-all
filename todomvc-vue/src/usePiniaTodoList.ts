@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { TodoT } from '../../src/global'
+import type { TodoT } from '../../todomvc-core/global'
 import { createActionsWithSetState } from '../../src/createActionsWithSetState'
 import { domain } from '../../src/domain'
 
