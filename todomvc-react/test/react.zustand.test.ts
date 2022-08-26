@@ -2,7 +2,7 @@ import {
   useZustandTodoList,
   useZustandActions,
   useZustandStore,
-} from "@todomvc-react/hooks/useZustandTodoList";
+} from "../src/hooks/useZustandTodoList";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

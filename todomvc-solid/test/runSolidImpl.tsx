@@ -6,12 +6,12 @@ import { render } from "solid-testing-library";
 import type { Accessor } from "solid-js";
 import type { JSX } from "solid-js/types/jsx";
 
-import runTest from "../../test/runTest";
-import TodoMvcSolid from "@todomvc-solid/TodoMvcSolid";
-import { provide } from "@todomvc-solid/context";
 import * as shared from "@todomvc-core/sharedContainer";
 import type { TodoT } from "@todomvc-core/global";
 import type { TodoActions } from "@todomvc-core/domain";
+import runTest from "../../test/runTest";
+import { provide } from "../src/context";
+import App from "../src/App";
 
 export function runSolidImpl(
   name: string,
@@ -24,14 +24,13 @@ export function runSolidImpl(
   runTest({
     framework: `solid: ${name}`,
     render: async (init) => {
-      shared.inject("storage").set("todo-list", init);
       provide("useTodoList", useTodoListImpl);
       provide("useActions", useActionsImpl);
       await setup(init);
 
       render(() => (
         <Wrapper init={init}>
-          <TodoMvcSolid />
+          <App />
         </Wrapper>
       ));
     },

@@ -23,7 +23,7 @@ export default function TodoEditingForm(props: {
   return (
     <>
       <label for={props.checkboxId} class="label cursor-pointer p-0 grow">
-        <span class="label-text w-full pl-5" hidden={isEditing()}>
+        <span class="label-text w-full pl-5 text-black" hidden={isEditing()}>
           {props.todo.content}
         </span>
       </label>
@@ -36,7 +36,7 @@ export default function TodoEditingForm(props: {
         }}
       >
         <input
-          hidden={!isEditing}
+          hidden={!isEditing()}
           ref={editRef}
           type="text"
           placeholder={props.todo.content}

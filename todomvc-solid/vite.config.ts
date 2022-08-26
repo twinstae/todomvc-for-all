@@ -25,7 +25,6 @@ export default defineConfig({
     conditions: ['development', 'browser'],
     alias: {
       "@todomvc-core": path.resolve(__dirname, "../todomvc-core"),
-      "@todomvc-solid": path.resolve(__dirname, "./src")
     }
   },
 });

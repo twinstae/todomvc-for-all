@@ -7,7 +7,6 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@todomvc-core/*":["../todomvc-core/*"],
-      "@todomvc-solid/*":["./src/*"]
     }
   },
   "include": ["src", "test"]

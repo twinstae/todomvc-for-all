@@ -6,13 +6,12 @@
 
   const { addTodo } = getActions();
   function onSubmit(e: SubmitEvent) {
-    e.preventDefault();
     addTodo(todoInput);
     todoInput = "";
   }
 </script>
 
-<form on:submit={onSubmit} class="p-0 m-0">
+<form on:submit|preventDefault={onSubmit} class="p-0 m-0">
   <label class="inline-block  grow">
     {strs.addTodoLabel}
     <br />

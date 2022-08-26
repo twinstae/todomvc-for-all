@@ -1,6 +1,6 @@
 import { storeToRefs } from "pinia";
 import { createTestingPinia } from "@pinia/testing";
-import { usePiniaTodoList } from "@todomvc-vue/usePiniaTodoList";
+import { usePiniaTodoList } from "../src/usePiniaTodoList";
 import { runVueImpl } from "./runVueImpl";
 
 runVueImpl(

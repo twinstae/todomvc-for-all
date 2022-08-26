@@ -15,7 +15,7 @@
   aria-label={`할일 ${todo.content}을 완료하시려면 클릭하세요.`}
   checked={todo.isCompleted}
   on:keyup={(e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Space") {
       const checkbox = e.currentTarget;
       completeTodo(todo.id, !checkbox.checked);
     }

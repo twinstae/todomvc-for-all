@@ -2,16 +2,12 @@ import create from "zustand";
 import { persist } from "zustand/middleware";
 import * as shared from "@todomvc-core/sharedContainer";
 import type { TodoT } from "@todomvc-core/global";
-import { domain } from "@todomvc-core/domain";
+import { domain, TodoActions } from "@todomvc-core/domain";
 import { createActionsWithSetState } from "@todomvc-core/createActionsWithSetState";
 
 type TodoListState = {
   todoList: TodoT[];
-  addTodo(content: string): void;
-  completeTodo(id: TodoT["id"], isCompleted: boolean): void;
-  changeTodo(id: TodoT["id"], newContent: string): void;
-  deleteTodo(id: TodoT["id"]): void;
-};
+} & TodoActions;
 
 export const useZustandStore = create<TodoListState, [["zustand/persist", TodoListState]]>(persist((set) => {
   function setTodoList(update: (old: TodoT[]) => TodoT[]) {

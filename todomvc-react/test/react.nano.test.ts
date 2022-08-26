@@ -2,7 +2,7 @@ import { todoListStore } from "@todomvc-core/nanoTodoListStore";
 import {
   nanoActions,
   useNanoTodoList,
-} from "@todomvc-react/hooks/useNanoTodolist";
+} from "../src/hooks/useNanoTodolist";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

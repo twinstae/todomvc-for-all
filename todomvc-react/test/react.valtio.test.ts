@@ -2,7 +2,7 @@ import {
   store,
   useValtioTodoList,
   valtioActions,
-} from "@todomvc-react/hooks/useValtioTodoList";
+} from "../src/hooks/useValtioTodoList";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

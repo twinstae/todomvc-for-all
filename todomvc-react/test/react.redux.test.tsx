@@ -4,7 +4,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import {
   useReduxActions,
   useReduxTodoList,
-} from "@todomvc-react/hooks/useReduxTodoList";
+} from "../src/hooks/useReduxTodoList";
 import { loadSaved, reduxStore } from "@todomvc-core/reduxTodoListStore";
 import { runReactImpl } from "./runReactImpl";
 

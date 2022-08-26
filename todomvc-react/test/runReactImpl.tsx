@@ -5,8 +5,8 @@ import runTest from "../../test/runTest";
 import * as shared from "@todomvc-core/sharedContainer";
 import type { TodoT } from "@todomvc-core/global";
 import type { TodoActions } from "@todomvc-core/domain";
-import App from "@todomvc-react/App";
-import Provider from "@todomvc-react/Provider";
+import App from "../src/App";
+import Provider from "../src/Provider";
 
 export function runReactImpl(
   name: string,

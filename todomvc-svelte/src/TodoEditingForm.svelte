@@ -10,6 +10,11 @@
   let editInputRef: HTMLInputElement;
 
   const { changeTodo } = getActions();
+
+  function onSubmit(){
+    changeTodo(todo.id, editInput);
+    isEditing = false;
+  };
 </script>
 
 <label for={checkboxId} class="label cursor-pointer p-0 grow">
@@ -19,11 +24,7 @@
 </label>
 <form
   class="flex align-middle m-0"
-  on:submit={(e) => {
-    e.preventDefault();
-    changeTodo(todo.id, editInput);
-    isEditing = false;
-  }}
+  on:submit|preventDefault={onSubmit}
 >
   <input
     bind:value={editInput}

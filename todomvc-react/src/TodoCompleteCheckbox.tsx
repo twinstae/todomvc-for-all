@@ -19,7 +19,7 @@ export default function TodoCompleteCheckbox({
       aria-label={`할일 ${todo.content}을 완료하시려면 클릭하세요.`}
       checked={todo.isCompleted}
       onKeyUp={(e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Space") {
           const checkbox = e.target as HTMLInputElement;
           completeTodo(todo.id, !checkbox.checked);
         }
