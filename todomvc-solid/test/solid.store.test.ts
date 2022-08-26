@@ -1,4 +1,4 @@
-import { TodoListWrapper, useTodoActions, useTodoList } from "../src/todoListContext";
+import { TodoListWrapper, useTodoActions, useTodoList } from "@/todoListContext";
 import { runSolidImpl } from "./runSolidImpl";
 
 runSolidImpl(

@@ -1,7 +1,7 @@
 import type { ReadonlyIfObject } from "nanostores/atom";
-import type { TodoT } from "../../todomvc-core/global";
-import type { TodoActions } from "../../src/domain";
-import { createDependency } from "./createDependency";
+import type { TodoT } from "@core/global";
+import type { TodoActions } from "@core/domain";
+import { createDependency } from "@/createDependency";
 
 export interface Subscribable<T> {
   subscribe: (subscription: (value: ReadonlyIfObject<T>) => void) => () => void;

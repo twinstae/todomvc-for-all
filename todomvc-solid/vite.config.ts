@@ -1,5 +1,6 @@
 import defineConfig from '../defineConfig';
 import solidPlugin from 'vite-plugin-solid';
+import path from 'path';
 
 export default defineConfig({
   plugins: [solidPlugin()],
@@ -22,5 +23,9 @@ export default defineConfig({
   },
   resolve: {
     conditions: ['development', 'browser'],
+    alias: {
+      "@core": path.resolve(__dirname, "../todomvc-core"),
+      "@": path.resolve(__dirname, "./src")
+    }
   },
 });

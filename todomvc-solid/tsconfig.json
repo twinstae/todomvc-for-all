@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
-  }
+    "jsxImportSource": "solid-js",
+    "strict": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@core/*":["../todomvc-core/*"],
+      "@/*":["./src/*"]
+    }
+  },
+  "include": ["src", "test"]
 }

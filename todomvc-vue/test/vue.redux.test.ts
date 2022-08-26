@@ -1,4 +1,4 @@
-import { loadSaved, reduxActions, reduxStore } from "../../src/reduxTodoListStore";
+import { loadSaved, reduxActions, reduxStore } from "@core/reduxTodoListStore";
 import { useSelectRef } from "../src/useSelectRef";
 import { runVueImpl } from "./runVueImpl";
 

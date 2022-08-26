@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { TodoT } from "../../todomvc-core/global";
+import type { TodoT } from "@core/global";
 import { ref } from "vue";
-import { useActions } from "./useActions";
+import { useActions } from "@/useActions";
 
 const { todo, checkboxId } = defineProps<{
   checkboxId: string;

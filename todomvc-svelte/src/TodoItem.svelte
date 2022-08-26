@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { TodoT } from "../../src/global";
-  import TodoCompleteCheckbox from "./TodoCompleteCheckbox.svelte";
-  import TodoDeleteButton from "./TodoDeleteButton.svelte";
-  import TodoEditingForm from "./TodoEditingForm.svelte";
-  import { getActions } from "./context";
+  import type { TodoT } from "@core/global";
+  import TodoCompleteCheckbox from "@/TodoCompleteCheckbox.svelte";
+  import TodoDeleteButton from "@/TodoDeleteButton.svelte";
+  import TodoEditingForm from "@/TodoEditingForm.svelte";
+  import { getActions } from "@/context";
 
   export let todo: TodoT;
   const { deleteTodo } = getActions();

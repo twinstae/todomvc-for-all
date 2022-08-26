@@ -1,5 +1,5 @@
-import { TodoActions } from "../../src/domain";
-import createDependency from "./createDependency";
+import { TodoActions } from "@core/domain";
+import createDependency from "@/createDependency";
 
 export const [
   useActionsKey,

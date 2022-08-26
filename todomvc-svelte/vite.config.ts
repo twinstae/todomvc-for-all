@@ -1,18 +1,24 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte'
-import sveltePreprocess from 'svelte-preprocess';
-import defineConfig from '../defineConfig';
-
+import { svelte } from "@sveltejs/vite-plugin-svelte";
+import sveltePreprocess from "svelte-preprocess";
+import defineConfig from "../defineConfig";
+import path from "path";
 
 export default defineConfig({
   plugins: [
     svelte({
       hot: !process.env.VITEST,
-      preprocess: sveltePreprocess()
+      preprocess: sveltePreprocess(),
     }),
   ],
   test: {
     globals: true,
-    environment: 'jsdom',
-    maxThreads: 7
+    environment: "jsdom",
+    maxThreads: 7,
+  },
+  resolve: {
+    alias: {
+      "@core": path.resolve(__dirname, "../todomvc-core"),
+      "@": path.resolve(__dirname, "./src"),      
+    },
   },
 });

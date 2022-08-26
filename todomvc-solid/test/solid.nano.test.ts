@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/solid";
-import { actions, todoListStore } from "../../todomvc-core/nanoTodoListStore";
+import { actions, todoListStore } from "@core/nanoTodoListStore";
 import { runSolidImpl } from "./runSolidImpl";
 
 runSolidImpl(

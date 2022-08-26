@@ -2,7 +2,7 @@ import {
   loadSaved,
   reduxActions,
   reduxStore,
-} from "../../src/reduxTodoListStore";
+} from "@core/reduxTodoListStore";
 import { reduxToSvelte } from "../src/reduxToSvelte";
 import { runSvelteImpl } from "./runSvelteImpl";
 

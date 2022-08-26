@@ -1,11 +1,11 @@
 import { render, RenderOptions } from "@testing-library/vue";
-import type { TodoT } from "../../todomvc-core/global";
-import App from '../src/App.vue';
+import type { TodoT } from "@core/global";
+import App from '@/App.vue';
 import runTest from "../../test/runTest";
-import * as shared from "../../src/sharedContainer";
-import { TodoActions } from "../../src/domain";
-import { useTodoListKey } from '../src/useTodoList';
-import { useActionsKey } from '../src/useActions';
+import * as shared from "@core/sharedContainer";
+import { TodoActions } from "@core/domain";
+import { useTodoListKey } from '@/useTodoList';
+import { useActionsKey } from '@/useActions';
 import type { Ref } from "vue";
 
 export function runVueImpl(
