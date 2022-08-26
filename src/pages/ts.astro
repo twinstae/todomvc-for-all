@@ -1,0 +1,32 @@
+---
+import Layout from "src/layouts/TodoMVCLayout.astro";
+import "../layouts/base.css";
+---
+
+<Layout>
+  <div id="app" class="card shadow-lg rounded-2xl p-4 max-w-lg">
+    <form id="todo-form" class="p-0 m-0">
+      <label class="inline-block grow"
+        >새로운 할일을 적고, Enter를 눌러주세요. <br />
+        <input
+          type="text"
+          name="content"
+          class="input input-bordered w-full"
+          placeholder="react 공부하기"
+        />
+      </label>
+      <button
+        type="submit"
+        class="btn btn-primary btn-sm m-2"
+        aria-label="`새로운 할 일 ${todoInput} 을 추가하시려면 클릭해주세요`"
+      >
+        추가
+      </button>
+    </form>
+    <ul id="todolist-container"></ul>
+  </div>
+  <script>
+    import start from "./todomvc";
+    start();
+  </script>
+</Layout>
