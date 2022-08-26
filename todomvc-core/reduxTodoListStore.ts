@@ -10,7 +10,7 @@ interface TodoListState {
 }
 
 const initialState: TodoListState = {
-  todoList: inject('storage').get('todo-list') as TodoT[] | undefined || [],
+  todoList: inject('storage').get('TODO-LIST') as TodoT[] | undefined || [],
 }
 
 export const todoListSlice = createSlice({
@@ -39,24 +39,18 @@ export const { addTodo, completeTodo, changeTodo, deleteTodo, loadSaved } = todo
 
 export const selectTodoList = (state: RootState) => state.todoList
 
-function persist() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (next: any) => (action: any) => {
-    const result = next(action)
-    inject('storage').set('todo-list', result);
-    return result
-  }
-}
-
 export const reduxStore = configureStore({
   reducer: todoListSlice.reducer,
-  middleware: [persist]
+})
+
+reduxStore.subscribe(() => {
+  inject('storage').set('TODO-LIST', reduxStore.getState().todoList);
 })
 
 export type RootState = ReturnType<typeof reduxStore.getState>
 export type AppDispatch = typeof reduxStore.dispatch
 
-const dispatch = reduxStore.dispatch;
+export const dispatch = reduxStore.dispatch;
 
 export const reduxActions: TodoActions = {
   addTodo(content) {

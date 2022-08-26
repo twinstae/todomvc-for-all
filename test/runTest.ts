@@ -2,8 +2,7 @@ import { describe, it, expect } from "vitest";
 import { screen, waitFor } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-
-import type { TodoT } from "../global";
+import type { TodoT } from "@todomvc-core/global";
 
 interface TodoMVCImpl {
   framework: string;
@@ -37,7 +36,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
 
       expect(checkbox).toBeChecked();
       
-      await userEvent.keyboard("odd{Enter}");
+      await userEvent.keyboard("odd{Space}");
 
       await waitFor(() => {
         expect(checkbox).not.toBeChecked()

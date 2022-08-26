@@ -1,29 +1,30 @@
 {
   "name": "todomvc-for-all",
   "dependencies": {
+    "nanostores": "^0.6.0",
     "@nanostores/persistent": "^0.6.0",
-
     "@reduxjs/toolkit": "^1.8.5",
     "alpinejs": "^3.10.3",
     "astro": "^1.0.6",
     "daisyui": "^2.24.0",
-    "lit": "^2.1.3",
-    "nanostores": "^0.6.0"
+    "lit": "^2.1.3"
   },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "yarn test:react run && yarn test:svelte run && yarn test:vue run && yarn test:solid run",
+    "test": "yarn test:react run && yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run",
     "test:react": "yarn workspace todomvc-react test",
     "test:svelte": "yarn workspace todomvc-svelte test",
     "test:vue": "yarn workspace todomvc-vue test",
     "test:solid": "yarn workspace todomvc-solid test",
     "test:alpine": "vitest --config ./vitest.alpine.config.ts",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "serve": "npx http-server dist -p 8000"
   },
   "devDependencies": {
+    "@astrojs/alpinejs": "^0.1.0",
     "@astrojs/lit": "^1.0.0",
     "@astrojs/mdx": "^0.10.0",
     "@astrojs/react": "^1.0.0",
@@ -50,5 +51,11 @@
     "vitest": "^0.22.1"
   },
   "private": true,
-  "workspaces": ["todomvc-react", "todomvc-vue", "todomvc-svelte", "todomvc-solid", "todomvc-alpine"]
+  "workspaces": [
+    "todomvc-react",
+    "todomvc-vue",
+    "todomvc-svelte",
+    "todomvc-solid",
+    "todomvc-alpine"
+  ]
 }

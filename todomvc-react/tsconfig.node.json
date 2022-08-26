@@ -6,5 +6,5 @@
     "allowSyntheticDefaultImports": true,
     "rootDir": ".."
   },
-  "include": ["vite.config.ts", "defineConfig.ts", ""]
+  "include": ["vite.config.ts", "../defineConfig.ts", ""]
 }

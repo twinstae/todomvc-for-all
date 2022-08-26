@@ -6,7 +6,7 @@ const src = ['react', 'vue', 'svelte', 'solid', 'lit'].includes(framework)
   : `/assets/${framework}.svg`;
 ---
 
-<li class="card card-bordered card--minimal p-2 w-fit m-2">
+<li class="card card-bordered card--minimal p-2 w-fit m-2 bg-primary-content">
   <a href={"/" + framework} aria-current="false" class="text-center">
     <figure style="height: 80px; width: 80px;">
       <img
@@ -25,11 +25,11 @@ const src = ['react', 'vue', 'svelte', 'solid', 'lit'].includes(framework)
 <style>
 .card {
   transition: all 0.25s;
-  box-shadow: 15px 28px 25px -18px rgb(0 0 0 / 20%);
+  box-shadow: 15px 28px 25px -18px rgb(255 255 255 / 20%);
 }
 
 .card:hover {
-    transform: translate3d(0,2px,0);
-    box-shadow: 2px 8px 8px -5px rgb(0 0 0 / 30%);
+  transform: translate3d(0,2px,0);
+  box-shadow: 2px 8px 8px -5px rgba(255, 255, 255, 0.293);
 }
 </style>

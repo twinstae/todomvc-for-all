@@ -1,16 +1,23 @@
+---
+import "../layouts/base.css";
+import Layout from "../layouts/TodoMVCLayout.astro";
+---
+
+<Layout framework="Alpine">
   <div
     id="app"
     class="card shadow-lg rounded-2xl p-4 max-w-lg"
-    x-data="{ _count: 0, todoList: [], todoInput: '' }"
-    @notify="todoList = $event.detail.todoList" 
+    x-data="{ _count: 0, todoList: JSON.parse(localStorage.getItem('todo-list') ?? '[]'), todoInput: '' }"
+    @notify="todoList = $event.detail.todoList"
+    x-effect="localStorage.setItem('todo-list', JSON.stringify(todoList))"
   >
     <form
       class="p-0 m-0"
       @submit.prevent="() => {
-        if(todoInput === '') return;
-        todoList.push({ id: _count++, content: todoInput, isCompleted: false });
-        todoInput = ''
-      }"
+            if(todoInput === '') return;
+            todoList.push({ id: _count++, content: todoInput, isCompleted: false });
+            todoInput = ''
+          }"
     >
       <label class="inline-block grow"
         >새로운 할일을 적고, Enter를 눌러주세요. <br />
@@ -19,7 +26,8 @@
           class="input input-bordered w-full"
           placeholder="react 공부하기"
           x-model="todoInput"
-      /></label>
+        />
+      </label>
       <button
         type="submit"
         class="btn btn-primary btn-sm m-2"
@@ -30,28 +38,34 @@
     </form>
     <ul>
       <template x-for="todo in todoList" :key="todo.id">
-        <li class="mt-1 flex align-middle" x-data="{ isEditing: false, editInput: ''+todo.content }">
+        <li
+          class="mt-1 flex align-middle"
+          x-data="{ isEditing: false, editInput: ''+todo.content }"
+        >
           <input
             id="todo-checkbox-1"
             type="checkbox"
             class="checkbox checkbox-lg mr-2 self-center"
             :value="todo.isCompleted"
             :aria-label="`할일 ${todo.content} 완료하시려면 클릭하세요.`"
-            @keyup.enter="(e) => {
-              e.target.checked = ! e.target.checked
-            }"
+            @keyup.space="(e) => {
+                  e.target.checked = ! e.target.checked
+                }"
             @change="e => {
-              todoList.find(item => item.id === todo.id).isCompleted = e.target.checked;
-            }"
+                  todoList.find(item => item.id === todo.id).isCompleted = e.target.checked;
+                }"
           />
           <label for="todo-checkbox-1" class="label cursor-pointer p-0 grow"
-            ><span class="label-text w-full pl-5" x-text="todo.content"></span></label
+            ><span class="label-text w-full pl-5" x-text="todo.content"></span>
+          </label>
+          <form
+            class="flex align-middle m-0"
+            @submit.prevent="() => {
+                if(editInput === '') return;
+                todoList.find(item => item.id === todo.id).content = editInput;
+                isEditing = false
+              }"
           >
-          <form class="flex align-middle m-0" @submit.prevent="() => {
-            if(editInput === '') return;
-            todoList.find(item => item.id === todo.id).content = editInput;
-            isEditing = false
-          }">
             <input
               type="text"
               x-ref="edit"
@@ -66,9 +80,9 @@
               class="btn btn-primary btn-sm m-2"
               :aria-label="`할일 ${todo.content} 수정하시려면 클릭하세요`"
               @click="() => {
-                isEditing = true;
-                $refs.edit.focus()
-              }"
+                    isEditing = true;
+                    $refs.edit.focus()
+                  }"
             >
               수정
             </button>
@@ -77,8 +91,8 @@
               type="submit"
               class="btn btn-primary btn-sm m-2"
               :aria-label="`할일을 ${
-                todo.content
-              }에서 ${editInput}로 수정하시려면 클릭하세요.`"
+                    todo.content
+                  }에서 ${editInput}로 수정하시려면 클릭하세요.`"
             >
               완료
             </button>
@@ -88,8 +102,8 @@
             class="btn btn-error btn-sm m-2 mr-0"
             aria-label="할일 테스트하기 삭제하시려면 클릭하시거나 Delete 키를 누르세요."
             @click="() => {
-              todoList = todoList.filter(item => item.id !== todo.id)
-            }"
+                  todoList = todoList.filter(item => item.id !== todo.id)
+                }"
           >
             삭제
           </button>
@@ -97,3 +111,4 @@
       </template>
     </ul>
   </div>
+</Layout>

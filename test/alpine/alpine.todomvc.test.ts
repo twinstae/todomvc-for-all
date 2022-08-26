@@ -1,13 +1,23 @@
 import { render } from "./render";
 // eslint-disable-next-line import/no-unresolved
-import todomvcHTML from "../../frameworks/alpine/alpine-todomvc.html?raw";
+import todomvcHTML from "../../src/pages/alpine.astro?raw";
 import runTest from "../runTest";
-import { TodoT } from "../../global";
+import type { TodoT } from "@todomvc-core/global";
 
 runTest({
   framework: `alpine`,
   render: async (init) => {
+    const _storage = new Map();
+    window.localStorage = {
+      getItem(key){
+        return _storage.get(key)
+      },
+      setItem(key, value){
+        return _storage.set(key, value)
+      }
+    }
     render(todomvcHTML);
+
     const app = document.getElementById("app")
     if (app){
       app.dispatchEvent(

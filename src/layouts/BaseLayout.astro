@@ -2,11 +2,10 @@
 import './base.css';
 const { frontmatter } = Astro.props;
 ---
-<html>
+<html data-theme="halloween">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>{frontmatter.title}</title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   </head>
   <body>
     <article>
