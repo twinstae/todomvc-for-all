@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import strs from "@core/strs";
-import { useActions } from "@/useActions";
+import strs from "@todomvc-core/strs";
+import { useActions } from "./useActions";
 
 const todoInput = ref("");
 

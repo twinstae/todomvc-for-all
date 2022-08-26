@@ -6,6 +6,14 @@
 		"types": ["vite/client"],
 		"resolveJsonModule": true,
 		"allowSyntheticDefaultImports": true,
-		"jsx": "preserve"
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"@todomvc-core/*": ["todomvc-core/*"],
+			"@todomvc-react/*": ["todomvc-react/src/*"],
+			"@todomvc-svelte/*": ["todomvc-svelte/src/*"],
+			"@todomvc-solid/*": ["todomvc-solid/src/*"],
+			"@todomvc-vue/*": ["todomvc-vue/src/*"]
+		}
 	}
 }

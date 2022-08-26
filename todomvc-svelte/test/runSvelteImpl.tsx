@@ -1,11 +1,11 @@
 import { render } from "@testing-library/svelte";
 
-import AppWithDependency from '@/AppWithDependency.svelte';
+import AppWithDependency from '@todomvc-svelte/AppWithDependency.svelte';
 import runTest from "../../test/runTest";
-import type { TodoT } from "@core/global";
-import * as shared from "@core/sharedContainer";
-import type { Subscribable } from "@/context";
-import type { TodoActions } from "@core/domain";
+import type { TodoT } from "@todomvc-core/global";
+import * as shared from "@todomvc-core/sharedContainer";
+import type { Subscribable } from "@todomvc-svelte/context";
+import type { TodoActions } from "@todomvc-core/domain";
 
 export function runSvelteImpl(
   name: string,

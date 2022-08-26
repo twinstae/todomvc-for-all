@@ -3,7 +3,7 @@ import { RecoilRoot } from "recoil";
 import {
   useRecoilActions,
   useRecoilTodoList,
-} from "@/hooks/useRecoilTodoList";
+} from "@todomvc-react/hooks/useRecoilTodoList";
 import { runReactImpl } from "./runReactImpl";
 
 runReactImpl(

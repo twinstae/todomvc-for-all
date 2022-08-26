@@ -1,5 +1,5 @@
-import { loadSaved, reduxActions, reduxStore } from "@core/reduxTodoListStore";
-import { useReduxStore } from "@/useReduxStore";
+import { loadSaved, reduxActions, reduxStore } from "@todomvc-core/reduxTodoListStore";
+import { useReduxStore } from "@todomvc-solid/useReduxStore";
 import { runSolidImpl } from "./runSolidImpl";
 
 runSolidImpl(

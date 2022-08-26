@@ -17,8 +17,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@core/*": ["../todomvc-core/*"],
-      "@/*": ["./src/*"]
+      "@todomvc-react/*": ["./src/*"],
+      "@todomvc-core/*": ["../todomvc-core/*"]
     }
   },
   "include": ["src", "test"],

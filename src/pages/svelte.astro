@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/TodoMVCLayout.astro";
-import TodoMvcSvelte from "../../todomvc-svelte/src/TodoMVCSvelte.svelte";
+import TodoMvcSvelte from "@todomvc-svelte/TodoMVCSvelte.svelte";
 ---
 <Layout framework="svelte">
-    <TodoMvcSvelte client:load />
+    <TodoMvcSvelte client:only="svelte" />
 </Layout>

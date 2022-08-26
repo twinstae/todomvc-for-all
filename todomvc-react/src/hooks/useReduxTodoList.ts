@@ -6,9 +6,9 @@ import {
   completeTodo,
   deleteTodo,
   selectTodoList,
-} from "@core/reduxTodoListStore";
-import type { TodoT } from "@core/global";
-import { TodoActions } from "@core/domain";
+} from "@todomvc-core/reduxTodoListStore";
+import type { TodoT } from "@todomvc-core/global";
+import { TodoActions } from "@todomvc-core/domain";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 

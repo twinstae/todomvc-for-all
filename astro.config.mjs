@@ -6,16 +6,9 @@ import svelte from "@astrojs/svelte";
 import vue from "@astrojs/vue";
 import solidJs from "@astrojs/solid-js";
 import lit from "@astrojs/lit";
+import path from "path";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    react(),
-    tailwind(),
-    mdx(),
-    svelte(),
-    vue(),
-    solidJs(),
-    lit()
-  ],
+  integrations: [react(), tailwind(), mdx(), svelte(), vue(), solidJs(), lit()],
 });

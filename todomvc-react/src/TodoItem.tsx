@@ -1,9 +1,9 @@
 import React from "react";
-import type { TodoT } from "@core/global";
-import TodoCompleteCheckbox from "@/TodoCompleteCheckbox";
-import TodoDeleteButton from "@/TodoDeleteButton";
-import TodoEditingForm from "@/TodoEditingForm";
-import { useActions } from "@/useActions";
+import type { TodoT } from "@todomvc-core/global";
+import TodoCompleteCheckbox from "@todomvc-react/TodoCompleteCheckbox";
+import TodoDeleteButton from "@todomvc-react/TodoDeleteButton";
+import TodoEditingForm from "@todomvc-react/TodoEditingForm";
+import { useActions } from "@todomvc-react/useActions";
 
 interface TodoItemProps {
   todo: TodoT;

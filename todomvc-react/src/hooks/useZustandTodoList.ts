@@ -1,9 +1,9 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import * as shared from "@core/sharedContainer";
-import type { TodoT } from "@core/global";
-import { domain } from "@core/domain";
-import { createActionsWithSetState } from "@core/createActionsWithSetState";
+import * as shared from "@todomvc-core/sharedContainer";
+import type { TodoT } from "@todomvc-core/global";
+import { domain } from "@todomvc-core/domain";
+import { createActionsWithSetState } from "@todomvc-core/createActionsWithSetState";
 
 type TodoListState = {
   todoList: TodoT[];

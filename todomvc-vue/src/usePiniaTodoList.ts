@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import type { TodoT } from '@core/global'
-import { createActionsWithSetState } from '@core/createActionsWithSetState'
-import { domain } from '@core/domain'
+import type { TodoT } from '@todomvc-core/global'
+import { createActionsWithSetState } from '@todomvc-core/createActionsWithSetState'
+import { domain } from '@todomvc-core/domain'
 
 export const usePiniaTodoList = defineStore('todoList', {
   state: () => ({

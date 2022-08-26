@@ -1,6 +1,6 @@
 <script lang="ts">
-  import strs from "@core/strs";
-  import { getActions } from "@/context";
+  import strs from "@todomvc-core/strs";
+  import { getActions } from "./context";
 
   let todoInput: string = "";
 

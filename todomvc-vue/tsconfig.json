@@ -13,8 +13,7 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "paths": {
-      "@core/*": ["../todomvc-core/*"],
-      "@/*": ["./src/*"]
+      "@todomvc-core/*": ["../todomvc-core/*"],
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "test"],

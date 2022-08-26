@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { getTodoListStore } from "@/context";
-  import TodoForm from "@/TodoForm.svelte";
-  import TodoItem from "@/TodoItem.svelte";
+  import { getTodoListStore } from "./context";
+  import TodoForm from "./TodoForm.svelte";
+  import TodoItem from "./TodoItem.svelte";
 
   const todoList = getTodoListStore();
 </script>

@@ -17,8 +17,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@core": path.resolve(__dirname, "../todomvc-core"),
-      "@": path.resolve(__dirname, "./src"),      
+      "@todomvc-core": path.resolve(__dirname, "../todomvc-core"),
+      "@todomvc-svelte": path.resolve(__dirname, "./src"),      
     },
   },
 });

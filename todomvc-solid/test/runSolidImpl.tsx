@@ -7,11 +7,11 @@ import type { Accessor } from "solid-js";
 import type { JSX } from "solid-js/types/jsx";
 
 import runTest from "../../test/runTest";
-import TodoMvcSolid from "@/TodoMvcSolid";
-import { provide } from "@/context";
-import * as shared from "@core/sharedContainer";
-import type { TodoT } from "@core/global";
-import type { TodoActions } from "@core/domain";
+import TodoMvcSolid from "@todomvc-solid/TodoMvcSolid";
+import { provide } from "@todomvc-solid/context";
+import * as shared from "@todomvc-core/sharedContainer";
+import type { TodoT } from "@todomvc-core/global";
+import type { TodoActions } from "@todomvc-core/domain";
 
 export function runSolidImpl(
   name: string,

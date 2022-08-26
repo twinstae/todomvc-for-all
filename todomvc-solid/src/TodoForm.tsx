@@ -3,7 +3,7 @@
 /** @jsxImportSource solid-js */
 
 import { createSignal } from 'solid-js';
-import strs from '@core/strs';
+import strs from '@todomvc-core/strs';
 import { inject } from './context';
 
 export default function TodoForm() {

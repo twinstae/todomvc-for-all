@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { TodoT } from "@core/global";
-  import { getActions } from "@/context";
+  import type { TodoT } from "@todomvc-core/global";
+  import { getActions } from "./context";
 
   export let todo: TodoT;
   export let checkboxId: string;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import strs from "@core/strs";
-import { useActions } from "@/useActions";
+import strs from "@todomvc-core/strs";
+import { useActions } from "@todomvc-react/useActions";
 
 export default function TodoForm() {
   const { addTodo } = useActions();

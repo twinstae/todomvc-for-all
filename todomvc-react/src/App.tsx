@@ -1,7 +1,7 @@
 import React from "react";
-import TodoForm from "@/TodoForm";
-import TodoItem from "@/TodoItem";
-import { useTodoList } from "@/useTodoList";
+import TodoForm from "@todomvc-react/TodoForm";
+import TodoItem from "@todomvc-react/TodoItem";
+import { useTodoList } from "@todomvc-react/useTodoList";
 
 export default function App() {
   const { todoList } = useTodoList();
