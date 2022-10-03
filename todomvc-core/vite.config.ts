@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [
   ],
   test: {
-    globals: true,
-    maxThreads: 7
+    globals: true
   }
 });

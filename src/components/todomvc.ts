@@ -61,21 +61,31 @@ function h<K extends keyof HTMLElementTagNameMap>(
 
 export default function start() {
   function createTodoItem(todo: TodoT) {
-    if (todo === undefined) return;
+    if (todo === undefined) {
+      return;
+    }
 
     const $todoText = h(
-      "span",
+      "label",
       {
-        class: "label-text w-full pl-5",
+        for: "todo-checkbox-1",
+        class: "label cursor-pointer p-0 grow w-80",
       },
-      todo.content
+      [
+        h(
+          "span",
+          {
+            class: "label-text w-full pl-5",
+          },
+          todo.content
+        ),
+      ]
     );
 
     const $editInput = h("input", {
-      type: `text`,
+      type: "text",
       placeholder: todo.content,
-      class: `input input-bordered input-sm w-full m-2`,
-      hidden: true,
+      class: "input input-bordered input-sm w-80 ml-2 mt-2",
       value: todo.content,
       onchange: () => {
         $editSubmitButton.setAttribute(
@@ -92,7 +102,7 @@ export default function start() {
         class: "btn btn-primary btn-sm m-2 no-animation",
         "aria-label": `할일을 ${todo.content}에서 ${todo.content}로 수정하시려면 클릭하세요.`,
       },
-      `완료`
+      "완료"
     );
 
     const $editStartButton = h(
@@ -101,20 +111,20 @@ export default function start() {
         type: "button",
         class: "btn btn-primary btn-sm m-2 no-animation",
         "aria-label": `할일 ${todo.content} 수정하시려면 클릭하세요`,
-        onclick: (e) => {
-          $todoText.hidden = true;
-          $editInput.hidden = false;
+        onclick: () => {
+          $todoText.remove();
+          $editStartButton.before($editInput);
           $editInput.focus();
           $editStartButton.replaceWith($editSubmitButton);
         },
       },
-      `수정`
+      "수정"
     ) as HTMLButtonElement;
 
     const $checkbox = h("input", {
       id: `todo-checkbox-${todo.id}`,
       type: "checkbox",
-      class: `checkbox checkbox-lg mr-2 self-center`,
+      class: "checkbox checkbox-lg mr-2 self-center",
       checked: todo.isCompleted,
       onkeyup: (e) => {
         if (e.key === "Space") {
@@ -133,7 +143,7 @@ export default function start() {
       "button",
       {
         type: "button",
-        class: "btn btn-error btn-sm m-2 mr-0 no-animation",
+        class: "btn btn-outline btn-sm m-2 mr-0 no-animation",
         "aria-label": `할일 ${todo.content} 삭제하시려면 클릭하시거나 Delete 키를 누르세요.`,
         onclick: () => actions.deleteTodo(todo.id),
       },
@@ -144,11 +154,11 @@ export default function start() {
       e.preventDefault();
 
       const newContent = $editInput.value;
-      $todoText.textContent = newContent;
-      $todoText.hidden = false;
+      $todoText.children[0].textContent = newContent;
 
-      $editInput.hidden = true;
       $editInput.placeholder = newContent;
+      $checkbox.after($todoText);
+      $editInput.remove();
 
       $editStartButton.setAttribute(
         "aria-label",
@@ -175,30 +185,23 @@ export default function start() {
 
     const $item = h(
       "li",
-      { id: "todo-" + todo.id, class: "mt-1 flex align-middle" },
+      { id: `todo-${todo.id}`, class: "mt-1 flex align-middle" },
       [
         $checkbox,
-        h(
-          "label",
-          {
-            for: "todo-checkbox-1",
-            class: "label cursor-pointer p-0 grow",
-          },
-          [$todoText]
-        ),
+        $todoText,
         h(
           "form",
           {
             class: "flex align-middle m-0",
             onsubmit,
           },
-          [$editInput, $editStartButton]
+          [$editStartButton]
         ),
         $deleteButton,
       ]
     );
 
-    return { $item, $checkbox, $todoText };
+    return $item;
   }
 
   const $todoList = document.getElementById("todolist-container")!;
@@ -207,11 +210,11 @@ export default function start() {
     todoList.forEach((todo, i) => {
       const child = $todoList.children[i];
       if (child === undefined) {
-        const ref = createTodoItem(todo);
-        $todoList.appendChild(ref.$item);
-      } else if ("todo-" + todo.id !== child?.id) {
-        const ref = createTodoItem(todo);
-        child.replaceWith(ref.$item);
+        const $item = createTodoItem(todo);
+        $todoList.appendChild($item);
+      } else if (`todo-${todo.id}` !== child?.id) {
+        const $item = createTodoItem(todo);
+        child.replaceWith($item);
       }
     });
     while (todoList.length < $todoList.children.length) {

@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import todomvcHTML from "../../src/pages/ts.astro?raw";
 import runTest from "../runTest";
-import start from "../../src/pages/todomvc";
+import start from "../../src/components/todomvc";
 import { reduxStore, loadSaved } from "@todomvc-core/reduxTodoListStore";
 import { todoListStore } from "@todomvc-core/nanoTodoListStore";
 

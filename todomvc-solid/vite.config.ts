@@ -18,8 +18,7 @@ export default defineConfig({
       registerNodeLoader: true,
     },
     globals: true,
-    environment: 'jsdom',
-    maxThreads: 7
+    environment: 'jsdom'
   },
   resolve: {
     conditions: ['development', 'browser'],

@@ -20,7 +20,9 @@ export default function TodoEditingForm({
   }, [isEditing]);
 
   const startEdit = () => {
-    if (!isEditing) setTimeout(() => setIsEditing(true), 10);
+    if (!isEditing) {
+      setTimeout(() => setIsEditing(true), 10);
+    }
   };
 
   const { changeTodo } = useActions();
@@ -48,7 +50,9 @@ export default function TodoEditingForm({
           value={editInput}
           className="input input-bordered input-sm w-full m-2"
           onChange={(e) => {
-            if (isEditing) setEditInput(e.target.value);
+            if (isEditing) {
+              setEditInput(e.target.value);
+            }
           }}
         />
         {isEditing ? (

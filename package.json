@@ -1,13 +1,13 @@
 {
   "name": "todomvc-for-all",
   "dependencies": {
-    "nanostores": "^0.6.0",
     "@nanostores/persistent": "^0.6.0",
     "@reduxjs/toolkit": "^1.8.5",
     "alpinejs": "^3.10.3",
     "astro": "^1.0.6",
     "daisyui": "^2.24.0",
-    "lit": "^2.1.3"
+    "lit": "^2.1.3",
+    "nanostores": "^0.6.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -24,7 +24,6 @@
     "serve": "npx http-server dist -p 8000"
   },
   "devDependencies": {
-    "@astrojs/alpinejs": "^0.1.0",
     "@astrojs/lit": "^1.0.0",
     "@astrojs/mdx": "^0.10.0",
     "@astrojs/react": "^1.0.0",
@@ -57,5 +56,6 @@
     "todomvc-svelte",
     "todomvc-solid",
     "todomvc-alpine"
-  ]
+  ],
+  "packageManager": "yarn@3.2.3"
 }

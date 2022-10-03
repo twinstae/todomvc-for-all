@@ -8,10 +8,8 @@ import solidJs from "@astrojs/solid-js";
 import lit from "@astrojs/lit";
 import path from "path";
 
-import alpinejs from "@astrojs/alpinejs";
-
 // https://astro.build/config
 export default defineConfig({
   site: 'http://localhost:8000',
-  integrations: [react(), tailwind(), mdx(), svelte(), vue(), solidJs(), lit(), alpinejs()]
+  integrations: [react(), tailwind(), mdx(), svelte(), vue(), solidJs(), lit()]
 });

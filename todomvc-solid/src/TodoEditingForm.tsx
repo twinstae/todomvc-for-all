@@ -14,8 +14,8 @@ export default function TodoEditingForm(props: {
   const [isEditing, setIsEditing] = createSignal(false);
   let editRef: HTMLInputElement | undefined;
   const startEdit = () => {
-    editRef?.focus();
     setIsEditing(true);
+    editRef?.focus();
   };
 
   const { changeTodo } = inject("useActions")();

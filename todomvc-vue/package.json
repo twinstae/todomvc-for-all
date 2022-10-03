@@ -7,16 +7,16 @@
     "test": "vitest"
   },
   "dependencies": {
-    "vue": "^3.2.37",
+    "@nanostores/vue": "^0.6.0",
     "pinia": "^2.0.20",
-    "@nanostores/vue": "^0.6.0"
+    "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.3",
     "@pinia/testing": "^0.0.14",
+    "@testing-library/vue": "^6.6.1",
+    "@vitejs/plugin-vue": "^3.0.3",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
-    "vue-tsc": "^0.39.5",
-    "@testing-library/vue": "^6.6.1"
+    "vue-tsc": "^0.39.5"
   }
 }

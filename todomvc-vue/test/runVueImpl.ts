@@ -1,7 +1,6 @@
 import { render, RenderOptions } from "@testing-library/vue";
 import type { Ref } from "vue";
 import type { TodoT } from "@todomvc-core/global";
-import * as shared from "@todomvc-core/sharedContainer";
 import { TodoActions } from "@todomvc-core/domain";
 import App from '../src/App.vue';
 import runTest from "../../test/runTest";

@@ -1,17 +1,89 @@
 ---
-import './base.css';
+import "./base.css";
 const { frontmatter } = Astro.props;
 ---
-<html data-theme="halloween">
+
+<html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>{frontmatter.title}</title>
   </head>
-  <body>
-    <article>
-        <h1>{frontmatter.title} by {frontmatter.author}</h1>
-        <span>{frontmatter.date}</span>
-        <slot />
+  <body class="flex justify-center">
+    <article class="p-4 m-4 shadow-2xl rounded-lg max-w-2xl">
+      <h1>{frontmatter.title}</h1>
+      <p class="text-sm"> by {frontmatter.author}</p>
+      <p class="text-sm">{frontmatter.date}</p>
+      <slot />
     </article>
+    <style is:global>
+      h1,
+      h2 {
+        padding-bottom: 0.5rem/* 8px */;
+        padding-top: 0.25rem/* 4px */;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 1.875rem/* 30px */;
+        line-height: 2.25rem/* 36px */;
+      }
+      h2 {
+        font-size: 1.25rem/* 20px */;
+        line-height: 1.75rem/* 28px */;
+      }
+      h3 {
+        font-size: 1.125rem/* 18px */;
+        line-height: 1.75rem/* 28px */;
+      }
+      ul {
+        list-style-type: disc;
+        padding-inline-start: 2rem;
+      }
+      p {
+        padding-bottom: 0.25rem/* 4px */
+      }
+      body {
+        font-family: Pretendard, sans-serif;
+        --react: #087EA4;
+        --vue: #33a06f;
+        --svelte: #e34e00;
+        --solid: #2c4f7c;
+        --lit: #324fff;
+        --rescript: #E6484F;
+        --elm: #1293D8;
+      }
+      code {
+        border-radius: 0.3em;
+        padding: 0.1em 0.3em;
+      }
+      code[framework="react"] {
+        background: #E6F7FF;
+        color: #087EA4;
+      }
+      code[framework="vue"] {
+        background: #d1fae8;
+        color: #33a06f;
+      }
+      code[framework="svelte"] {
+        background: #f0cbc9;
+        color: #e34e00;
+      }
+      code[framework="solid"] {
+        background: #b8d7ff;
+        color: #2c4f7c;
+      }
+      code[framework="lit"] {
+        background: #324fff;
+        color: #fff;
+      }
+      code[framework="rescript"] {
+        background: #E6484F;
+        color: #fff;
+      }
+      code[framework="elm"] {
+        background: #1293D8;
+        color: #fff;
+      }
+      
+    </style>
   </body>
 </html>

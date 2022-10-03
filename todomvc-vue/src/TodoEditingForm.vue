@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { TodoT } from "@todomvc-core/global";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useActions } from "./useActions";
 
 const { todo, checkboxId } = defineProps<{
@@ -16,8 +16,11 @@ const { changeTodo } = useActions();
 
 function startEdit() {
   isEditing.value = true;
-  editInputRef.value?.focus();
 }
+
+watch(isEditing, (v) => {
+  v && editInputRef.value?.focus();
+})
 </script>
 <template>
   <label :for="checkboxId" class="label cursor-pointer p-0 grow">

@@ -1,9 +1,11 @@
 ---
 import Layout from "src/layouts/TodoMVCLayout.astro";
 import "../layouts/base.css";
+import "../layouts/material.css";
 ---
 
-<Layout framework="typescript">
+<Layout framework="material typescript">
+
   <div id="app" class="card shadow-lg rounded-2xl p-4 max-w-lg">
     <form id="todo-form" class="p-0 m-0">
       <label class="inline-block grow"
@@ -11,13 +13,13 @@ import "../layouts/base.css";
         <input
           type="text"
           name="content"
-          class="input input-bordered w-full"
+          class="p-2 w-full"
           placeholder="react 공부하기"
         />
       </label>
       <button
         type="submit"
-        class="btn btn-primary btn-sm m-2"
+        class="btn-primary btn-sm m-2"
         aria-label="`새로운 할 일 ${todoInput} 을 추가하시려면 클릭해주세요`"
       >
         추가

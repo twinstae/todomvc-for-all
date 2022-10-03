@@ -9,6 +9,8 @@
   let isEditing = false;
   let editInputRef: HTMLInputElement;
 
+  $: isEditing && editInputRef.focus();
+
   const { changeTodo } = getActions();
 
   function onSubmit(){
@@ -48,7 +50,6 @@
       class="btn btn-primary btn-sm m-2"
       on:click={() => {
         isEditing = true;
-        editInputRef.focus()
       }}
       aria-label={`할일 ${todo.content}을 수정하시려면 클릭하세요.`}
     >

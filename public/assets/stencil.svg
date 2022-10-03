@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   xml:space="preserve"
+   id="svg2523"
+   sodipodi:docname="stencil.svg"
+   inkscape:version="1.2 (1:1.2.1+202207142221+cd75a1ee6d)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview2525"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="0.81542969"
+   inkscape:cx="-374.03593"
+   inkscape:cy="-223.80838"
+   inkscape:window-width="1920"
+   inkscape:window-height="1019"
+   inkscape:window-x="0"
+   inkscape:window-y="33"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg2523" />
+  <desc
+   id="desc2515">Created with Fabric.js 3.6.3</desc>
+  <defs
+   id="defs2517">
+    
+  </defs>
+  <path
+   style="fill:#000000;fill-rule:nonzero;stroke:none;stroke-width:0.9;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+   d="M 95.619462,84.019391 69.619271,112.5031 H 21.779301 L 47.520576,84.019391 Z M 126.30013,50.261243 100.31386,78.744664 H 1.5 L 27.486363,50.261243 Z M 106.01963,16.503 80.139442,44.986565 H 32.179712 L 58.098299,16.503 Z"
+   stroke-linecap="round"
+   id="path2519"
+   sodipodi:nodetypes="ccccccccccccccc" />
+</svg>

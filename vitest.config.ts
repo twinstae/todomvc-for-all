@@ -5,8 +5,7 @@ export default defineConfig({
   test: {
     include: ['./test/alpine/*.test.ts', './test/ts/*.test.ts'],
     globals: true,
-    environment: 'jsdom',
-    maxThreads: 7
+    environment: 'jsdom'
   },
   resolve: {
     alias: {

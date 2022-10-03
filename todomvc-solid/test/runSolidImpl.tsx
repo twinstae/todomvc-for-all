@@ -6,7 +6,6 @@ import { render } from "solid-testing-library";
 import type { Accessor } from "solid-js";
 import type { JSX } from "solid-js/types/jsx";
 
-import * as shared from "@todomvc-core/sharedContainer";
 import type { TodoT } from "@todomvc-core/global";
 import type { TodoActions } from "@todomvc-core/domain";
 import runTest from "../../test/runTest";
