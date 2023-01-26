@@ -11,14 +11,10 @@ export default defineConfig({
     target: 'esnext',
   },
   test: {
-    transformMode: {
-      web: [/.[jt]sx?/],
-    },
-    deps: {
-      registerNodeLoader: true,
-    },
     globals: true,
-    environment: 'jsdom'
+    environment: 'jsdom',
+    setupFiles: ['/home/taehee/github/todomvc-for-all/node_modules/@testing-library/jest-dom/extend-expect.js'],
+    deps: { registerNodeLoader: true },
   },
   resolve: {
     conditions: ['development', 'browser'],
