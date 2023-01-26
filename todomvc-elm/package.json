@@ -1,0 +1,12 @@
+{
+  "name": "todomvc-elm",
+  "packageManager": "yarn@3.3.1",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "vite": "^4.0.4",
+    "vite-plugin-elm": "^2.7.2",
+    "vitest": "^0.28.2"
+  }
+}

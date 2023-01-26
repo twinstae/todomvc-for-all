@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Elm</title>
+		<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+		<style>
+			.flex {
+				display: flex;
+			}
+			.flex-row {
+				flex-direction: row;
+			}
+			.flex-col {
+				flex-direction: column;
+			}
+			.space-between {
+				justify-content: space-between;
+			}
+			.w-64 {
+				width: 16rem;
+			}
+			.w-full {
+				width: 100%;
+			}
+			.gap-2 {
+				gap: 1rem;
+			}
+			.btn {
+				flex-grow:unset;
+				width: fit-content;
+			}
+			body {
+				padding: 2rem;
+			}
+			article {
+				flex-direction: row;
+				justify-items: center;
+				justify-content: center;
+				text-align: center;
+				align-items: center;
+			}
+		</style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/TodoMVCLayout.astro";
+---
+
+<Layout framework="elm">
+  <div id="root"></div>
+  <script>
+    import { Elm } from "@todomvc-elm/App.elm";
+
+    const root = document.getElementById("root");
+
+    const app = Elm.App.init({
+      node: root,
+      flags: JSON.parse(localStorage.getItem('todo-list') ?? '[]'),
+    });
+
+    app.ports.saveTodoList.subscribe((todoList) => {
+      console.log(todoList);
+      localStorage.setItem("todo-list", JSON.stringify(todoList));
+    });
+  </script>
+</Layout>

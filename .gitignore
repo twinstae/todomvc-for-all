@@ -4,3 +4,5 @@ yarn.lock
 node_modules
 .editorconfig
 dist
+elm-stuff
+node_modules

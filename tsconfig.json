@@ -14,7 +14,8 @@
 			"@todomvc-svelte/*": ["todomvc-svelte/src/*"],
 			"@todomvc-solid/*": ["todomvc-solid/src/*"],
 			"@todomvc-vue/*": ["todomvc-vue/src/*"],
-			"@todomvc-rescript/*": ["todomvc-rescript/src/*"]
+			"@todomvc-rescript/*": ["todomvc-rescript/src/*"],
+			"@todomvc-elm/*": ["todomvc-elm/src/*"]
 		}
 	},
 	"include": ["src", "test"]

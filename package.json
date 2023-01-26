@@ -14,12 +14,13 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run && yarn test:react run && yarn test:rescript run",
+    "test": "yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run && yarn test:react run && yarn test:rescript run && yarn test:elm run",
     "test:react": "yarn workspace todomvc-react test",
     "test:svelte": "yarn workspace todomvc-svelte test",
     "test:vue": "yarn workspace todomvc-vue test",
     "test:solid": "yarn workspace todomvc-solid test",
     "test:rescript": "yarn workspace todomvc-rescript test",
+    "test:elm": "yarn workspace todomvc-elm test",
     "test:alpine": "vitest --config ./vitest.alpine.config.ts",
     "lint": "eslint src",
     "serve": "npx http-server dist -p 8000"
@@ -40,6 +41,7 @@
     "@typescript-eslint/parser": "^5.33.0",
     "@vitest/ui": "^0.22.1",
     "@webcomponents/template-shadowroot": "^0.1.0",
+    "astro-integration-elm": "^0.0.9",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.22.0",
     "eslint-plugin-import": "^2.26.0",
@@ -56,7 +58,8 @@
     "todomvc-vue",
     "todomvc-svelte",
     "todomvc-solid",
-    "todomvc-rescript"
+    "todomvc-rescript",
+    "todomvc-elm"
   ],
   "packageManager": "yarn@3.3.1"
 }

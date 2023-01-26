@@ -21,7 +21,7 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       }) as HTMLInputElement;
       await userEvent.type(input, "{enter}테스트{enter}");
 
-      expect(screen.getByRole("listitem")).toHaveTextContent("테스트");
+      expect(await screen.findByRole("listitem")).toHaveTextContent("테스트");
 
     });
 
@@ -53,7 +53,9 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
 
       await userEvent.click(button);
 
-      expect(button).not.toBeInTheDocument();
+      await waitFor(() => {
+				expect(button).not.toBeInTheDocument();
+      });
     });
 
     it("할 일을 수정할 수 있다", async () => {
