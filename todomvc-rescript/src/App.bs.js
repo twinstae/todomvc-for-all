@@ -5,7 +5,9 @@ import * as TodoForm from "./TodoForm.bs.js";
 import * as TodoList from "./TodoList.bs.js";
 
 function App(props) {
-  return React.createElement("div", undefined, React.createElement(TodoForm.make, {}), React.createElement(TodoList.make, {}));
+  return React.createElement("div", {
+              className: "card shadow-lg rounded-2xl p-4 max-w-lg"
+            }, React.createElement(TodoForm.make, {}), React.createElement(TodoList.make, {}));
 }
 
 var make = App;

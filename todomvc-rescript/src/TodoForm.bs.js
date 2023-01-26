@@ -5,29 +5,36 @@ import * as React from "react";
 import * as TodoContext from "./TodoContext.bs.js";
 
 function TodoForm(props) {
-  var todoActions = TodoContext.useTodoActions(undefined);
-  var match = React.useState(function () {
+  var match = TodoContext.useTodoActions(undefined);
+  var addTodo = match.addTodo;
+  var match$1 = React.useState(function () {
         return "";
       });
-  var setText = match[1];
-  var text = match[0];
+  var setText = match$1[1];
+  var text = match$1[0];
   var onChange = function (evt) {
-    evt.preventDefault();
-    var value = evt.target.value;
     Curry._1(setText, (function (_prev) {
-            return value;
+            return evt.target.value;
           }));
   };
   var onSubmit = function ($$event) {
     $$event.preventDefault();
-    todoActions.addTodo(text);
+    addTodo(text);
   };
   return React.createElement("form", {
               onSubmit: onSubmit
-            }, React.createElement("label", undefined, "새로운 할일", React.createElement("input", {
+            }, React.createElement("label", {
+                  className: "inline-block grow"
+                }, "새로운 할일", React.createElement("input", {
+                      className: "input input-bordered w-full",
                       type: "text",
+                      value: text,
                       onChange: onChange
-                    })));
+                    })), React.createElement("button", {
+                  "aria-label": "새로운 할 일 " + text + "을 추가하시려면 클릭해주세요",
+                  className: "btn btn-primary btn-sm",
+                  type: "submit"
+                }, "추가"));
 }
 
 var make = TodoForm;

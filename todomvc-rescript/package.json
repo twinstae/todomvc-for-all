@@ -24,6 +24,7 @@
   },
   "scripts": {
     "res:build": "rescript",
-    "res:dev": "rescript build -w"
+    "res:dev": "rescript build -w",
+		"test": "vitest"
   }
 }

@@ -1,13 +1,11 @@
-// import { useStore } from "@nanostores/react";
-// import { todoListStore, actions } from "@todomvc-core/nanoTodoListStore";
 open Todo
-type store<'t>
 
-@send external set: (store<Js.Array.t<todo>>, Js.Array.t<todo>) => unit = "set"
-@send external get: (store<Js.Array.t<todo>>) => Js.Array.t<todo> = "get"
-@module("@todomvc-core/nanoTodoListStore") external todoListStore: store<Js.Array.t<todo>> = "todoListStore"
+type store<'t>
+@send external set: (store<'a>, 'a) => unit = "set"
+@send external get: (store<'a>) => 'a = "get"
+@module("@todomvc-core/nanoTodoListStore") external todoListStore: store<todoList> = "todoListStore"
 @module("@todomvc-core/nanoTodoListStore") external actions: actions = "actions"
-@module("@nanostores/react") external useStore: (store<'t>) => 't = "useStore"
+@module("@nanostores/react") external useStore: (store<'a>) => 'a = "useStore"
 
 let useNanoTodoList = () => {
   let todoList = useStore(todoListStore);
@@ -16,6 +14,6 @@ let useNanoTodoList = () => {
 
 let useNanoActions = () => actions;
 
-let nanostoreInit = async (init: todoList) => {
+let nanostoreInit = async (init) => {
 	todoListStore -> set(init)
 }
