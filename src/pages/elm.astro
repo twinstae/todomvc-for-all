@@ -5,7 +5,8 @@ import Layout from "../layouts/TodoMVCLayout.astro";
 <Layout framework="elm">
   <div id="root"></div>
   <script>
-    import { Elm } from "@todomvc-elm/App.elm";
+    import type { TodoT } from '@todomvc-core/global';
+		import { Elm } from "@todomvc-elm/App.elm";
 
     const root = document.getElementById("root");
 
@@ -14,8 +15,7 @@ import Layout from "../layouts/TodoMVCLayout.astro";
       flags: JSON.parse(localStorage.getItem('todo-list') ?? '[]'),
     });
 
-    app.ports.saveTodoList.subscribe((todoList) => {
-      console.log(todoList);
+    app.ports.saveTodoList.subscribe((todoList: TodoT[]) => {
       localStorage.setItem("todo-list", JSON.stringify(todoList));
     });
   </script>

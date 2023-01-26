@@ -10,7 +10,7 @@ export function runElmImpl(
 			root.id = "root"
 			document.body.appendChild(root);
 						
-			const app = Elm.App.init({
+			Elm.App.init({
 				node: root,
 				flags: init,
 			});

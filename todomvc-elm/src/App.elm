@@ -89,11 +89,9 @@ update msg model =
                     { model
                         | todoList =
                             model.todoList
-                                ++ [ { id = withDefault 0 (List.maximum (List.map getId model.todoList)) + 1
+                                ++ [ withIsEditing { id = withDefault 0 (List.maximum (List.map getId model.todoList)) + 1
                                      , content = model.input
                                      , isCompleted = False
-                                     , isEditing = False
-                                     , editInput = model.input
                                      }
                                    ]
                         , input = ""
