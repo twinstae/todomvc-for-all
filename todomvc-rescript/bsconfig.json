@@ -1,0 +1,29 @@
+{
+  "name": "todomvc-rescript",
+  "version": "0.1.0",
+  "sources": [
+		{
+			"dir" : "src",
+			"subdirs" : true
+		},
+		{
+			"dir" : "test",
+			"subdirs" : true,
+			"type" : "dev"
+		}
+	],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "jsx": { "version": 4, "mode": "classic" },
+	"bs-dependencies": [
+    "@rescript/react",
+		"@ryyppy/rescript-promise"
+	],
+  "bs-dev-dependencies": [
+    "rescript-vitest",
+    "@rescriptbr/react-testing-library"
+  ]
+}
