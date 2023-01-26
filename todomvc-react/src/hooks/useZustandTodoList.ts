@@ -1,5 +1,5 @@
-import create from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 import * as shared from "@todomvc-core/sharedContainer";
 import type { TodoT } from "@todomvc-core/global";
 import { domain, TodoActions } from "@todomvc-core/domain";
@@ -20,15 +20,15 @@ export const useZustandStore = create<TodoListState, [["zustand/persist", TodoLi
   };
 }, {
   name: 'todo-list', // name of item in the storage (must be unique)
-  getStorage: () => {
-    const storage = shared.inject("storage");
+  storage: createJSONStorage(() => {
+		const storage = shared.inject("storage");
 
     return {
       setItem: storage.set,
-      getItem: (key) => JSON.stringify(storage.get(key)),
+      getItem: (key: string) => JSON.stringify(storage.get(key)) ?? null,
       removeItem: storage.delete
     }
-  },
+	}),
 }));
 
 export function useZustandTodoList(): { todoList: readonly TodoT[] } {
