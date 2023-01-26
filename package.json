@@ -14,11 +14,12 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run && yarn test:react run",
+    "test": "yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run && yarn test:react run && yarn test:rescript run",
     "test:react": "yarn workspace todomvc-react test",
     "test:svelte": "yarn workspace todomvc-svelte test",
     "test:vue": "yarn workspace todomvc-vue test",
     "test:solid": "yarn workspace todomvc-solid test",
+    "test:rescript": "yarn workspace todomvc-rescript test",
     "test:alpine": "vitest --config ./vitest.alpine.config.ts",
     "lint": "eslint src",
     "serve": "npx http-server dist -p 8000"
