@@ -38,27 +38,35 @@ function TodoEditingForm(props) {
             return true;
           }));
   };
-  var endEdit = function (_e) {
+  var endEdit = function (e) {
+    e.preventDefault();
     Curry._1(setIsEditing, (function (param) {
             return false;
           }));
     todoActions.changeTodo(todo.id, text);
   };
   if (isEditing) {
-    return React.createElement(React.Fragment, undefined, React.createElement("input", {
+    return React.createElement("form", {
+                className: "flex align-middle m-0",
+                onSubmit: endEdit
+              }, React.createElement("input", {
                     ref: Caml_option.some(editRef),
+                    className: "input input-sm input-borderded mr-4",
                     placeholder: todo.content,
                     type: "text",
                     value: text,
                     onChange: onChange
                   }), React.createElement("button", {
                     "aria-label": "할일을 " + todo.content + "에서 " + text + "로 수정하시려면 클릭하세요.",
-                    type: "button",
-                    onClick: endEdit
+                    className: "btn btn-primary btn-sm",
+                    type: "submit"
                   }, "완료"));
   } else {
-    return React.createElement(React.Fragment, undefined, todo.content, React.createElement("button", {
+    return React.createElement(React.Fragment, undefined, React.createElement("span", {
+                    className: "w-full"
+                  }, todo.content), React.createElement("button", {
                     "aria-label": "할일 " + todo.content + "을 수정하시려면 클릭하세요.",
+                    className: "btn btn-primary btn-sm",
                     type: "button",
                     onClick: startEdit
                   }, "수정"));

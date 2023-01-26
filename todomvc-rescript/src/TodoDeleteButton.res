@@ -8,5 +8,5 @@ let make = (~todoId) => {
 		todoActions.deleteTodo(. todoId)
 	}
 
-	<button onClick type_="button">{React.string("삭제")}</button>
+	<button onClick type_="button" className="btn btn-sm btn-error">{React.string("삭제")}</button>
 }

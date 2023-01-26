@@ -10,6 +10,7 @@ function TodoDeleteButton(props) {
     todoActions.deleteTodo(todoId);
   };
   return React.createElement("button", {
+              className: "btn btn-sm btn-error",
               type: "button",
               onClick: onClick
             }, "삭제");

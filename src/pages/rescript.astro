@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/TodoMVCLayout.astro";
+import { make as TodoMvcReact } from "@todomvc-rescript/TodoMvcReact.bs.js";
+---
+<Layout framework="rescript">
+	<TodoMvcReact client:load />
+</Layout>
+
+<style is:global>
+	.gap-2 {
+		gap: 0.5rem;
+	}
+
+	.flex-col {
+		flex-direction: column;
+	}
+
+	.mr-4 {
+		margin-right: 1rem;
+	}
+
+	.input-borderded {
+    --tw-border-opacity: .2;
+	}
+</style>

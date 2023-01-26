@@ -20,21 +20,27 @@ function TodoForm(props) {
   var onSubmit = function ($$event) {
     $$event.preventDefault();
     addTodo(text);
+    Curry._1(setText, (function (param) {
+            return "";
+          }));
   };
   return React.createElement("form", {
               onSubmit: onSubmit
             }, React.createElement("label", {
-                  className: "inline-block grow"
-                }, "새로운 할일", React.createElement("input", {
-                      className: "input input-bordered w-full",
+                  htmlFor: "add-todo-input"
+                }, React.createElement("span", undefined, "새로운 할일")), React.createElement("div", {
+                  className: "flex flex-row gap-4"
+                }, React.createElement("input", {
+                      className: "input input-bordered",
+                      id: "add-todo-input",
                       type: "text",
                       value: text,
                       onChange: onChange
-                    })), React.createElement("button", {
-                  "aria-label": "새로운 할 일 " + text + "을 추가하시려면 클릭해주세요",
-                  className: "btn btn-primary btn-sm",
-                  type: "submit"
-                }, "추가"));
+                    }), React.createElement("button", {
+                      "aria-label": "새로운 할 일 " + text + "을 추가하시려면 클릭해주세요",
+                      className: "btn btn-primary ml-2",
+                      type: "submit"
+                    }, "추가")));
 }
 
 var make = TodoForm;

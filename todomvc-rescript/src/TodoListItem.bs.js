@@ -7,11 +7,13 @@ import * as TodoCompleteCheckbox from "./TodoCompleteCheckbox.bs.js";
 
 function TodoListItem(props) {
   var todo = props.todo;
-  return React.createElement("li", undefined, React.createElement(TodoEditingForm.make, {
-                  todo: todo
-                }), React.createElement(TodoCompleteCheckbox.make, {
+  return React.createElement("li", {
+              className: "flex flex-row align-middle gap-2 w-full justify-between"
+            }, React.createElement(TodoCompleteCheckbox.make, {
                   id: todo.id,
                   isCompleted: todo.isCompleted
+                }), React.createElement(TodoEditingForm.make, {
+                  todo: todo
                 }), React.createElement(TodoDeleteButton.make, {
                   todoId: todo.id
                 }));

@@ -19,6 +19,7 @@ function TodoCompleteCheckbox(props) {
   };
   return React.createElement("input", {
               "aria-label": "완료",
+              className: "checkbox checkbox-lg mr-2 self-center",
               checked: props.isCompleted,
               type: "checkbox",
               onKeyUp: onKeyUp,

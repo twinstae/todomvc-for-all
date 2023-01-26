@@ -9,7 +9,9 @@ import * as JsxPPXReactSupport from "rescript/lib/es6/jsxPPXReactSupport.js";
 
 function TodoList(props) {
   var match = Curry._1(React.useContext(TodoContext.UseTodoListContext.context), undefined);
-  return React.createElement("ul", undefined, Belt_Array.map(match.todoList, (function (todo) {
+  return React.createElement("ul", {
+              className: "flex flex-col gap-2 m-2"
+            }, Belt_Array.map(match.todoList, (function (todo) {
                     return JsxPPXReactSupport.createElementWithKey(String(todo.id), TodoListItem.make, {
                                 todo: todo
                               });
