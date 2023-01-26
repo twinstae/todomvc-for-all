@@ -7,10 +7,9 @@ export const domain = {
     if (content.length === 0) {
       return old;
     }
-    
     const newTodo = {
-      id: generateId(),
-      content,
+      id: Math.max(...old.map(todo => todo.id), 0) + 1,
+      content: content,
       isCompleted: false,
     };
     return [...old, newTodo];

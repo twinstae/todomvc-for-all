@@ -1,6 +1,6 @@
 import { todoListStore } from "@todomvc-core/nanoTodoListStore";
 import {
-  nanoActions,
+  useNanoActions,
   useNanoTodoList,
 } from "../src/hooks/useNanoTodolist";
 import { runReactImpl } from "./runReactImpl";
@@ -8,7 +8,7 @@ import { runReactImpl } from "./runReactImpl";
 runReactImpl(
   "nanostore",
   useNanoTodoList,
-  () => nanoActions,
+  useNanoActions,
   undefined,
   async (init) => {
     todoListStore.set(init);

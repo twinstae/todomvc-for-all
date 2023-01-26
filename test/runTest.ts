@@ -18,10 +18,11 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
 
       const input = screen.getByRole("textbox", {
         name: /새로운 할일/,
-      });
+      }) as HTMLInputElement;
       await userEvent.type(input, "{enter}테스트{enter}");
 
       expect(screen.getByRole("listitem")).toHaveTextContent("테스트");
+
     });
 
     it("할 일을 완료할 수 있다", async () => {

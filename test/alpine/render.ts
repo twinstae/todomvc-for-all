@@ -14,7 +14,7 @@ export function render(html: string){
 
   if (window.Alpine === undefined){
     document.body.innerHTML = html
-    const { default: Alpine } = (alpine as unknown) as Alpine
+    const Alpine = alpine
     window.Alpine = Alpine;
     Alpine.start()
   }

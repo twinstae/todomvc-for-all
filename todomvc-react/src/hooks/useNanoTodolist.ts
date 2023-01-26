@@ -7,4 +7,4 @@ export function useNanoTodoList(): { todoList: readonly TodoT[]} {
   return { todoList };
 }
 
-export const nanoActions = actions;
+export const useNanoActions = () => actions;

@@ -1,7 +1,10 @@
 import React from "react";
-import TodoForm from "@todomvc-react/TodoForm";
-import TodoItem from "@todomvc-react/TodoItem";
-import { useTodoList } from "@todomvc-react/useTodoList";
+import TodoForm from "./TodoForm";
+import TodoItem from "./TodoItem";
+import { useTodoList } from "./useTodoList";
+
+// 배열의 구조분해할당 => 순서
+// 객체의 구조분해할당 => key의 이름
 
 export default function App() {
   const { todoList } = useTodoList();
@@ -11,7 +14,7 @@ export default function App() {
       <TodoForm />
       <ul>
         {todoList.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem todo={todo} key={todo.id}/>
         ))}
       </ul>
     </div>

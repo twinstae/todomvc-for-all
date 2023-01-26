@@ -9,7 +9,7 @@ export default function TodoForm() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        addTodo(todoInput);
+        addTodo(todoInput.trim());
         setTodoInput("");
       }}
       className="p-0 m-0"

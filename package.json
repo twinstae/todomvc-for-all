@@ -14,7 +14,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "yarn test:react run && yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run",
+    "test": "yarn test:svelte run && yarn test:vue run && yarn test:solid run && vitest run && yarn test:react run",
     "test:react": "yarn workspace todomvc-react test",
     "test:svelte": "yarn workspace todomvc-svelte test",
     "test:vue": "yarn workspace todomvc-vue test",
@@ -31,7 +31,7 @@
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@astrojs/vue": "^1.0.0",
-    "@testing-library/dom": "^8.17.1",
+    "@testing-library/dom": "^8.19.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
     "@types/alpinejs": "^3.7.0",
@@ -47,7 +47,7 @@
     "tailwind": "^4.0.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.9",
-    "vitest": "^0.22.1"
+    "vitest": "^0.26.3"
   },
   "private": true,
   "workspaces": [
@@ -55,7 +55,7 @@
     "todomvc-vue",
     "todomvc-svelte",
     "todomvc-solid",
-    "todomvc-alpine"
+    "todomvc-rescript"
   ],
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.3.1"
 }
