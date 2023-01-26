@@ -12,18 +12,16 @@ function runTest(prim) {
   RunTest(prim);
 }
 
-function runReactImpl(name, useTodoListImpl, useTodoActionsImpl, setup) {
+function runReactImpl(name, useTodoListImpl, useTodoActionsImpl, make, setup) {
   RunTest({
         framework: "react-rescript: " + name + "",
         render: (async function (init) {
             SharedContainer.inject("storage").set("todo-list", init);
             await Curry._1(setup, init);
-            return ReactTestingLibrary.render(undefined, undefined, undefined, undefined, undefined, React.createElement(TodoContext.UseTodoListContext.Provider.make, {
-                            value: useTodoListImpl,
-                            children: React.createElement(TodoContext.UseTodoActionsContext.Provider.make, {
-                                  value: useTodoActionsImpl,
-                                  children: React.createElement(App.make, {})
-                                })
+            return ReactTestingLibrary.render(undefined, undefined, undefined, undefined, undefined, React.createElement(TodoContext.make, {
+                            useTodoListImpl: useTodoListImpl,
+                            useTodoActionsImpl: useTodoActionsImpl,
+                            children: Curry._1(make, React.createElement(App.make, {}))
                           }));
           })
       });

@@ -3,7 +3,7 @@
 import * as Runner from "./Runner.bs.js";
 import * as NanoTodoList from "../src/NanoTodoList.bs.js";
 
-Runner.runReactImpl("nanostore", NanoTodoList.useNanoTodoList, NanoTodoList.useNanoActions, NanoTodoList.nanostoreInit);
+Runner.runReactImpl("nanostore", NanoTodoList.useNanoTodoList, NanoTodoList.useNanoActions, NanoTodoList.NanoTodoListWrapper.make, NanoTodoList.nanostoreInit);
 
 export {
   

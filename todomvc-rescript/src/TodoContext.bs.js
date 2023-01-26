@@ -73,9 +73,22 @@ function useTodoActions(param) {
   return Curry._1(React.useContext(context$1), undefined);
 }
 
+function TodoContext(props) {
+  return React.createElement(make, {
+              value: props.useTodoListImpl,
+              children: React.createElement(make$1, {
+                    value: props.useTodoActionsImpl,
+                    children: props.children
+                  })
+            });
+}
+
+var make$2 = TodoContext;
+
 export {
   UseTodoListContext ,
   UseTodoActionsContext ,
   useTodoActions ,
+  make$2 as make,
 }
 /* context Not a pure module */

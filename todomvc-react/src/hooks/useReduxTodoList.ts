@@ -6,6 +6,7 @@ import {
   completeTodo,
   deleteTodo,
   selectTodoList,
+	loadSaved, reduxStore
 } from "@todomvc-core/reduxTodoListStore";
 import type { TodoT } from "@todomvc-core/global";
 import { TodoActions } from "@todomvc-core/domain";
@@ -34,4 +35,8 @@ export const useReduxActions: () => TodoActions = () => {
       dispatch(deleteTodo({ id }));
     },
   };
+};
+
+export const reduxInit = async (init: TodoT[]) => {
+	reduxStore.dispatch(loadSaved({ saved: init }));
 };

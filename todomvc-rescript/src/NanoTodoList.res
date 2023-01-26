@@ -17,3 +17,10 @@ let useNanoActions = () => actions;
 let nanostoreInit = async (init) => {
 	todoListStore -> set(init)
 }
+
+@react.component
+module NanoTodoListWrapper = {
+	let make = (~children) => {
+		<div>{children}</div>
+	}
+}

@@ -34,3 +34,12 @@ module UseTodoActionsContext = {
 }
 
 let useTodoActions = () => React.useContext(UseTodoActionsContext.context)()
+
+@react.component
+let make = (~useTodoListImpl: unit => todoListResult, ~useTodoActionsImpl: unit => actions, ~children: React.element) => {
+	<UseTodoListContext.Provider value=useTodoListImpl>
+		<UseTodoActionsContext.Provider value=useTodoActionsImpl>
+			{children}
+		</UseTodoActionsContext.Provider>
+	</UseTodoListContext.Provider>
+}

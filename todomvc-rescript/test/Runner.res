@@ -12,20 +12,26 @@ type todoStorage
 
 @module("@todomvc-core/sharedContainer") external inject: (~key: string) => todoStorage = "inject"
 
-let runReactImpl = (~name: string, ~useTodoListImpl: () => todoListResult, ~useTodoActionsImpl: () => actions, ~setup: (todoList) => promise<unit>) => {
+type wrapperProps<'children> = {
+  children: 'children,
+}
+
+let runReactImpl = (~name: string, ~useTodoListImpl: () => todoListResult, ~useTodoActionsImpl: () => actions,
+ ~make: (
+    ~children: React.element,
+  ) => React.element,
+ ~setup: (todoList) => promise<unit>) => {
 	runTest({
     "framework": `react-rescript: ${name}`,
     "render": async (~init: todoList) => {
       inject(~key="storage") -> set("todo-list", init)
 
 			await setup(init);
-			
+
 			ReactTestingLibrary.render(
-				<UseTodoListContext.Provider value=useTodoListImpl>
-					<UseTodoActionsContext.Provider value=useTodoActionsImpl>
-						<App />
-					</UseTodoActionsContext.Provider>
-				</UseTodoListContext.Provider>
+				<TodoContext useTodoListImpl=useTodoListImpl useTodoActionsImpl=useTodoActionsImpl>
+					{make(~children=<App/>)}					
+				</TodoContext>
 			)
     },
   })
