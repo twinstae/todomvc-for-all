@@ -36,8 +36,8 @@ export default function runTest({ framework, render }: TodoMVCImpl) {
       await userEvent.click(checkbox);
 
       expect(checkbox).toBeChecked();
-      
-      await userEvent.keyboard("odd{Space}");
+			
+      await userEvent.keyboard("{Space}");
 
       await waitFor(() => {
         expect(checkbox).not.toBeChecked()

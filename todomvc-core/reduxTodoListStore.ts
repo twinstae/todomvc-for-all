@@ -37,6 +37,7 @@ export const todoListSlice = createSlice({
 
 export const { addTodo, completeTodo, changeTodo, deleteTodo, loadSaved } = todoListSlice.actions
 
+export type Actions = Parameters<typeof reduxStore.dispatch>[0];
 export const selectTodoList = (state: RootState) => state.todoList
 
 export const reduxStore = configureStore({

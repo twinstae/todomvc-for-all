@@ -1,11 +1,13 @@
 /// <reference types="vite/client" />
 
 declare module "*.elm" {
-	export const Elm: {
-		App: {
-			init: (options: {node: HTMLElement, flags: any }) => {
-				ports: Record<string, { subscribe(json): void }>
-			}
+	type ElmApp = {
+		init: (options: {node: HTMLElement, flags: any }) => {
+			ports: Record<string, { subscribe(callback: (data) => void ): void, send(data): void }>,
 		}
+	}
+	export const Elm: {
+		App: ElmApp,
+		AppWithExternal: ElmApp
 	} 
 }
